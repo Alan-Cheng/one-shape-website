@@ -357,7 +357,7 @@ function changeToChinese(element) {
         text.style.fontSize = originalSize * 1.0 + 'px'; // 將字體大小設置為原始大小的1.0倍
         text.style.fontFamily = '';
       }
-      if (text.innerHTML === 'Portfolio') {
+      if (text.innerHTML === 'Projects') {
         text.originalFontSize = window.getComputedStyle(text).fontSize; // 儲存原始字體大小
         text.originalFontFamily = window.getComputedStyle(text).fontFamily;
         var originalSize = parseFloat(text.originalFontSize);
@@ -412,7 +412,7 @@ function changeToEnglish(element) {
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '作品集') {
-      text.innerHTML = 'Portfolio';
+      text.innerHTML = 'Projects';
       text.style.fontSize = text.originalFontSize; // 恢復原始字體大小
       text.style.fontFamily = text.originalFontFamily//恢復原本的字體
       }
