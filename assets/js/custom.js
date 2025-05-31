@@ -350,52 +350,52 @@ function changeToChinese(element) {
     if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === 'Services') {
-        text.originalFontSize = window.getComputedStyle(text).fontSize; // 儲存原始字體大小
+        text.originalFontSize = window.getComputedStyle(text).fontSize;
         text.originalFontFamily = window.getComputedStyle(text).fontFamily;
         var originalSize = parseFloat(text.originalFontSize);
         text.innerHTML = '服務項目';
-        text.style.fontSize = originalSize * 1.0 + 'px'; // 將字體大小設置為原始大小的1.0倍
-        text.style.fontFamily = '';
+        text.style.fontSize = originalSize * 1.0 + 'px';
+        text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'Projects') {
-        text.originalFontSize = window.getComputedStyle(text).fontSize; // 儲存原始字體大小
+        text.originalFontSize = window.getComputedStyle(text).fontSize;
         text.originalFontFamily = window.getComputedStyle(text).fontFamily;
         var originalSize = parseFloat(text.originalFontSize);
         text.innerHTML = '作品集';
-        text.style.fontSize = originalSize * 1.0 + 'px'; // 將字體大小設置為原始大小的1.0倍
-        text.style.fontFamily = '';
+        text.style.fontSize = originalSize * 1.0 + 'px';
+        text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'About') {
-        text.originalFontSize = window.getComputedStyle(text).fontSize; // 儲存原始字體大小
+        text.originalFontSize = window.getComputedStyle(text).fontSize;
         text.originalFontFamily = window.getComputedStyle(text).fontFamily;
         var originalSize = parseFloat(text.originalFontSize);
         text.innerHTML = '關於我們';
-        text.style.fontSize = originalSize * 1.0 + 'px'; // 將字體大小設置為原始大小的1.0倍
-        text.style.fontFamily = '';
+        text.style.fontSize = originalSize * 1.0 + 'px';
+        text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'Team') {
-        text.originalFontSize = window.getComputedStyle(text).fontSize; // 儲存原始字體大小
+        text.originalFontSize = window.getComputedStyle(text).fontSize;
         text.originalFontFamily = window.getComputedStyle(text).fontFamily;
         var originalSize = parseFloat(text.originalFontSize);
         text.innerHTML = '團隊成員';
-        text.style.fontSize = originalSize * 1.0 + 'px'; // 將字體大小設置為原始大小的1.0倍
-        text.style.fontFamily = '';
+        text.style.fontSize = originalSize * 1.0 + 'px';
+        text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'Contact') {
-        text.originalFontSize = window.getComputedStyle(text).fontSize; // 儲存原始字體大小
+        text.originalFontSize = window.getComputedStyle(text).fontSize;
         text.originalFontFamily = window.getComputedStyle(text).fontFamily;
         var originalSize = parseFloat(text.originalFontSize);
         text.innerHTML = '聯絡我們';
-        text.style.fontSize = originalSize * 1.0 + 'px'; // 將字體大小設置為原始大小的1.0倍
-        text.style.fontFamily = '';
+        text.style.fontSize = originalSize * 1.0 + 'px';
+        text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'Home') {
-        text.originalFontSize = window.getComputedStyle(text).fontSize; // 儲存原始字體大小
+        text.originalFontSize = window.getComputedStyle(text).fontSize;
         text.originalFontFamily = window.getComputedStyle(text).fontFamily;
         var originalSize = parseFloat(text.originalFontSize);
         text.innerHTML = '首頁';
-        text.style.fontSize = originalSize * 1.0 + 'px'; // 將字體大小設置為原始大小的1.0倍
-        text.style.fontFamily = '';
+        text.style.fontSize = originalSize * 1.0 + 'px';
+        text.setAttribute('lang', 'zh-TW');
       }
     }
   }
@@ -404,49 +404,55 @@ function changeToEnglish(element) {
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '服務項目') {
-      text.innerHTML = 'Services';
-      text.style.fontSize = text.originalFontSize; // 恢復原始字體大小
-      text.style.fontFamily = text.originalFontFamily//恢復原本的字體
+        text.innerHTML = 'Services';
+        text.style.fontSize = text.originalFontSize;
+        text.style.fontFamily = text.originalFontFamily;
+        text.setAttribute('lang', 'en');
       }
   }
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '作品集') {
-      text.innerHTML = 'Projects';
-      text.style.fontSize = text.originalFontSize; // 恢復原始字體大小
-      text.style.fontFamily = text.originalFontFamily//恢復原本的字體
+        text.innerHTML = 'Projects';
+        text.style.fontSize = text.originalFontSize;
+        text.style.fontFamily = text.originalFontFamily;
+        text.setAttribute('lang', 'en');
       }
   }
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '關於我們') {
-      text.innerHTML = 'About';
-      text.style.fontSize = text.originalFontSize; // 恢復原始字體大小
-      text.style.fontFamily = text.originalFontFamily//恢復原本的字體
+        text.innerHTML = 'About';
+        text.style.fontSize = text.originalFontSize;
+        text.style.fontFamily = text.originalFontFamily;
+        text.setAttribute('lang', 'en');
       }
   }
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '團隊成員') {
-      text.innerHTML = 'Team';
-      text.style.fontSize = text.originalFontSize; // 恢復原始字體大小
-      text.style.fontFamily = text.originalFontFamily//恢復原本的字體
+        text.innerHTML = 'Team';
+        text.style.fontSize = text.originalFontSize;
+        text.style.fontFamily = text.originalFontFamily;
+        text.setAttribute('lang', 'en');
       }
   }
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '聯絡我們') {
-      text.innerHTML = 'Contact';
-      text.style.fontSize = text.originalFontSize; // 恢復原始字體大小
-      text.style.fontFamily = text.originalFontFamily//恢復原本的字體
+        text.innerHTML = 'Contact';
+        text.style.fontSize = text.originalFontSize;
+        text.style.fontFamily = text.originalFontFamily;
+        text.setAttribute('lang', 'en');
       }
   }
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '首頁') {
-      text.innerHTML = 'Home';
-      text.style.fontSize = text.originalFontSize; // 恢復原始字體大小
-      text.style.fontFamily = text.originalFontFamily//恢復原本的字體
+        text.innerHTML = 'Home';
+        text.style.fontSize = text.originalFontSize;
+        text.style.fontFamily = text.originalFontFamily;
+        text.setAttribute('lang', 'en');
       }
   }
 }

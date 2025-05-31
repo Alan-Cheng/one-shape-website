@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Noto Sans TC';
+    src: url('../fonts/NotoSansTC-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sackers Gothic';
+    src: url('../fonts/Sackers Gothic Light AT Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 使用 lang 屬性控制字體 */
+[lang="zh-TW"],
+[lang="zh"] {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+[lang="en"] {
+    font-family: 'Sackers Gothic', sans-serif;
+}
+
+/* 套用中文字體到所有中文文字 */
+body, 
+p, 
+li, 
+.section-subheading,
+.description_list,
+.contact-link,
+.copyright,
+.quicklinks a,
+.scalable-div p,
+.scalable-div h4,
+.scalable-div ul,
+.scalable-div li,
+.contact-link,
+#contact p,
+#contact h6,
+#about .scalable-div,
+#about .section-subheading,
+#about .description_list,
+#about p,
+#about li,
+#about h4 {
+    font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+/* 套用英文字體到所有英文文字 */
+h1, h2, h3, h4, h5, h6, 
+.intro-heading, 
+.section-heading,
+.navbar-brand,
+.btn,
+.social-buttons a,
+.nav-link,
+.intro-lead-in,
+.section-heading p,
+#portfolio .section-heading p,
+#workflow .section-heading,
+#contact .section-heading p,
+#viewAll,
+.fab {
+    font-family: 'Sackers Gothic', sans-serif;
+}
+
+/* 確保導航選單使用英文字體 */
+.navbar-nav .nav-link,
+.navbar-toggler,
+.navbar-toggler-right,
+#navbarResponsive .nav-link,
+.nav-item .nav-link {
+    font-family: 'Sackers Gothic', sans-serif !important;
+}
+
+/* 確保按鈕文字使用英文字體 */
+.btn {
+    font-family: 'Sackers Gothic', sans-serif;
+}
+
+/* 特定區段的中英文混合處理 */
+.section-heading .section-subheading {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 確保社交媒體圖示使用英文字體 */
+.social-buttons .fab {
+    font-family: 'Sackers Gothic', sans-serif;
+}
+
+/* 特別處理「關於我們」區段的標題 */
+#about .section-heading p {
+    font-family: 'Sackers Gothic', sans-serif;
+} 
