@@ -143,6 +143,47 @@
   </section>
 <!-- End About -->
 
+<!-- Back to Top Button -->
+<button id="backToTop" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: background-color 0.3s;
+  z-index: 1000;
+">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // 當頁面滾動超過 300px 時顯示按鈕
+  window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      document.getElementById("backToTop").style.display = "flex";
+    } else {
+      document.getElementById("backToTop").style.display = "none";
+    }
+  };
+
+  // 點擊按鈕回到頂部
+  document.getElementById("backToTop").onclick = function() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+</script>
+
 <!-- Portfolio Grid -->
 <section class="bg-light page-section" id="portfolio">
   <div class="container">
