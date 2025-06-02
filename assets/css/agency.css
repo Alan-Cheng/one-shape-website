@@ -97,9 +97,12 @@ img::-moz-selection {
 }
 
 #mainNav {
-  background-color: rgba(16, 106, 196, 0.1); /* 增加透明度 */
+  background-color: transparent;
   padding-top: 15px;
   padding-bottom: 15px;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
 }
 #mainNav .navbar-toggler {
   font-size: 12px;
@@ -146,7 +149,8 @@ img::-moz-selection {
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
     border: none;
-    background-color: rgba(33, 37, 41, 0.9); /* 桌面視圖也保持透明度 */
+    background-color: transparent;
+    position: absolute;
   }
   #mainNav .navbar-brand {
     font-size: 1.75em;
@@ -180,6 +184,7 @@ header.masthead {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 header.masthead .intro-text {
