@@ -1,8 +1,17 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@300&display=swap'); */
 
+html {
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
 body {
   overflow-x: hidden;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: rgb(48, 48, 48);
 }
 
 p {
@@ -176,7 +185,7 @@ header.masthead {
   color: white;
   background-image: url("../img/header.avif"), url("../img/header.jpg");
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-position: center center;
   background-size: cover;
   min-height: 100vh;

@@ -806,3 +806,33 @@ window.onPortfolioLoaded = function(data) {
 
   show_viewAll_button(3);  // 在兩個頁面都執行這個
 };
+
+// 防止頁面在頂部時向上滾動
+function preventScrollAtTop() {
+  let lastScrollTop = 0;
+  
+  window.addEventListener('scroll', function(e) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop <= 0) {
+      e.preventDefault();
+      window.scrollTo(0, 0);
+      lastScrollTop = 0;
+    } else {
+      lastScrollTop = scrollTop;
+    }
+  }, { passive: false });
+
+  // 添加觸控事件處理
+  document.addEventListener('touchmove', function(e) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop <= 0) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+}
+
+// 在頁面載入時執行
+document.addEventListener('DOMContentLoaded', function() {
+  preventScrollAtTop();
+});
