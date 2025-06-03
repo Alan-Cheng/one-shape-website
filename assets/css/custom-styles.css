@@ -145,3 +145,23 @@
   margin-top: 0;
   margin-bottom: 50px;
 }
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.section-title-row h2 {
+  margin: 0;
+  font-size: 2em;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  color: white;
+  flex-shrink: 0;
+}
+.section-title-line {
+  flex-grow: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.5);
+  margin-left: 20px;
+}
