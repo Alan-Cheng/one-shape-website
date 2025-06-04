@@ -101,6 +101,12 @@ function build_portfolio(jsonDataArray, page){
 
     const caption = document.createElement('div');
     caption.className = 'portfolio-caption';
+    caption.style.backgroundColor = 'rgb(63,62,63)';
+    caption.style.height = '40px';
+    caption.style.display = 'flex';
+    caption.style.alignItems = 'center';
+    caption.style.justifyContent = 'flex-start';
+    caption.style.paddingLeft = '20px';
 
     const title = document.createElement('a');
     title.innerText = jsonData.專案名;
@@ -515,6 +521,12 @@ function portfolio_filter(catergory){
 
       const caption = document.createElement('div');
       caption.className = 'portfolio-caption';
+      caption.style.backgroundColor = 'rgb(63,62,63)';
+      caption.style.height = '40px';
+      caption.style.display = 'flex';
+      caption.style.alignItems = 'center';
+      caption.style.justifyContent = 'flex-start';
+      caption.style.paddingLeft = '20px';
 
       const title = document.createElement('a');
       title.innerText = jsonData.專案名;
