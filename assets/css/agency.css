@@ -123,10 +123,10 @@ img::-moz-selection {
 }
 
 #mainNav {
-  background-color: transparent;
+  background-color: rgba(16, 106, 196, 0.1);
   padding-top: 15px;
   padding-bottom: 15px;
-  position: absolute;
+  position: fixed;
   width: 100%;
   z-index: 1000;
 }
@@ -175,8 +175,8 @@ img::-moz-selection {
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
     border: none;
-    background-color: transparent;
-    position: absolute;
+    background-color: rgba(33, 37, 41, 0.9);
+    position: fixed;
   }
   #mainNav .navbar-brand {
     font-size: 1.75em;
