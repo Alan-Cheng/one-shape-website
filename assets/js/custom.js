@@ -535,45 +535,39 @@ function resetIcon(element) {
   text.style.fontSize = text.originalFontSize;
 }
 
-function show_workflow(){
-  const col1 = document.createElement('div');
-  col1.className = 'col-md-6';
-  const col2 = document.createElement('div');
-  col2.className = 'col-md-6';
-  col2.style.height = '100%';
-  workflowDataArray.forEach((jsonData, index) => {
-    const block = document.createElement('div');
-    block.className = 'vertical-align';
-    block.setAttribute('onmouseover', "enlargeIcon(this);");
-    block.setAttribute('onmouseout', "resetIcon(this);");
-    
-    const link = document.createElement('a');
-    link.setAttribute('data-toggle', 'modal');
-    link.setAttribute('href', `#wf${index + 1}`);
-    link.innerText = '0' + (index+1) + ` ${jsonData.服務名稱}`;
+function show_workflow() {
+  // 取得 workflow grid 容器
+  const workflowgrid = document.querySelector('#wf-grid');
+  // 清空內容
+  workflowgrid.innerHTML = '';
 
-    const title = document.createElement('h5');
-    title.display = 'block';
-    
-    title.style.fontSize = '1.3em';
-    title.className = 'service-heading';
+  // 服務項目列
+  const itemsRow = document.createElement('div');
+  itemsRow.className = 'service-items';
 
-    title.appendChild(link);
-    block.appendChild(title);
-    
-    if(index < 3){
-      col1.appendChild(block);
-    }
-    else{
-      col2.appendChild(block);
+  workflowDataArray.forEach((jsonData, idx) => {
+    // 服務項目
+    const item = document.createElement('div');
+    item.className = 'service-item';
+    item.innerText = jsonData.服務名稱.replace(/\s*\/.*$/, ''); // 只取主要名稱
+    item.setAttribute('data-toggle', 'modal');
+    item.setAttribute('href', `#wf${idx + 1}`);
+    item.style.cursor = 'pointer';
+    item.onclick = function() {
+      const modal = document.getElementById(`wf${idx + 1}`);
+      if(modal) $(modal).modal('show');
+    };
+    itemsRow.appendChild(item);
+    // 分隔線（最後一個不加）
+    if (idx < workflowDataArray.length - 1) {
+      const divider = document.createElement('div');
+      divider.className = 'service-divider';
+      itemsRow.appendChild(divider);
     }
   });
-  const workflowgrid = document.querySelector('#wf-grid');
-  workflowgrid.appendChild(col1);
-  workflowgrid.appendChild(col2);
+  workflowgrid.appendChild(itemsRow);
 
-
-  //建立workflow敘述頁面
+  // 保留原本 modal 敘述功能
   workflowDataArray.forEach((jsonData, index) => {
     // 创建一个新的div元素
     var modalDiv = document.createElement('div');
