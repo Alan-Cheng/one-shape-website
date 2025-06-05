@@ -70,6 +70,8 @@ function build_portfolio(jsonDataArray, page){
   result.forEach((jsonData, index) => {
     const col = document.createElement('div');
     col.className = 'col-md-4 portfolio-item';
+    col.style.marginBottom = '30px';
+    col.style.padding = '0 15px';
 
     const link = document.createElement('a');
     link.className = 'portfolio-link';
@@ -490,6 +492,8 @@ function portfolio_filter(catergory){
       }
       const col = document.createElement('div');
       col.className = 'col-md-4 portfolio-item';
+      col.style.marginBottom = '30px';
+      col.style.padding = '0 15px';
 
       const link = document.createElement('a');
       link.className = 'portfolio-link';
