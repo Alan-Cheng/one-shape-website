@@ -281,7 +281,7 @@ header.masthead .intro-text .intro-lead-in {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 650px) {
   header.masthead {
     background-image: url("../img/header_phone.avif"), url("../img/header_phone.jpg");
   }

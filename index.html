@@ -77,7 +77,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
 	    <a class="navbar-brand js-scroll-trigger active" href="#page-top" style="margin-right: auto; margin-left: 0;"><img src="assets\img\logo.avif" srcset="assets\img\logo.avif, assets\img\logo.png" style="height: 50px; width: auto; object-fit: cover;" alt="一形設計"></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:rgb(248, 247, 247, 0); color: white; padding: 10px 20px; font-size: 16px;">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:rgb(248, 247, 247, 0); color: white; padding: 10px 20px; font-size: 16px;" onclick="toggleNavBackground()">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -185,9 +185,11 @@
   };
 </script>
 
-<!-- Portfolio Grid -->
+<!-- Service and Portfolio Grid -->
+<a id="workflow" class="js-scroll-trigger"></a>
 <section class="page-section">
   <div class="container">
+
     <!-- Services Section -->
     <div class="row">
       <div class="col-lg-12">
@@ -204,9 +206,10 @@
     </div>
 
     <!-- Portfolio Section -->
+    <a id="portfolio" class="js-scroll-trigger"></a>
     <div class="row" style="margin-top: 100px;">
       <div class="col-lg-12">
-        <div class="section-title-row" id="portfolio">
+        <div class="section-title-row">
           <h2 class="section-heading text-uppercase" lang="en">PORTFOLIO</h2>
           <div class="section-title-line"></div>
         </div>
@@ -425,3 +428,20 @@
     <script>disableRightClickAndCopy()</script>
   </body>
 </html>
+
+<script>
+  function toggleNavBackground() {
+    const nav = document.getElementById('mainNav');
+    nav.classList.toggle('nav-expanded');
+  }
+</script>
+
+<style>
+  #mainNav {
+    transition: background-color 0.3s ease;
+  }
+  
+  #mainNav.nav-expanded {
+    background-color: #303030 !important;
+  }
+</style>
