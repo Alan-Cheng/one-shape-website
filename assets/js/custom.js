@@ -539,6 +539,8 @@ function show_workflow() {
     item.className = 'service-item';
     item.innerText = jsonData.服務名稱.replace(/\s*\/.*$/, ''); // 只取主要名稱
     item.style.cursor = 'pointer';
+    item.style.letterSpacing = '0.7em';
+    item.style.fontSize = '1.2em';
     item.onclick = function() {
       window.location.href = 'service.html?service=' + encodeURIComponent(jsonData.服務名稱);
     };
