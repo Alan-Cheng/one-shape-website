@@ -1,53 +1,20 @@
 // 讀取 workflow_description
 const workflowDataArray = JSON.parse(localStorage.getItem('workflow_description'));
 
-// 只抓第一個服務（預售屋客變）流程
-const workflow = workflowDataArray[0];
-const steps = [
-    {
-        title: '01.預約諮詢',
-        items: [
-            '電話後預約時間到門市做諮詢。',
-            '了解需求及喜好風格。',
-            '設計費、工程管理費及服務流程說明。',
-            '提供CAD檔(若無CAD檔，則須安排丈量)。'
-        ]
-    },
-    {
-        title: '02.提案及設計作業',
-        items: [
-            '平面配置及風格簡報介紹。',
-            '簽訂設計合約。',
-            '繪製案景3D圖。',
-            '平面系統圖及工程報價單。',
-            '簽訂工程合約。'
-        ]
-    },
-    {
-        title: '03.開工前作業',
-        items: [
-            '確認立面圖及材質。',
-            '施工進度表確認。',
-            '申請室內裝修許可證。',
-            '屋主需先向管委會繳交裝潢保證金及大樓清潔費。',
-            '施作外區保護工程，經管理中心檢查確認。'
-        ]
-    },
-    {
-        title: '04.裝修工程流程',
-        items: [
-            '施工品項核對。',
-            '依施工進度表進行工項。'
-        ]
-    },
-    {
-        title: '05.完工驗收',
-        items: [
-            '清潔後完工驗收。',
-            '保固期1年。'
-        ]
-    }
-];
+// 從 URL 獲取服務名稱
+const urlParams = new URLSearchParams(window.location.search);
+const serviceName = urlParams.get('service');
+
+// 找到對應的服務索引
+const serviceIndex = workflowDataArray.findIndex(w => w.服務名稱 === serviceName);
+const currentIndex = serviceIndex !== -1 ? serviceIndex : 0;
+
+// 找到對應的服務
+const workflow = workflowDataArray[currentIndex];
+const steps = Object.entries(workflow.服務說明).map(([key, items]) => ({
+    title: key,
+    items: items
+}));
 
 const workflowStepsDiv = document.getElementById('workflow-steps');
 workflowStepsDiv.innerHTML = '';
@@ -209,7 +176,7 @@ workflowDataArray.forEach((item, idx) => {
     tab.style.fontSize = '1.1em';
     tab.style.letterSpacing = '0.15em';
     tab.style.padding = '4px 16px';
-    tab.style.borderBottom = idx === 0 ? '2px solid #fff' : '2px solid transparent';
+    tab.style.borderBottom = idx === currentIndex ? '2px solid #fff' : '2px solid transparent';
     tab.style.transition = 'border 0.2s';
     tab.onclick = () => showWorkflow(idx);
     tab.className = 'workflow-tab';
@@ -289,5 +256,5 @@ function showWorkflow(idx) {
     });
 }
 
-// 預設顯示第一個
-showWorkflow(0);
+// 初始化顯示當前服務的內容
+showWorkflow(currentIndex);

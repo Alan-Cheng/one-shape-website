@@ -526,9 +526,7 @@ function resetIcon(element) {
 }
 
 function show_workflow() {
-  // 取得 workflow grid 容器
-  const workflowgrid = document.querySelector('#wf-grid');
-  // 清空內容
+  const workflowgrid = document.getElementById('wf-grid');
   workflowgrid.innerHTML = '';
 
   // 服務項目列
@@ -542,7 +540,7 @@ function show_workflow() {
     item.innerText = jsonData.服務名稱.replace(/\s*\/.*$/, ''); // 只取主要名稱
     item.style.cursor = 'pointer';
     item.onclick = function() {
-      window.location.href = 'service.html';
+      window.location.href = 'service.html?service=' + encodeURIComponent(jsonData.服務名稱);
     };
     itemsRow.appendChild(item);
     // 分隔線（最後一個不加）
