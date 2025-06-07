@@ -5,11 +5,37 @@
 }
 .leave-button {
     position: absolute; top: 0; right: 0; z-index: 1;
-    color: rgb(176, 162, 162); background-color: rgb(255, 255, 255, 0);
+    color: white; background-color: rgb(255, 255, 255, 0);
 }
 
 .portfolio-container .portfolio-detail{
-    color: black;
+    color: white;
+}
+
+.portfolio-modal .modal-dialog {
+    max-width: 85vw;
+    margin: 1.75rem auto;
+}
+
+.portfolio-modal .modal-content {
+    background-color: #3a3a3a;
+    color: white;
+}
+
+.portfolio-modal .modal-content h2,
+.portfolio-modal .modal-content h3,
+.portfolio-modal .modal-content h4,
+.portfolio-modal .modal-content p,
+.portfolio-modal .modal-content li {
+    color: white;
+}
+
+.portfolio-modal .modal-content .lchild p {
+    color: white;
+}
+
+.portfolio-modal .modal-content .rchild ul li {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .portfolio-select-button {

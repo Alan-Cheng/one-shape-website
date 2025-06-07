@@ -159,11 +159,10 @@ function build_portfolio(jsonDataArray, page){
       closeButton.className = 'btn leave-button';
       closeButton.setAttribute('data-dismiss', 'modal');
       closeButton.setAttribute('type', 'button');
-      closeButton.setAttribute('onmouseover', "this.style.backgroundColor='lightgray';");
-      closeButton.setAttribute('onmouseout', "this.style.backgroundColor='rgb(255, 255, 255, 0)';");
 
       const closeIcon = document.createElement('i');
       closeIcon.className = 'fas fa-times';
+
       closeButton.appendChild(closeIcon);
       closeButtonContainer.appendChild(closeButton);
 
@@ -592,17 +591,11 @@ function show_workflow() {
     closeButton.className = 'btn leave-button';
     closeButton.setAttribute('data-dismiss', 'modal');
     closeButton.setAttribute('type', 'button');
-    closeButton.setAttribute('onmouseover', "this.style.backgroundColor='lightgray';");
-    closeButton.setAttribute('onmouseout', "this.style.backgroundColor='rgb(255, 255, 255, 0)';");
 
-    // 创建关闭按钮图标
-    var closeIcon = document.createElement('i');
+    const closeIcon = document.createElement('i');
     closeIcon.className = 'fas fa-times';
 
-    // 将关闭按钮图标附加到关闭按钮
     closeButton.appendChild(closeIcon);
-
-    // 将关闭按钮附加到包含按钮的相对定位的div元素
     buttonContainer.appendChild(closeButton);
 
     // 创建container元素
