@@ -235,11 +235,12 @@
   padding: 0 30px;
   white-space: nowrap;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.2s, font-size 0.2s;
 }
 
 .service-item:hover {
   color: #e6e6e6;
+  font-size: 1.2em;
 }
 
 .service-divider {
