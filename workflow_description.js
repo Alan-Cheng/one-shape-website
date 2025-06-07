@@ -31,7 +31,8 @@ const w_description = [
                 "清潔後完工驗收。",
                 "保固期1年。"
             ]
-        }
+        },
+        "費用說明": "$5000 / 坪 優惠費用 $4000 / 坪 80%訂金 20%尾款/ 監工費 10%"
     },
     {
         "服務名稱": "新成屋裝修2",
@@ -64,7 +65,8 @@ const w_description = [
                 "清潔後完工驗收。",
                 "保固期1年。"
             ]
-        }
+        },
+        "費用說明": "$2500 / 坪 優惠費用 $2000 / 坪 60%訂金 40%尾款"
     },
     {
         "服務名稱": "新成屋裝修3",
@@ -97,10 +99,10 @@ const w_description = [
                 "清潔後完工驗收。",
                 "保固期1年。"
             ]
-        }
+        },
+        "費用說明": "視個案需求，坪數大小而定，將以專案另計"
     },
 ];
-
 
 // 將 description 轉換為 JSON 字串後存儲到 localStorage 中
 localStorage.setItem('workflow_description', JSON.stringify(w_description));

@@ -92,40 +92,24 @@ document.head.appendChild(style);
 // Service Fee Box
 const feeBox = document.getElementById('fee-box');
 feeBox.innerHTML = '';
-const feeRows = [
-    {
-        title: '預售屋客變',
-        value: '$2500 / 坪 優惠費用 $2000 / 坪 60%訂金 40%尾款'
-    },
-    {
-        title: '新成屋裝修',
-        value: '$5000 / 坪 優惠費用 $4000 / 坪 80%訂金 20%尾款/ 監工費 10%'
-    },
-    {
-        title: '老屋舊翻新',
-        value: '$5000 / 坪 優惠費用 $4000 / 坪 80%訂金 20%尾款/ 監工費 10%'
-    },
-    {
-        title: '商業空間',
-        value: '視個案需求，坪數大小而定，將以專案另計'
-    },
-];
 const ul = document.createElement('ul');
 ul.style.listStyle = 'none';
 ul.style.padding = '0';
 ul.style.margin = '0';
-feeRows.forEach((row, idx) => {
+
+workflowDataArray.forEach((row, idx) => {
     const li = document.createElement('li');
     li.style.display = 'flex';
     li.style.alignItems = 'center';
     li.style.justifyContent = 'space-between';
     li.style.padding = '18px 0';
-    li.style.borderBottom = idx < feeRows.length - 1 ? '1px solid #666' : 'none';
+    li.style.borderBottom = idx < workflowDataArray.length - 1 ? '1px solid #666' : 'none';
     li.style.fontSize = '1.1em';
     li.style.color = '#fff';
 
     const left = document.createElement('span');
-    left.textContent = '・' + row.title;
+    left.textContent = '・' + row.服務名稱;
+    left.setAttribute('lang', 'zh-TW');
     left.style.flex = '0 0 220px';
     left.style.textAlign = 'left';
     left.style.letterSpacing = '0.05em';
@@ -137,7 +121,8 @@ feeRows.forEach((row, idx) => {
     divider.style.fontWeight = '300';
 
     const right = document.createElement('span');
-    right.textContent = row.value;
+    right.textContent = row.費用說明;
+    right.setAttribute('lang', 'zh-TW');
     right.style.flex = '1 1 0';
     right.style.textAlign = 'left';
     right.style.letterSpacing = '0.05em';
@@ -171,6 +156,7 @@ if (!document.getElementById('workflow-title-divider')) {
 workflowDataArray.forEach((item, idx) => {
     const tab = document.createElement('div');
     tab.textContent = item['服務名稱'];
+    tab.setAttribute('lang', 'zh-TW');
     tab.style.cursor = 'pointer';
     tab.style.fontWeight = 'bold';
     tab.style.fontSize = '1.1em';
@@ -202,11 +188,11 @@ function showWorkflow(idx) {
         row.style.padding = '20px 0';
         row.style.gap = '48px';
         row.style.width = '100%';
-        // 只給中間和最後一個步驟底線，第一個步驟不加
         row.style.borderBottom = '1px solid #aaa';
 
         const left = document.createElement('div');
         left.className = 'workflow-step-title';
+        left.setAttribute('lang', 'zh-TW');
         left.style.flex = '0 0 340px';
         left.style.fontSize = '1em';
         left.style.fontWeight = '500';
@@ -218,6 +204,7 @@ function showWorkflow(idx) {
 
         const right = document.createElement('div');
         right.className = 'workflow-step-desc';
+        right.setAttribute('lang', 'zh-TW');
         right.style.flex = '1 1 0';
         right.style.fontSize = '1em';
         right.style.color = '#fff';
@@ -240,16 +227,17 @@ function showWorkflow(idx) {
         ul.style.padding = '0';
         ul.style.lineHeight = '1.8';
 
-        // 新版，直接處理陣列
         (desc[key] || []).forEach(item => {
             const li = document.createElement('li');
             li.textContent = item;
+            li.setAttribute('lang', 'zh-TW');
             li.style.marginBottom = '8px';
             ul.appendChild(li);
         });
 
         inner.appendChild(ul);
         right.appendChild(inner);
+
         row.appendChild(left);
         row.appendChild(right);
         workflowStepsDiv.appendChild(row);
