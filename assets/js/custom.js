@@ -73,6 +73,12 @@ function build_portfolio(jsonDataArray, page){
     col.style.marginBottom = '30px';
     col.style.padding = '0 15px';
 
+    // 檢查螢幕寬度並調整大小
+    if (window.innerWidth <= 767) {
+      col.style.maxWidth = '90%';
+      col.style.margin = '0 auto 30px auto';
+    }
+
     const link = document.createElement('a');
     link.className = 'portfolio-link';
     link.setAttribute('data-toggle', 'modal');
@@ -84,19 +90,16 @@ function build_portfolio(jsonDataArray, page){
     const hoverContent = document.createElement('div');
     hoverContent.className = 'portfolio-hover-content';
 
-    // const plusIcon = document.createElement('i');
-    // plusIcon.className = 'fas fa-plus fa-3x';
-    // hoverContent.appendChild(plusIcon);
     hover.appendChild(hoverContent);
 
     const image = document.createElement('img');
     image.className = 'img-fluid';
     image.setAttribute('src', jsonData.圖片連結 + `1.jpg`);
     image.setAttribute('alt', '');
-    image.style.aspectRatio = '5/3'; // 设置宽高比
-    image.style.width = '100%'; // 设置固定宽度
-    image.style.height = 'auto'; // 高度自适应，保持原始宽高比
-    image.style.objectFit = 'cover'; // 图片等比缩放，不留白
+    image.style.aspectRatio = '5/3';
+    image.style.width = '100%';
+    image.style.height = 'auto';
+    image.style.objectFit = 'cover';
 
     link.appendChild(hover);
     link.appendChild(image);
@@ -112,14 +115,14 @@ function build_portfolio(jsonDataArray, page){
 
     const title = document.createElement('a');
     title.innerText = jsonData.專案名;
+    title.style.letterSpacing = '0.2em';
 
     caption.appendChild(title);
 
     col.appendChild(link);
     col.appendChild(caption);
 
-    // 將新建的元素添加到頁面中的適當位置
-    const portfolioContainer = document.querySelector('.portfolio-container'); // 假設有一個包含這些區塊的容器元素
+    const portfolioContainer = document.querySelector('.portfolio-container');
     portfolioContainer.appendChild(col);
   });
 
@@ -175,14 +178,6 @@ function build_portfolio(jsonDataArray, page){
 
       const modalBody = document.createElement('div');
       modalBody.className = 'modal-body';
-
-      // const title = document.createElement('h2');
-      // title.className = 'text-uppercase';
-      // title.innerText = jsonData.副標題;
-
-      // const subtitle = document.createElement('p');
-      // subtitle.className = 'item-intro text-muted';
-      // subtitle.innerText = jsonData.副標題;
 
       const description = document.createElement('p');
       description.innerText = jsonData.描述;
@@ -250,8 +245,6 @@ function build_portfolio(jsonDataArray, page){
       div.appendChild(ulDiv);
       div.appendChild(desDiv);
 
-      // modalBody.appendChild(title);
-      // modalBody.appendChild(subtitle);
       modalBody.appendChild(image_item[0]);
       modalBody.appendChild(div);
       for(let j = 1; j <= 20; j++){
@@ -383,7 +376,7 @@ function changeToChinese(element) {
         text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'Home') {
-        text.innerHTML = '首頁';
+        text.innerHTML = '回到首頁';
         text.style.fontSize = '1.1em';
         text.setAttribute('lang', 'zh-TW');
       }
@@ -433,7 +426,7 @@ function changeToEnglish(element) {
   }
   if (element) {
       var text = element.getElementsByTagName('a')[0];
-      if (text.innerHTML === '首頁') {
+      if (text.innerHTML === '回到首頁') {
         text.innerHTML = 'Home';
         text.style.fontSize = '1em';
         text.setAttribute('lang', 'en');
@@ -482,19 +475,16 @@ function portfolio_filter(catergory){
       const hoverContent = document.createElement('div');
       hoverContent.className = 'portfolio-hover-content';
 
-      // const plusIcon = document.createElement('i');
-      // plusIcon.className = 'fas fa-plus fa-3x';
-      // hoverContent.appendChild(plusIcon);
       hover.appendChild(hoverContent);
 
       const image = document.createElement('img');
       image.className = 'img-fluid';
       image.setAttribute('src', jsonData.圖片連結 + `1.jpg`);
       image.setAttribute('alt', jsonData.專案名);
-      image.style.aspectRatio = '5/3'; // 设置宽高比
-      image.style.width = '100%'; // 设置固定宽度
-      image.style.height = 'auto'; // 高度自适应，保持原始宽高比
-      image.style.objectFit = 'cover'; // 图片等比缩放，不留白
+      image.style.aspectRatio = '5/3';
+      image.style.width = '100%';
+      image.style.height = 'auto';
+      image.style.objectFit = 'cover';
 
       link.appendChild(hover);
       link.appendChild(image);
@@ -510,6 +500,7 @@ function portfolio_filter(catergory){
 
       const title = document.createElement('a');
       title.innerText = jsonData.專案名;
+      title.style.letterSpacing = '0.2em';
 
       caption.appendChild(title);
 
@@ -808,7 +799,24 @@ function preventScrollAtTop() {
   }, { passive: false });
 }
 
+// 處理從 portfolio.html 到 index.html 的滾動
+function handleCrossPageScroll() {
+  const hash = window.location.hash;
+  if (hash) {
+    const targetElement = document.querySelector(hash);
+    if (targetElement) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: targetElement.offsetTop - 54,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }
+}
+
 // 在頁面載入時執行
 document.addEventListener('DOMContentLoaded', function() {
   preventScrollAtTop();
+  handleCrossPageScroll();
 });

@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 
-  <head>
-
-
+<head>
+  <title>一形設計 - 設計作品</title>
+  <script type="application/ld+json">
+      {
+        "@context" : "https://schema.org",
+        "@type" : "Organization",
+        "name" : "一形設計",
+        "alternateName" : "oneshape Design",
+        "url" : "https://oneshape.com.tw/",
+        "logo": "https://oneshape.com.tw/assets/img/oneshape_logo.png"
+      }
+    </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="展示今年最新的設計作品，在我們的作品集中，您將發現各種風格的設計，從現代風格到傳統經典，以及各種尺度的項目，從小型住宅到商業空間。每個設計都注重細節，從室內家具的搭配到照明的設計，以營造舒適、實用且美觀的環境。">
+  <meta name="description"
+    content="展示今年最新的設計作品，在我們的作品集中，您將發現各種風格的設計，從現代風格到傳統經典，以及各種尺度的項目，從小型住宅到商業空間。每個設計都注重細節，從室內家具的搭配到照明的設計，以營造舒適、實用且美觀的環境。">
   <meta name="author" content="Alan Cheng">
   <meta property="og:locale" content="zh_TW">
-  <meta property="og:site_name" content="一暮設計 - 設計作品">
-  <meta property="og:title" content="一暮設計 - 設計作品">
+  <meta property="og:site_name" content="一形設計 - 設計作品">
+  <meta property="og:title" content="一形設計 - 設計作品">
   <meta property="og:type" content="article">
-  <link rel="icon" href="assets\img\icon.ico">
-
-  <title>一暮設計 - 設計作品</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo.ico" id="favicon">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico" id="shortcut-icon">
+  <link rel="apple-touch-icon" href="assets/img/logo.png" id="apple-touch-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo.png" id="icon-32">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/logo.png" id="icon-16">
 
   <!-- Bootstrap core CSS -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -23,157 +35,274 @@
   <link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this theme -->
-  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
   <link href="assets/css/agency.css" rel="stylesheet">
   <link href="assets/css/custom-styles.css" rel="stylesheet">
-  <!-- Page container change top padding when nav shrinks -->
-  
-  
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .portfolio-select-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 0.7rem center;
+      background-size: 1em;
+    }
+  </style>
 </head>
 
-  <body id="page-top">
-
-        <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color:rgb(248, 247, 247);">
+<body id="page-top">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger active" href="./index.html" style="margin-right: auto; margin-left: 0;"><img src="assets\img\iimoo_logo.avif" srcset="assets\img\iimoo_logo.avif, assets\img\iimoo_logo.png" style="height: 50px; width: auto; object-fit: cover;" alt="一暮設計 iimoo Design"></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:rgb(248, 247, 247); color: black; padding: 10px 20px; font-size: 16px;">
+      <a class="navbar-brand js-scroll-trigger active" href="./index.html"
+        style="margin-right: auto; margin-left: 0;"><img src="assets\img\logo.avif"
+          srcset="assets\img\logo.avif, assets\img\logo.png" style="height: 50px; width: auto; object-fit: cover;"
+          alt="一形設計"></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="background-color:rgb(248, 247, 247, 0); color: white; padding: 10px 20px; font-size: 16px;"
+        onclick="toggleNavBackground()">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
-      <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
-        <a class="nav-link js-scroll-trigger" href="index.html#page-top">Home</a>
-      </li>
-      <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
-        <a class="nav-link js-scroll-trigger" href="index.html#about">About</a>
-      </li>
-		  <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
-        <a class="nav-link js-scroll-trigger" href="index.html#portfolio">Portfolio</a>
-      </li>
-      <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
-        <a class="nav-link js-scroll-trigger" href="index.html#workflow">Services</a>
-      </li>
-		  <!-- <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
-        <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-      </li> -->
-		  <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
-        <a class="nav-link js-scroll-trigger" href="index.html#contact">Contact</a>
-      </li>
-		  
+          <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
+            <a class="nav-link js-scroll-trigger" href="./index.html#page-top" lang="en">Home</a>
+          </li>
+          <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
+            <a class="nav-link js-scroll-trigger" href="./index.html#workflow" lang="en">Services</a>
+          </li>
+          <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
+            <a class="nav-link js-scroll-trigger" href="#contact" lang="en">Contact</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- End Navigation -->
-  
-  <!-- Portfolio Grid -->
-<section class="page-section" id="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">
-                <p style="margin-top: 5vh;">Project</p>
-              </h2>
-              <div class="section-subheading text-muted">
-                <div class="row">
-                  <div class="col-md-2 offset-md-10">
-                    <select class="custom-select portfolio-select-button" onchange="portfolio_filter(this.value)">
-                      <option value="all">全部</option>
-                      <option value="住宅空間">住宅空間</option>
-                      <option value="商業空間">商業空間</option>
-                      <option value="概念/3D">概念/3D</option>
-                      <!-- <option value="專案工程">專案工程</option> -->
-                    </select>
-                  </div>
-                </div>                                    
-                <hr>
-              </div>
-            </div>
-        </div>
 
-        <div class="row portfolio-container">
-            <!-- 讀入custom.js中的json格式資料建立Grid -->
+  <!-- Portfolio Grid -->
+  <section class="page-section" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="row align-items-center" style="margin-top: 15vh;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center">
+              <h2 class="section-heading text-uppercase" lang="en">
+                PROJECT
+              </h2>
+            </div>
+            <div class="col-md-2" style="text-align: right;">
+              <select class="custom-select portfolio-select-button" onchange="portfolio_filter(this.value)" lang="zh-TW"
+                style="color: white; background-color: transparent; border: 0.6px solid white; padding: 8px 20px 8px 15px; border-radius: 0; cursor: pointer; transition: all 0.3s ease; font-size: 0.9em; letter-spacing: 0.3em; appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 120px;">
+                <option value="all" lang="zh-TW" style="color: black; background-color: white;">全部</option>
+                <option value="住宅空間" lang="zh-TW" style="color: black; background-color: white;">住宅空間</option>
+                <option value="商業空間" lang="zh-TW" style="color: black; background-color: white;">商業空間</option>
+                <option value="概念/3D" lang="zh-TW" style="color: black; background-color: white;">概念/3D</option>
+              </select>
+            </div>
+          </div>
+          <hr style="border-color: white;">
         </div>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <a class="back-to-top btn" type="button" 
+      </div>
+
+      <div class="row portfolio-container">
+        <!-- 讀入custom.js中的json格式資料建立Grid -->
+      </div>
+      <!-- <div class="row" style="margin-bottom: 50px;">
+        <div class="col-lg-12 text-center">
+          <a class="back-to-top btn" type="button"
             style="color:white; background-color: rgba(117, 108, 108, 0.664); border: 1px solid whitesmoke;"
             onmouseover="this.style.backgroundColor='lightgray'; this.style.borderColor='white';"
-            onmouseout="this.style.backgroundColor='gray'; this.style.borderColor='whitesmoke';" onclick="back_to_top()">Top</a>
+            onmouseout="this.style.backgroundColor='gray'; this.style.borderColor='whitesmoke';"
+            onclick="back_to_top()">Top</a>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-detail">
+      <!-- 讀入portfolio_page_display.js中的json格式資料建立Modals -->
+    </div>
+
+    <!-- Contact -->
+    <div class="container" style="margin-top: 100px;" id="contact">
+      <!-- Services Section -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-title-row" id="workflow">
+            <h2 class="section-heading text-uppercase" lang="en">CONTACT US</h2>
           </div>
         </div>
+      </div>
+      <div class="container" style="background: #3a3a3a; padding: 30px 20px; border-radius: 2px;">
+        <div class="row">
+          <div class="col-lg-12 text-left">
+          </div>
+        </div>
+        <div class="row" style="margin-top: 40px; align-items: center;">
+          <!-- 左側按鈕 -->
+          <div class="col-md-6" style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <a href="https://forms.gle/MgD6Yi1w5CMidzT36" target="_blank"
+              style="display: flex; align-items: center; justify-content: center; padding: 10px 48px; border: 1px solid #fff; color: #fff; font-size: 1.1em; letter-spacing: 0.2em; text-decoration: none; transition: background 0.2s, color 0.2s;">
+              立即預約
+            </a>
+          </div>
+          <!-- 右側資訊 -->
+          <div class="col-md-6"
+            style="color: #fff; text-align: left; display: flex; flex-direction: column; justify-content: center; padding-left: 100px;">
+            <div style="font-size: 1.2em; letter-spacing: 0.15em; margin-bottom: 12px;">
+              一形設計｜ONE SHAPE
+            </div>
+            <div style="font-size: 1em; margin-bottom: 6px;">
+              A. 台北市信義區忠孝東路五段17號11F-2
+            </div>
+            <div style="font-size: 1em; margin-bottom: 6px;">
+              E. <a href="mailto:oneshape@oneshape.com.tw"
+                style="color: white; text-decoration: underline;">oneshape@oneshape.com.tw</a>
+            </div>
+            <div style="margin-top: 24px;">
+              <a href="line://ti/p/@oneshape" target="_blank" style="margin-right: 18px; display: inline-block;">
+                <span
+                  style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #232427; border-radius: 50%;">
+                  <i class="fab fa-line" style="color: #fff; font-size: 2em;"></i>
+                </span>
+              </a>
+              <a href="https://instagram.com/oneshape.design" target="_blank"
+                style="margin-right: 18px; display: inline-block;">
+                <span
+                  style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #232427; border-radius: 50%;">
+                  <i class="fab fa-instagram" style="color: #fff; font-size: 2em;"></i>
+                </span>
+              </a>
+              <a href="https://facebook.com/oneshape.design" target="_blank" style="display: inline-block;">
+                <span
+                  style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #232427; border-radius: 50%;">
+                  <i class="fab fa-facebook-f" style="color: #fff; font-size: 2em;"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-</section>
+  </section>
 
-<!-- Portfolio Modals -->
-<div class="portfolio-detail">
-    <!-- 讀入portfolio_page_display.js中的json格式資料建立Modals -->
-</div>
+  <!-- Back to Top Button -->
+  <button id="backToTop" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: background-color 0.3s;
+  z-index: 1000;
+  ">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-<!-- Footer -->
-  <footer class="footer bg-light">
+  <!-- Footer -->
+  <footer class="footer" style="background-color: #3a3a3a; padding: 1em 0;">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4">
-          <span class="copyright">Copyright &copy; iimoo Design</span><br>
-          <span class="copyright"><a style="color:black" href="https://maps.app.goo.gl/qFBd4PuFAiCNzP2a8" target="_blank">一暮設計 2023</a></span>
+      <div class="row">
+        <!-- COPYRIGHT -->
+        <div class="col-12 col-md-8 text-center text-md-center mb-2 mb-md-0">
+          <span style="letter-spacing: 0.2em; font-size: 0.8em; color: white;">
+            COPYRIGHT &copy; 2025 一形設計 ALL RIGHTS RESERVED
+          </span>
         </div>
-		<!-- Social Media -->
-        <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-
-            <li class="list-inline-item">
-              <a href="https://www.facebook.com/iimoo.design" title="前往一暮設計Facebook 粉絲專頁">
-                <i class="fab fa-facebook-f" style="color:white"></i>
-              </a>
-            </li>
-			
-            <li class="list-inline-item">
-              <a href="https://instagram.com/iimoo.design" title="前往一暮設計Instagram 粉絲專頁">
-                <i class="fab fa-instagram" style="color: white;"></i>
-              </a>
-            </li>
-			
-          </ul>
-        </div>
-		<!-- Legal -->
-        <div class="col-md-4">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="legal.html" style="color:gray" target="_blank">Privacy Policy</a><br>
-              <a href="mailto:jhcheng.alan@gmail.com" style="color:gray">Design by Alan Cheng</a>
-            </li>
-          </ul>
+        <!-- Design By -->
+        <div class="col-12 col-md-4 text-center text-md-end">
+          <span style="font-size: 0.8em; color: white;">
+            Design By <a href="mailto:jhcheng.alan@gmail.com" style="color: white; text-decoration: underline;">Alan
+              Cheng</a>
+          </span>
         </div>
       </div>
     </div>
   </footer>
   <!-- End Footer -->
 
-	  <!-- Bootstrap core JavaScript -->
-	  <script src="assets/js/jquery.min.js"></script>
-	  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
 
-	  <!-- Plugin JavaScript -->
-	  <script src="assets/js/jquery.easing.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="assets/js/jquery.easing.min.js"></script>
 
-	  <!-- Contact form JavaScript -->
-	  <script src="assets/js/jqBootstrapValidation.js"></script>
-	  <script src="assets/js/contact_me.js"></script>
+  <!-- Contact form JavaScript -->
+  <script src="assets/js/jqBootstrapValidation.js"></script>
+  <script src="assets/js/contact_me.js"></script>
 
-	  <!-- Custom scripts for this template -->
-	  <script src="assets/js/agency.min.js"></script>
-    <script src="./portfolio_description.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- <script>show_N_wrok('all')</script> -->
-    <script>disableRightClickAndCopy()</script>
-  </body>
+  <!-- Custom scripts for this template -->
+  <script src="assets/js/agency.min.js"></script>
+  <script src="./portfolio_description.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script>disableRightClickAndCopy()</script>
+
+  <script>
+    // 當頁面滾動超過 300px 時顯示按鈕
+    window.onscroll = function () {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        document.getElementById("backToTop").style.display = "flex";
+      } else {
+        document.getElementById("backToTop").style.display = "none";
+      }
+    };
+
+    // 點擊按鈕回到頂部
+    document.getElementById("backToTop").onclick = function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    };
+  </script>
+
+  <script>
+    function toggleNavBackground() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('nav-expanded');
+    }
+
+    // 偵測深色/淺色模式並切換favicon
+    function updateFavicon() {
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const iconPath = isDarkMode ? 'assets/img/logo.png' : 'assets/img/logo_black.png';
+      const icoPath = isDarkMode ? 'assets/img/logo.ico' : 'assets/img/logo_black.ico';
+
+      document.getElementById('favicon').href = icoPath;
+      document.getElementById('shortcut-icon').href = icoPath;
+      document.getElementById('apple-touch-icon').href = iconPath;
+      document.getElementById('icon-32').href = iconPath;
+      document.getElementById('icon-16').href = iconPath;
+    }
+
+    // 初始設定
+    updateFavicon();
+
+    // 監聽模式變化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+  </script>
+</body>
+
 </html>
