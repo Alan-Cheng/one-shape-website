@@ -1,63 +1,42 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
-  <title>一形設計 | 設計作品</title>
-  <script type="application/ld+json">
-      {
-        "@context" : "https://schema.org",
-        "@type" : "Organization",
-        "name" : "一形設計",
-        "alternateName" : "oneshape Design",
-        "url" : "https://oneshape.com.tw/",
-        "logo": "https://oneshape.com.tw/assets/img/oneshape_logo.png"
-      }
-    </script>
+  <title>一形設計 | 服務項目</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description"
-    content="展示今年最新的設計作品，在我們的作品集中，您將發現各種風格的設計，從現代風格到傳統經典，以及各種尺度的項目，從小型住宅到商業空間。每個設計都注重細節，從室內家具的搭配到照明的設計，以營造舒適、實用且美觀的環境。">
+  <meta name="description" content="一形設計服務項目與收費標準">
   <meta name="author" content="Alan Cheng">
-  <meta property="og:locale" content="zh_TW">
-  <meta property="og:site_name" content="一形設計 - 設計作品">
-  <meta property="og:title" content="一形設計 - 設計作品">
-  <meta property="og:type" content="article">
   <link rel="icon" type="image/x-icon" href="assets/img/logo.ico" id="favicon">
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico" id="shortcut-icon">
   <link rel="apple-touch-icon" href="assets/img/logo.png" id="apple-touch-icon">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo.png" id="icon-32">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/logo.png" id="icon-16">
-
-  <!-- Bootstrap core CSS -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
   <link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
-    type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-  <!-- Custom styles for this theme -->
   <link href="assets/css/agency.css" rel="stylesheet">
   <link href="assets/css/custom-styles.css" rel="stylesheet">
   <link href="assets/css/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    .portfolio-select-button {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 0.7rem center;
-      background-size: 1em;
-    }
+    body { background: rgb(48,48,48); color: #fff; }
+    .workflow-section { margin: 80px auto 40px auto; max-width: 1200px; }
+    .workflow-title { text-align: right; font-size: 1.3em; font-weight: bold; letter-spacing: 0.2em; margin-bottom: 40px; }
+    .workflow-steps { display: flex; flex-wrap: wrap; }
+    .workflow-step { flex: 1 1 0; min-width: 260px; padding: 32px 24px; border-right: 1px solid #666; display: flex; flex-direction: column; justify-content: flex-start; }
+    .workflow-step:last-child { border-right: none; }
+    .step-number { font-size: 1.1em; color: #fff; font-weight: 500; margin-bottom: 16px; letter-spacing: 0.1em; }
+    .step-title { font-size: 1.1em; font-weight: bold; margin-bottom: 16px; letter-spacing: 0.1em; }
+    .step-desc { font-size: 1em; color: #ccc; line-height: 1.7; }
+    @media (max-width: 991.98px) { .workflow-steps { flex-direction: column; } .workflow-step { border-right: none; border-bottom: 1px solid #666; } .workflow-step:last-child { border-bottom: none; } }
+    .service-fee-section { margin: 60px auto 80px auto; max-width: 1200px; }
+    .service-fee-title { font-size: 1.3em; padding: 30px 20px; border-radius: 2px; }
+    .fee-box { background: #3a3a3a; padding: 30px 20px; border-radius: 2px; }
+    .fee-note { color: #aaa; font-size: 0.95em; margin-top: 12px; }
+    .page-section { background: #232427; }
   </style>
 </head>
-
-<body id="page-top">
+<body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
@@ -79,7 +58,7 @@
             <a class="nav-link js-scroll-trigger" href="./index.html#page-top" lang="en">Home</a>
           </li>
           <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
-            <a class="nav-link js-scroll-trigger" href="./service.html" lang="en">Services</a>
+            <a class="nav-link js-scroll-trigger" href="./portfolio.html" lang="en">Projects</a>
           </li>
           <li class="nav-item" onmouseover="changeToChinese(this)" onmouseout="changeToEnglish(this)">
             <a class="nav-link js-scroll-trigger" href="#contact" lang="en">Contact</a>
@@ -90,57 +69,28 @@
   </nav>
   <!-- End Navigation -->
 
-  <!-- Portfolio Grid -->
-  <section class="page-section" id="portfolio">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="row align-items-center" style="margin-top: 15vh;">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 text-center">
-              <h2 class="section-heading text-uppercase" lang="en">
-                PROJECT
-              </h2>
-            </div>
-            <div class="col-md-2" style="text-align: right;">
-              <select class="custom-select portfolio-select-button" onchange="portfolio_filter(this.value)" lang="zh-TW"
-                style="color: white; background-color: transparent; border: 0.6px solid white; padding: 8px 20px 8px 15px; border-radius: 0; cursor: pointer; transition: all 0.3s ease; font-size: 0.9em; letter-spacing: 0.3em; appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 120px;">
-                <option value="all" lang="zh-TW" style="color: black; background-color: white;">全部</option>
-                <option value="住宅空間" lang="zh-TW" style="color: black; background-color: white;">住宅空間</option>
-                <option value="商業空間" lang="zh-TW" style="color: black; background-color: white;">商業空間</option>
-                <option value="概念/3D" lang="zh-TW" style="color: black; background-color: white;">概念/3D</option>
-              </select>
-            </div>
+  <main style="margin-bottom: 0; padding-bottom: 0;">
+    <section class="workflow-section">
+      <div class="workflow-title"></div>
+      <div class="workflow-steps" id="workflow-steps"></div>
+    </section>
+  </main>
+
+  <section class="container page-section" style="margin-top: 0; padding-top: 0; background-color: rgb(48,48,48);">
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="section-title-row" id="workflow">
+            <h2 class="section-heading text-uppercase" lang="en">SERVICE FEE</h2>
           </div>
-          <hr style="border-color: white;">
         </div>
-      </div>
-
-      <div class="row portfolio-container">
-        <!-- 讀入custom.js中的json格式資料建立Grid -->
-      </div>
-      <!-- <div class="row">
-        <div class="col-lg-12 text-center">
-          <a class="back-to-top btn" type="button"
-            style="color:white; background-color: rgba(117, 108, 108, 0.664); border: 1px solid whitesmoke;"
-            onmouseover="this.style.backgroundColor='lightgray'; this.style.borderColor='white';"
-            onmouseout="this.style.backgroundColor='gray'; this.style.borderColor='whitesmoke';"
-            onclick="back_to_top()">Top</a>
-        </div>
-      </div> -->
     </div>
-
+    <div class="fee-box" id="fee-box"></div>
   </section>
 
-  <!-- Portfolio Modals -->
-  <div class="portfolio-detail">
-    <!-- 讀入portfolio_page_display.js中的json格式資料建立Modals -->
-  </div>
-
-  <section class="page-section" id="contact">
+  
+  <section class="page-section" id="contact" style="background-color: rgb(48,48,48);">
     <!-- Contact -->
     <div class="container" id="contact">
-      <!-- Services Section -->
       <div class="row">
         <div class="col-lg-12">
           <div class="section-title-row" id="workflow">
@@ -201,50 +151,26 @@
     </div>
   </section>
 
-
-  <!-- Back to Top Button -->
-  <button id="backToTop" style="
-position: fixed;
-bottom: 20px;
-right: 20px;
-width: 40px;
-height: 40px;
-border-radius: 50%;
-background-color: rgba(255, 255, 255, 0.2);
-border: none;
-color: white;
-cursor: pointer;
-display: none;
-align-items: center;
-justify-content: center;
-font-size: 20px;
-transition: background-color 0.3s;
-z-index: 1000;
-">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
   <!-- Footer -->
   <footer class="footer" style="background-color: #3a3a3a; padding: 1em 0;">
     <div class="container">
       <div class="row">
-        <!-- COPYRIGHT -->
         <div class="col-12 col-md-8 text-center text-md-center mb-2 mb-md-0">
-          <span style="letter-spacing: 0.2em; font-size: 0.8em; color: white;">
-            COPYRIGHT &copy; 2025 一形設計 ALL RIGHTS RESERVED
-          </span>
+          <span style="letter-spacing: 0.2em; font-size: 0.8em; color: white;">COPYRIGHT &copy; 2025 一形設計 ALL RIGHTS RESERVED</span>
         </div>
-        <!-- Design By -->
         <div class="col-12 col-md-4 text-center text-md-end">
-          <span style="font-size: 0.8em; color: white;">
-            Design By <a href="mailto:jhcheng.alan@gmail.com" style="color: white; text-decoration: underline;">Alan
-              Cheng</a>
-          </span>
+          <span style="font-size: 0.8em; color: white;">Design By <a href="mailto:jhcheng.alan@gmail.com" style="color: white; text-decoration: underline;">Alan Cheng</a></span>
         </div>
       </div>
     </div>
   </footer>
+  <!-- End Footer -->
 
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/agency.min.js"></script>
+  <script src="workflow_description.js"></script>
+  <script src="assets/js/service.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -287,6 +213,78 @@ z-index: 1000;
       nav.classList.toggle('nav-expanded');
     }
 
+    function changeToChinese(element) {
+      if (element) {
+        var text = element.getElementsByTagName('a')[0];
+        if (text.innerHTML === 'Services') {
+          text.innerHTML = '服務項目';
+          text.style.fontSize = '1.1em';
+          text.setAttribute('lang', 'zh-TW');
+        }
+        if (text.innerHTML === 'Projects') {
+          text.innerHTML = '作品集';
+          text.style.fontSize = '1.1em';
+          text.setAttribute('lang', 'zh-TW');
+        }
+        if (text.innerHTML === 'About') {
+          text.innerHTML = '關於我們';
+          text.style.fontSize = '1.1em';
+          text.setAttribute('lang', 'zh-TW');
+        }
+        if (text.innerHTML === 'Team') {
+          text.innerHTML = '團隊成員';
+          text.style.fontSize = '1.1em';
+          text.setAttribute('lang', 'zh-TW');
+        }
+        if (text.innerHTML === 'Contact') {
+          text.innerHTML = '聯絡我們';
+          text.style.fontSize = '1.1em';
+          text.setAttribute('lang', 'zh-TW');
+        }
+        if (text.innerHTML === 'Home') {
+          text.innerHTML = '回到首頁';
+          text.style.fontSize = '1.1em';
+          text.setAttribute('lang', 'zh-TW');
+        }
+      }
+    }
+
+    function changeToEnglish(element) {
+      if (element) {
+        var text = element.getElementsByTagName('a')[0];
+        if (text.innerHTML === '服務項目') {
+          text.innerHTML = 'Services';
+          text.style.fontSize = '1em';
+          text.setAttribute('lang', 'en');
+        }
+        if (text.innerHTML === '作品集') {
+          text.innerHTML = 'Projects';
+          text.style.fontSize = '1em';
+          text.setAttribute('lang', 'en');
+        }
+        if (text.innerHTML === '關於我們') {
+          text.innerHTML = 'About';
+          text.style.fontSize = '1em';
+          text.setAttribute('lang', 'en');
+        }
+        if (text.innerHTML === '團隊成員') {
+          text.innerHTML = 'Team';
+          text.style.fontSize = '1em';
+          text.setAttribute('lang', 'en');
+        }
+        if (text.innerHTML === '聯絡我們') {
+          text.innerHTML = 'Contact';
+          text.style.fontSize = '1em';
+          text.setAttribute('lang', 'en');
+        }
+        if (text.innerHTML === '回到首頁') {
+          text.innerHTML = 'Home';
+          text.style.fontSize = '1em';
+          text.setAttribute('lang', 'en');
+        }
+      }
+    }
+
     // 偵測深色/淺色模式並切換favicon
     function updateFavicon() {
       const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -307,5 +305,4 @@ z-index: 1000;
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
   </script>
 </body>
-
-</html>
+</html> 
