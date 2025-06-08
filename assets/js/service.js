@@ -1,16 +1,16 @@
 // 讀取 workflow_description
-const workflowDataArray = JSON.parse(localStorage.getItem('workflow_description'));
+const workflowDataArrayService = JSON.parse(localStorage.getItem('workflow_description'));
 
 // 從 URL 獲取服務名稱
 const urlParams = new URLSearchParams(window.location.search);
 const serviceName = urlParams.get('service');
 
 // 找到對應的服務索引
-const serviceIndex = workflowDataArray.findIndex(w => w.服務名稱 === serviceName);
+const serviceIndex = workflowDataArrayService.findIndex(w => w.服務名稱 === serviceName);
 const currentIndex = serviceIndex !== -1 ? serviceIndex : 0;
 
 // 找到對應的服務
-const workflow = workflowDataArray[currentIndex];
+const workflow = workflowDataArrayService[currentIndex];
 const steps = Object.entries(workflow.服務說明).map(([key, items]) => ({
   title: key,
   items: items
@@ -291,13 +291,13 @@ ul.style.listStyle = 'none';
 ul.style.padding = '0';
 ul.style.margin = '0';
 
-workflowDataArray.forEach((row, idx) => {
+workflowDataArrayService.forEach((row, idx) => {
   const li = document.createElement('li');
   li.style.display = 'flex';
   li.style.alignItems = 'center';
   li.style.justifyContent = 'space-between';
   li.style.padding = '18px 0';
-  li.style.borderBottom = idx < workflowDataArray.length - 1 ? '1px solid #666' : 'none';
+  li.style.borderBottom = idx < workflowDataArrayService.length - 1 ? '1px solid #666' : 'none';
   li.style.fontSize = '1.1em';
   li.style.color = '#fff';
 
@@ -349,7 +349,7 @@ if (!document.getElementById('workflow-title-divider')) {
   workflowTitleDiv.parentNode.insertBefore(divider, workflowTitleDiv.nextSibling);
 }
 
-workflowDataArray.forEach((item, idx) => {
+workflowDataArrayService.forEach((item, idx) => {
   const tab = document.createElement('div');
   tab.textContent = item['服務名稱'];
   tab.setAttribute('lang', 'zh-TW');
@@ -373,7 +373,7 @@ function showWorkflow(idx) {
   });
   // 清空流程內容
   workflowStepsDiv.innerHTML = '';
-  const data = workflowDataArray[idx];
+  const data = workflowDataArrayService[idx];
   const desc = data['服務說明'];
   Object.keys(desc).forEach((key, i) => {
     if (key.startsWith('費用')) return; // 不顯示費用

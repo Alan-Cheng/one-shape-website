@@ -612,3 +612,30 @@ function handleCrossPageScroll() {
 document.addEventListener('DOMContentLoaded', function() {
   handleCrossPageScroll();
 });
+
+// 控制導航選單背景顏色
+document.addEventListener('DOMContentLoaded', function() {
+  const mainNav = document.getElementById('mainNav');
+  const menuBtn = document.getElementById('menuToggleBtn');
+  let navOpen = false;
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      navOpen = !navOpen;
+      if (navOpen) {
+        mainNav.style.setProperty('background-color', 'rgba(38, 38, 38, 0.95)', 'important');
+      } else {
+        mainNav.style.setProperty('background-color', 'rgba(0, 0, 0, 0.2)', 'important');
+      }
+    });
+  }
+
+  // 如果有用 collapse，收起時自動還原
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+  if (navbarCollapse) {
+    navbarCollapse.addEventListener('hide.bs.collapse', function() {
+      navOpen = false;
+      mainNav.style.setProperty('background-color', 'rgba(0, 0, 0, 0.2)', 'important');
+    });
+  }
+});
