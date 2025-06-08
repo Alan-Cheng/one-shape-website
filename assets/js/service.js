@@ -18,6 +18,8 @@ const steps = Object.entries(workflow.服務說明).map(([key, items]) => ({
 
 const workflowStepsDiv = document.getElementById('workflow-steps');
 workflowStepsDiv.innerHTML = '';
+// workflowStepsDiv.style.padding = '0 24px';
+
 steps.forEach((step, idx) => {
     const row = document.createElement('div');
     row.className = 'workflow-row';
@@ -81,11 +83,116 @@ steps.forEach((step, idx) => {
 // RWD: 600px 以下左右變上下
 const style = document.createElement('style');
 style.textContent = `
+.section-heading {
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 991.98px) {
+  .workflow-title {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+  .workflow-tab {
+    font-size: 0.9em !important;
+    padding: 4px 12px !important;
+  }
+  #workflow-steps {
+    padding: 0 32px !important;
+  }
+  .row.align-items-center {
+    margin-top: 1vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .workflow-row { 
+    flex-direction: column !important; 
+    gap: 16px !important; 
+    padding: 16px 0 !important; 
+  }
+  .workflow-step-title { 
+    padding-left: 0 !important; 
+    text-align: left !important; 
+    font-size: 1em !important; 
+    margin-bottom: 8px; 
+    flex: 1 1 100% !important;
+  }
+  .workflow-step-desc { 
+    padding-right: 0 !important; 
+    font-size: 0.8em !important; 
+    justify-content: flex-start !important;
+    flex: 1 1 100% !important;
+  }
+  .workflow-step-desc ul { 
+    align-items: flex-start !important; 
+  }
+  .workflow-step-desc ul li {
+    font-size: 0.9em !important;
+  }
+  #workflow-steps {
+    padding: 0 24px !important;
+  }
+  .fee-box li {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 16px 0 !important;
+  }
+  .fee-box li span {
+    flex: 1 1 100% !important;
+    font-size: 0.9em !important;
+    line-height: 1.8 !important;
+  }
+  .fee-box li span:nth-child(2) {
+    display: none !important;
+  }
+  .fee-box {
+    padding: 30px 24px !important;
+  }
+  .row.align-items-center {
+    margin-top: 12vh;
+  }
+}
+
 @media (max-width: 600px) {
-  .workflow-row { flex-direction: column !important; gap: 0 !important; padding: 12px 0 !important; }
-  .workflow-step-title { padding-left: 0 !important; text-align: left !important; font-size: 1em !important; margin-bottom: 16px; }
-  .workflow-step-desc { padding-right: 0 !important; font-size: 1em !important; justify-content: flex-start !important; }
-  .workflow-step-desc ul { align-items: flex-start !important; }
+  .workflow-title {
+    gap: 8px !important;
+  }
+  .workflow-tab {
+    font-size: 0.8em !important;
+    padding: 4px 8px !important;
+    letter-spacing: 0.1em !important;
+  }
+  .workflow-row {
+    padding: 12px 0 !important;
+  }
+  .workflow-step-title {
+    font-size: 1.1em !important;
+  }
+  .workflow-step-desc {
+    font-size: 1em !important;
+  }
+  .workflow-step-desc ul li {
+    font-size: 1em !important;
+    margin-bottom: 6px !important;
+  }
+  #workflow-steps {
+    padding: 0 16px !important;
+  }
+  .fee-box li {
+    padding: 12px 0 !important;
+  }
+  .fee-box li span {
+    font-size: 0.9em !important;
+    line-height: 1.8 !important;
+  }
+  .fee-box {
+    padding: 24px 16px !important;
+  }
+  .row.align-items-center {
+    margin-top: 15vh;
+  }
 }`;
 document.head.appendChild(style);
 
@@ -126,6 +233,8 @@ workflowDataArray.forEach((row, idx) => {
     right.style.flex = '1 1 0';
     right.style.textAlign = 'left';
     right.style.letterSpacing = '0.05em';
+    right.style.fontSize = '1em';
+    right.style.lineHeight = '1.8';
 
     li.appendChild(left);
     li.appendChild(divider);

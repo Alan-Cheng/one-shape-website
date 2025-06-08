@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body { background: rgb(48,48,48); color: #fff; }
-    .workflow-section { margin: 80px auto 40px auto; max-width: 1200px; }
+    .workflow-section { margin: 40px auto 40px auto; max-width: 1200px; }
     .workflow-title { text-align: right; font-size: 1.3em; font-weight: bold; letter-spacing: 0.2em; margin-bottom: 40px; }
     .workflow-steps { display: flex; flex-wrap: wrap; }
     .workflow-step { flex: 1 1 0; min-width: 260px; padding: 32px 24px; border-right: 1px solid #666; display: flex; flex-direction: column; justify-content: flex-start; }
@@ -71,10 +71,17 @@
 
   <main style="margin-bottom: 0; padding-bottom: 0;">
     <section class="workflow-section">
-      <div class="col-md-8 text-center">
-        <h2 class="section-heading text-uppercase" lang="en" style="letter-spacing: 0.1em;">
-          SERVICES
-        </h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-left">
+            <div class="row align-items-center">
+              <div class="col-md-8 text-left">
+                <h2 class="section-heading text-uppercase" lang="en" style="letter-spacing: 0.1em;">
+                  SERVICES
+                </h2>
+              </div>
+          </div>
+        </div>
       </div>
       <div class="workflow-title"></div>
       <div class="workflow-steps" id="workflow-steps"></div>
@@ -193,11 +200,6 @@
   </footer>
   <!-- End Footer -->
 
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/agency.min.js"></script>
-  <script src="workflow_description.js"></script>
-  <script src="assets/js/service.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -211,125 +213,48 @@
 
   <!-- Custom scripts for this template -->
   <script src="assets/js/agency.min.js"></script>
-  <script src="./portfolio_description.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="workflow_description.js"></script>
+  <script src="assets/js/service.js"></script>
   <script>disableRightClickAndCopy()</script>
 
   <script>
-    // 當頁面滾動超過 300px 時顯示按鈕
-    window.onscroll = function () {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        document.getElementById("backToTop").style.display = "flex";
-      } else {
-        document.getElementById("backToTop").style.display = "none";
+    document.addEventListener('DOMContentLoaded', function() {
+      // 當頁面滾動超過 300px 時顯示按鈕
+      window.onscroll = function () {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          document.getElementById("backToTop").style.display = "flex";
+        } else {
+          document.getElementById("backToTop").style.display = "none";
+        }
+      };
+
+      // 點擊按鈕回到頂部
+      document.getElementById("backToTop").onclick = function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      };
+
+      // 偵測深色/淺色模式並切換favicon
+      function updateFavicon() {
+        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const iconPath = isDarkMode ? 'assets/img/logo.png' : 'assets/img/logo_black.png';
+        const icoPath = isDarkMode ? 'assets/img/logo.ico' : 'assets/img/logo_black.ico';
+
+        document.getElementById('favicon').href = icoPath;
+        document.getElementById('shortcut-icon').href = icoPath;
+        document.getElementById('apple-touch-icon').href = iconPath;
+        document.getElementById('icon-32').href = iconPath;
+        document.getElementById('icon-16').href = iconPath;
       }
-    };
 
-    // 點擊按鈕回到頂部
-    document.getElementById("backToTop").onclick = function () {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    };
-  </script>
+      // 初始設定
+      updateFavicon();
 
-  <script>
-    function toggleNavBackground() {
-      const nav = document.getElementById('mainNav');
-      nav.classList.toggle('nav-expanded');
-    }
-
-    function changeToChinese(element) {
-      if (element) {
-        var text = element.getElementsByTagName('a')[0];
-        if (text.innerHTML === 'Services') {
-          text.innerHTML = '服務項目';
-          text.style.fontSize = '1.1em';
-          text.setAttribute('lang', 'zh-TW');
-        }
-        if (text.innerHTML === 'Projects') {
-          text.innerHTML = '作品集';
-          text.style.fontSize = '1.1em';
-          text.setAttribute('lang', 'zh-TW');
-        }
-        if (text.innerHTML === 'About') {
-          text.innerHTML = '關於我們';
-          text.style.fontSize = '1.1em';
-          text.setAttribute('lang', 'zh-TW');
-        }
-        if (text.innerHTML === 'Team') {
-          text.innerHTML = '團隊成員';
-          text.style.fontSize = '1.1em';
-          text.setAttribute('lang', 'zh-TW');
-        }
-        if (text.innerHTML === 'Contact') {
-          text.innerHTML = '聯絡我們';
-          text.style.fontSize = '1.1em';
-          text.setAttribute('lang', 'zh-TW');
-        }
-        if (text.innerHTML === 'Home') {
-          text.innerHTML = '回到首頁';
-          text.style.fontSize = '1.1em';
-          text.setAttribute('lang', 'zh-TW');
-        }
-      }
-    }
-
-    function changeToEnglish(element) {
-      if (element) {
-        var text = element.getElementsByTagName('a')[0];
-        if (text.innerHTML === '服務項目') {
-          text.innerHTML = 'Services';
-          text.style.fontSize = '1em';
-          text.setAttribute('lang', 'en');
-        }
-        if (text.innerHTML === '作品集') {
-          text.innerHTML = 'Projects';
-          text.style.fontSize = '1em';
-          text.setAttribute('lang', 'en');
-        }
-        if (text.innerHTML === '關於我們') {
-          text.innerHTML = 'About';
-          text.style.fontSize = '1em';
-          text.setAttribute('lang', 'en');
-        }
-        if (text.innerHTML === '團隊成員') {
-          text.innerHTML = 'Team';
-          text.style.fontSize = '1em';
-          text.setAttribute('lang', 'en');
-        }
-        if (text.innerHTML === '聯絡我們') {
-          text.innerHTML = 'Contact';
-          text.style.fontSize = '1em';
-          text.setAttribute('lang', 'en');
-        }
-        if (text.innerHTML === '回到首頁') {
-          text.innerHTML = 'Home';
-          text.style.fontSize = '1em';
-          text.setAttribute('lang', 'en');
-        }
-      }
-    }
-
-    // 偵測深色/淺色模式並切換favicon
-    function updateFavicon() {
-      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const iconPath = isDarkMode ? 'assets/img/logo.png' : 'assets/img/logo_black.png';
-      const icoPath = isDarkMode ? 'assets/img/logo.ico' : 'assets/img/logo_black.ico';
-
-      document.getElementById('favicon').href = icoPath;
-      document.getElementById('shortcut-icon').href = icoPath;
-      document.getElementById('apple-touch-icon').href = iconPath;
-      document.getElementById('icon-32').href = iconPath;
-      document.getElementById('icon-16').href = iconPath;
-    }
-
-    // 初始設定
-    updateFavicon();
-
-    // 監聽模式變化
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+      // 監聽模式變化
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+    });
   </script>
 </body>
 </html> 
