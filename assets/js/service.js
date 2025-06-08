@@ -177,12 +177,12 @@ style.textContent = `
 @media (max-width: 991.98px) {
   .workflow-title {
     justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 16px !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
   }
   .workflow-tab {
-    font-size: 0.9em !important;
-    padding: 4px 12px !important;
+    font-size: 0.8em !important;
+    padding: 4px 8px !important;
   }
   #workflow-steps {
     padding: 0 32px !important;
@@ -193,6 +193,15 @@ style.textContent = `
 }
 
 @media (max-width: 768px) {
+  .workflow-title {
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+  }
+  .workflow-tab {
+    font-size: 0.9em !important;
+    padding: 4px 6px !important;
+  }
   .workflow-row { 
     flex-direction: column !important; 
     gap: 16px !important; 
@@ -207,7 +216,7 @@ style.textContent = `
   }
   .workflow-step-desc { 
     padding-right: 0 !important; 
-    font-size: 0.8em !important; 
+    font-size: 0.9em !important; 
     justify-content: flex-start !important;
     flex: 1 1 100% !important;
   }
@@ -219,6 +228,10 @@ style.textContent = `
   }
   #workflow-steps {
     padding: 0 24px !important;
+  }
+  .fee-box {
+    padding: 30px 24px !important;
+    margin: 0 16px !important;
   }
   .fee-box li {
     flex-direction: column !important;
@@ -234,53 +247,66 @@ style.textContent = `
   .fee-box li span:nth-child(2) {
     display: none !important;
   }
-  .fee-box {
-    padding: 30px 24px !important;
+  .fee-note {
+    font-size: 0.8em !important;
+    color: #aaa !important;
   }
   .row.align-items-center {
     margin-top: 12vh;
+  }
+  .section-heading {
+    font-size: 1.8em !important;
   }
 }
 
 @media (max-width: 600px) {
   .workflow-title {
-    gap: 8px !important;
+    gap: 2px !important;
   }
   .workflow-tab {
-    font-size: 0.8em !important;
-    padding: 4px 8px !important;
-    letter-spacing: 0.1em !important;
+    font-size: 0.85em !important;
+    padding: 4px 4px !important;
+    letter-spacing: 0.05em !important;
   }
   .workflow-row {
     padding: 12px 0 !important;
   }
   .workflow-step-title {
-    font-size: 1.1em !important;
+    font-size: 1em !important;
   }
   .workflow-step-desc {
-    font-size: 1em !important;
+    font-size: 0.9em !important;
   }
   .workflow-step-desc ul li {
-    font-size: 1em !important;
+    font-size: 0.9em !important;
     margin-bottom: 6px !important;
   }
   #workflow-steps {
     padding: 0 16px !important;
   }
+  .fee-box {
+    padding: 24px 16px !important;
+    margin: 0 16px !important;
+  }
   .fee-box li {
     padding: 12px 0 !important;
   }
   .fee-box li span {
-    font-size: 0.9em !important;
+    font-size: 0.8em !important;
     line-height: 1.8 !important;
   }
-  .fee-box {
-    padding: 24px 16px !important;
+  .fee-note {
+    font-size: 0.4em !important;
+    color: #aaa !important;
   }
   .row.align-items-center {
     margin-top: 15vh;
   }
-}`;
+  .section-heading {
+    font-size: 1.6em !important;
+  }
+}
+`;
 document.head.appendChild(style);
 
 // Service Fee Box
