@@ -148,10 +148,12 @@ img::-moz-selection {
   background-color: rgba(0, 0, 0, 0.2);
   padding-top: 15px;
   padding-bottom: 15px;
-  position: fixed;
   width: 100%;
-  z-index: 1000;
+  z-index: 1030;
   transition: all 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #mainNav .navbar-toggler {
   font-size: 12px;
@@ -199,7 +201,6 @@ img::-moz-selection {
     transition: all 0.3s ease;
     border: none;
     background-color: rgba(0, 0, 0, 0.2);
-    position: fixed;
   }
   #mainNav .navbar-brand {
     font-size: 1.75em;
@@ -225,15 +226,6 @@ img::-moz-selection {
     padding: 1.1em 1em !important;
     white-space: nowrap;
   }
-  #mainNav.navbar-shrink {
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: rgb(33, 37, 41);
-  }
-  #mainNav.navbar-shrink .navbar-brand {
-    font-size: 1.25em;
-    padding: 12px 0;
-  }
   #mainNav .navbar-nav .nav-item .nav-link.active, 
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: rgb(255, 255, 255);
@@ -250,11 +242,6 @@ img::-moz-selection {
   }
   #mainNav .navbar-collapse.show {
     display: block;
-  }
-  #mainNav.navbar-shrink {
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: rgb(33, 37, 41);
   }
   #mainNav .navbar-nav .nav-item .nav-link {
     color: rgb(255, 255, 255);
@@ -280,6 +267,8 @@ header.masthead {
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 header.masthead .intro-text {

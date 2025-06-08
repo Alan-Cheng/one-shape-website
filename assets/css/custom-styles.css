@@ -296,11 +296,8 @@
 
 /* 導覽列樣式 */
 #mainNav {
+  background-color: rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
-}
-
-#mainNav.nav-expanded {
-  background-color: rgb(33, 37, 41) !important;
 }
 
 @media (max-width: 650px) {
