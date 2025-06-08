@@ -1,5 +1,5 @@
 // // 從 localStorage 中取出 savedVariable 的並剖析為 JavaScript 物件
-let jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
+// let jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
 const workflowDataArray = JSON.parse(localStorage.getItem('workflow_description'));
 
 function splitTextWithPunctuation(text) {
@@ -571,25 +571,28 @@ window.addEventListener('load', function() {
   window.scrollTo(0, 0);
 });
 
-jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
+let jsonDataArray = [];
 window.onPortfolioLoaded = function(data) {
   console.log('custom.js 收到 portfolio 資料:', data);
   jsonDataArray = data;
 
   // 取得當前頁面的 URL 路徑
   const currentPage = window.location.pathname;
+  const lastPath = currentPage.split('/').pop(); // 取得最後的路徑部分
 
-  console.log('當前頁面:', currentPage);
+  console.log('當前頁面:', lastPath);
 
-  if (currentPage === '/index.html' || currentPage === '/') {
-    // 在 page1.html 頁面上執行
-    onScrollToSection(show_N_wrok, 3);
-  } else if (currentPage === '/portfolio.html') {
-    // 在 page2.html 頁面上執行
+  if (lastPath === 'index.html' || lastPath === '') {
+    // 在首頁執行
+    console.log("目前在首頁");
+    show_N_wrok(3);
+  } else if (lastPath === 'portfolio.html') {
+    // 在作品集頁面執行
+    console.log("目前在作品集頁面");
     show_N_wrok('all');
   }
 
-  show_viewAll_button(3);  // 在兩個頁面都執行這個
+  show_viewAll_button(3);
 };
 
 // 處理從 portfolio.html 到 index.html 的滾動
