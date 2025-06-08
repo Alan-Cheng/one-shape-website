@@ -302,3 +302,15 @@
 #mainNav.nav-expanded {
   background-color: rgb(33, 37, 41) !important;
 }
+
+@media (max-width: 650px) {
+  .navbar-toggler {
+    display: block !important;
+  }
+}
+
+@media (min-width: 651px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
