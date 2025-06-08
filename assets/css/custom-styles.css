@@ -293,3 +293,12 @@
     display: none;
   }
 }
+
+/* 導覽列樣式 */
+#mainNav {
+  transition: background-color 0.3s ease;
+}
+
+#mainNav.nav-expanded {
+  background-color: rgb(33, 37, 41) !important;
+}

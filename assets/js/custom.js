@@ -75,8 +75,9 @@ function build_portfolio(jsonDataArray, page){
 
     // 檢查螢幕寬度並調整大小
     if (window.innerWidth <= 767) {
-      col.style.maxWidth = '90%';
-      col.style.margin = '0 auto 30px auto';
+      col.style.maxWidth = '80%';
+      col.style.margin = '0 auto 20px auto';
+      col.style.padding = '0 10px';
     }
 
     const link = document.createElement('a');
@@ -101,6 +102,11 @@ function build_portfolio(jsonDataArray, page){
     image.style.height = 'auto';
     image.style.objectFit = 'cover';
 
+    // 移動端樣式調整
+    if (window.innerWidth <= 767) {
+      image.style.aspectRatio = '4/3';
+    }
+
     link.appendChild(hover);
     link.appendChild(image);
 
@@ -113,9 +119,20 @@ function build_portfolio(jsonDataArray, page){
     caption.style.justifyContent = 'flex-start';
     caption.style.paddingLeft = '20px';
 
+    // 移動端樣式調整
+    if (window.innerWidth <= 767) {
+      caption.style.height = '45px';
+      caption.style.paddingLeft = '15px';
+    }
+
     const title = document.createElement('a');
     title.innerText = jsonData.專案名;
     title.style.letterSpacing = '0.2em';
+
+    // 移動端樣式調整
+    if (window.innerWidth <= 767) {
+      title.style.fontSize = '0.9em';
+    }
 
     caption.appendChild(title);
 
@@ -632,6 +649,21 @@ function handleCrossPageScroll() {
     }
   }
 }
+
+// 導覽列背景切換
+function toggleNavBackground() {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('nav-expanded');
+}
+
+// 監聽導覽列關閉事件
+document.addEventListener('DOMContentLoaded', function() {
+  const navbarCollapse = document.getElementById('navbarResponsive');
+  navbarCollapse.addEventListener('hidden.bs.collapse', function () {
+    const nav = document.getElementById('mainNav');
+    nav.classList.remove('nav-expanded');
+  });
+});
 
 // 在頁面載入時執行
 document.addEventListener('DOMContentLoaded', function() {
