@@ -72,6 +72,19 @@ function build_portfolio(jsonDataArray, page){
     col.className = 'col-md-4 portfolio-item';
     col.style.marginBottom = '30px';
     col.style.padding = '0 15px';
+    col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+    col.style.borderTopLeftRadius = '4px';
+    col.style.borderTopRightRadius = '4px';
+    col.style.overflow = 'hidden';
+    col.style.cursor = 'pointer';
+    col.setAttribute('data-toggle', 'modal');
+    col.setAttribute('data-target', `#p${result_indexs[index] + 1}`);
+    col.onmouseover = function() {
+      this.style.transform = 'translateY(-5px)';
+    };
+    col.onmouseout = function() {
+      this.style.transform = 'translateY(0)';
+    };
 
     // 檢查螢幕寬度並調整大小
     if (window.innerWidth <= 767) {
@@ -82,14 +95,31 @@ function build_portfolio(jsonDataArray, page){
 
     const link = document.createElement('a');
     link.className = 'portfolio-link';
-    link.setAttribute('data-toggle', 'modal');
-    link.setAttribute('href', `#p${result_indexs[index] + 1}`);
+    link.style.textDecoration = 'none';
+    link.style.display = 'block';
+    link.style.overflow = 'hidden';
+    link.style.borderTopLeftRadius = '4px';
+    link.style.borderTopRightRadius = '4px';
 
     const hover = document.createElement('div');
     hover.className = 'portfolio-hover';
+    hover.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    hover.style.opacity = '0';
+    hover.style.transition = 'opacity 0.3s ease';
+    col.onmouseover = function() {
+      hover.style.opacity = '1';
+      this.style.transform = 'translateY(-5px)';
+    };
+    col.onmouseout = function() {
+      hover.style.opacity = '0';
+      this.style.transform = 'translateY(0)';
+    };
 
     const hoverContent = document.createElement('div');
     hoverContent.className = 'portfolio-hover-content';
+    hoverContent.style.color = 'white';
+    hoverContent.style.fontSize = '1.2em';
+    hoverContent.style.letterSpacing = '0.1em';
 
     hover.appendChild(hoverContent);
 
@@ -101,6 +131,17 @@ function build_portfolio(jsonDataArray, page){
     image.style.width = '100%';
     image.style.height = 'auto';
     image.style.objectFit = 'cover';
+    image.style.transition = 'transform 0.3s ease';
+    col.onmouseover = function() {
+      image.style.transform = 'scale(1.05)';
+      hover.style.opacity = '1';
+      this.style.transform = 'translateY(-5px)';
+    };
+    col.onmouseout = function() {
+      image.style.transform = 'scale(1)';
+      hover.style.opacity = '0';
+      this.style.transform = 'translateY(0)';
+    };
 
     // 移動端樣式調整
     if (window.innerWidth <= 767) {
@@ -118,6 +159,9 @@ function build_portfolio(jsonDataArray, page){
     caption.style.alignItems = 'center';
     caption.style.justifyContent = 'flex-start';
     caption.style.paddingLeft = '20px';
+    caption.style.borderBottomLeftRadius = '4px';
+    caption.style.borderBottomRightRadius = '4px';
+    caption.style.transition = 'background-color 0.3s ease';
 
     // 移動端樣式調整
     if (window.innerWidth <= 767) {
@@ -128,6 +172,9 @@ function build_portfolio(jsonDataArray, page){
     const title = document.createElement('a');
     title.innerText = jsonData.專案名;
     title.style.letterSpacing = '0.2em';
+    title.style.color = 'white';
+    title.style.textDecoration = 'none';
+    title.style.transition = 'color 0.3s ease';
 
     // 移動端樣式調整
     if (window.innerWidth <= 767) {
@@ -457,77 +504,13 @@ function portfolio_filter(catergory){
   items.forEach(function(item) {
       item.remove();
   });
+  
   // 再讓符合條件的作品顯示
-  if(catergory == 'all'){
-    var temp = jsonDataArray.slice().reverse();
-    temp.forEach((jsonData, index) =>  {
-    var container = document.querySelector('.portfolio-container');
-    var items = container.querySelectorAll('.col-md-4.portfolio-item');
-    items.forEach(function(item) {
-        item.remove();
-    });
-    build_portfolio(temp, 'portfolio');
-  });
-}
-  else{
-    var temp = jsonDataArray.slice().reverse();
-    temp.forEach((jsonData, index) =>  {
-      if(jsonData.種類 != catergory){
-        return;
-      }
-      const col = document.createElement('div');
-      col.className = 'col-md-4 portfolio-item';
-      col.style.marginBottom = '30px';
-      col.style.padding = '0 15px';
-
-      const link = document.createElement('a');
-      link.className = 'portfolio-link';
-      link.setAttribute('data-toggle', 'modal');
-      link.setAttribute('href', `#p${index + 1}`);
-
-      const hover = document.createElement('div');
-      hover.className = 'portfolio-hover';
-
-      const hoverContent = document.createElement('div');
-      hoverContent.className = 'portfolio-hover-content';
-
-      hover.appendChild(hoverContent);
-
-      const image = document.createElement('img');
-      image.className = 'img-fluid';
-      image.setAttribute('src', jsonData.圖片連結 + `1.jpg`);
-      image.setAttribute('alt', jsonData.專案名);
-      image.style.aspectRatio = '5/3';
-      image.style.width = '100%';
-      image.style.height = 'auto';
-      image.style.objectFit = 'cover';
-
-      link.appendChild(hover);
-      link.appendChild(image);
-
-      const caption = document.createElement('div');
-      caption.className = 'portfolio-caption';
-      caption.style.backgroundColor = 'rgb(63,62,63)';
-      caption.style.height = '40px';
-      caption.style.display = 'flex';
-      caption.style.alignItems = 'center';
-      caption.style.justifyContent = 'flex-start';
-      caption.style.paddingLeft = '20px';
-
-      const title = document.createElement('a');
-      title.innerText = jsonData.專案名;
-      title.style.letterSpacing = '0.2em';
-
-      caption.appendChild(title);
-
-      col.appendChild(link);
-      col.appendChild(caption);
-
-      // 將新建的元素添加到頁面中的適當位置
-      const portfolioContainer = document.querySelector('.portfolio-container'); // 假設有一個包含這些區塊的容器元素
-      portfolioContainer.appendChild(col);
-    });
+  var temp = jsonDataArray.slice().reverse();
+  if(catergory != 'all'){
+    temp = temp.filter(item => item.種類 === catergory);
   }
+  build_portfolio(temp, 'portfolio');
 }
 
 function enlargeIcon(element) {
