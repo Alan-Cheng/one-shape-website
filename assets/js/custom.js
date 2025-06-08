@@ -1,5 +1,5 @@
 // // 從 localStorage 中取出 savedVariable 的並剖析為 JavaScript 物件
-// const jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
+let jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
 const workflowDataArray = JSON.parse(localStorage.getItem('workflow_description'));
 
 function splitTextWithPunctuation(text) {
@@ -571,7 +571,7 @@ window.addEventListener('load', function() {
   window.scrollTo(0, 0);
 });
 
-let jsonDataArray = [];
+jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
 window.onPortfolioLoaded = function(data) {
   console.log('custom.js 收到 portfolio 資料:', data);
   jsonDataArray = data;
