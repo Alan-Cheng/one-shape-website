@@ -1,3 +1,16 @@
+// 初始化作品集
+window.onPortfolioLoaded = function(data) {
+  // 只取前三個作品
+  const firstThreeProjects = data.slice(0, 3);
+  build_portfolio(firstThreeProjects, "home");
+};
+
+// 如果資料已經載入，直接顯示前三個
+if (window.portfolioData) {
+  const firstThreeProjects = window.portfolioData.slice(0, 3);
+  build_portfolio(firstThreeProjects, "home");
+}
+
 // // 從 localStorage 中取出 savedVariable 的並剖析為 JavaScript 物件
 // let jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
 const workflowDataArray = JSON.parse(localStorage.getItem('workflow_description'));
