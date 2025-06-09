@@ -234,7 +234,7 @@
       </div>
 
       <div class="row portfolio-container">
-        <!-- 讀入portfolio_page_display.js中的json格式資料建立Grid -->
+        <!-- 讀入portfolio_description.js中的json格式資料建立Grid -->
       </div>
       <!-- 看所有作品的連結按鈕 -->
       <div class="row">
@@ -434,6 +434,16 @@
   <script src="./assets/js/custom.js"></script>
 
   <script>
+    // 初始化作品集
+    window.onPortfolioLoaded = function(data) {
+      build_portfolio(data, "home");
+    };
+
+    // 如果資料已經載入，直接顯示
+    if (window.portfolioData) {
+      build_portfolio(window.portfolioData, "home");
+    }
+
     // 處理 hash 導航
     window.addEventListener('load', function() {
       if (window.location.hash) {
@@ -466,9 +476,6 @@
 
     // 初始設定
     updateFavicon();
-
-    // 監聽模式變化
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
   </script>
 
   <!-- <script>onScrollToSection(show_N_wrok, 3)</script> -->
