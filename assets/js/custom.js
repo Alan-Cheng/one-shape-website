@@ -125,7 +125,7 @@ function build_portfolio(jsonDataArray, page){
 
     const image = document.createElement('img');
     image.className = 'img-fluid';
-    image.setAttribute('src', jsonData.圖片連結 + `1.jpg`);
+    image.setAttribute('src', jsonData.圖片連結 + `1.webp`);
     image.setAttribute('alt', '');
     image.style.aspectRatio = '5/3';
     image.style.width = '100%';
@@ -195,7 +195,7 @@ function build_portfolio(jsonDataArray, page){
       for(let i = 0; i <=20 ; i++){
         const image = document.createElement('img');
         image.className = 'img-fluid d-block mx-auto';
-        image.setAttribute('src', jsonData.圖片連結 + `${i}.jpg`);
+        image.setAttribute('src', jsonData.圖片連結 + `${i}.webp`);
         image.onerror = function(){
           image.remove();
         }
