@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <title>一形設計 | 服務項目</title>
   <meta charset="utf-8">
@@ -19,45 +20,131 @@
   <link href="assets/css/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    body { background: rgb(48,48,48); color: #fff; }
-    li::before {
-    content: "•"; 
-    color: #ffffff; 
-    display: inline-block; 
-    padding-left: 1em;
-    width: 1.5em;
+    body {
+      background: rgb(48, 48, 48);
+      color: #fff;
     }
-    .workflow-section { margin: 40px auto 40px auto; max-width: 1200px; }
-    .workflow-title { text-align: right; font-size: 1.3em; font-weight: bold; letter-spacing: 0.2em; margin-bottom: 40px; }
-    .workflow-steps { display: flex; flex-wrap: wrap; }
-    .workflow-step { flex: 1 1 0; min-width: 260px; padding: 32px 24px; border-right: 1px solid #666; display: flex; flex-direction: column; justify-content: flex-start; }
-    .workflow-step:last-child { border-right: none; }
-    .step-number { font-size: 1.1em; color: #fff; font-weight: 500; margin-bottom: 16px; letter-spacing: 0.1em; }
-    .step-title { font-size: 1.1em; font-weight: bold; margin-bottom: 16px; letter-spacing: 0.1em; }
-    .step-desc { font-size: 1em; color: #ccc; line-height: 1.7; }
-    @media (max-width: 991.98px) { .workflow-steps { flex-direction: column; } .workflow-step { border-right: none; border-bottom: 1px solid #666; } .workflow-step:last-child { border-bottom: none; } }
+
+    .workflow-step-desc li::before {
+      content: "•";
+      color: #ffffff;
+      display: inline-block;
+      padding-left: 1em;
+      width: 1.5em;
+    }
+
+    .workflow-section {
+      margin: 40px auto 40px auto;
+      max-width: 1200px;
+    }
+
+    .workflow-title {
+      text-align: right;
+      font-size: 1.3em;
+      font-weight: bold;
+      letter-spacing: 0.2em;
+      margin-bottom: 40px;
+    }
+
+    .workflow-steps {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .workflow-step {
+      flex: 1 1 0;
+      min-width: 260px;
+      padding: 32px 24px;
+      border-right: 1px solid #666;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .workflow-step:last-child {
+      border-right: none;
+    }
+
+    .step-number {
+      font-size: 1.1em;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+    }
+
+    .step-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 16px;
+      letter-spacing: 0.1em;
+    }
+
+    .step-desc {
+      font-size: 1em;
+      color: #ccc;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 991.98px) {
+      .workflow-steps {
+        flex-direction: column;
+      }
+
+      .workflow-step {
+        border-right: none;
+        border-bottom: 1px solid #666;
+      }
+
+      .workflow-step:last-child {
+        border-bottom: none;
+      }
+    }
+
     @media (max-width: 600px) {
-      .workflow-step { 
+      .workflow-step {
         padding: 50px 24px;
         margin-bottom: 30px;
       }
+
       .section-heading {
         margin-bottom: 50px;
         font-size: 2.2em;
       }
+
       .step-number {
         margin-bottom: 25px;
       }
+
       .step-title {
         margin-bottom: 25px;
       }
     }
-    .service-fee-title { font-size: 1.3em; padding: 30px 20px; border-radius: 2px; }
-    .fee-box { background: #3a3a3a; padding: 30px 20px; border-radius: 2px; }
-    .fee-note { color: #aaa; font-size: 0.95em; margin-top: 12px; }
-    .page-section { background: #232427; }
+
+    .service-fee-title {
+      font-size: 1.3em;
+      padding: 30px 20px;
+      border-radius: 2px;
+    }
+
+    .fee-box {
+      background: #3a3a3a;
+      padding: 30px 20px;
+      border-radius: 2px;
+    }
+
+    .fee-note {
+      color: #aaa;
+      font-size: 0.95em;
+      margin-top: 12px;
+    }
+
+    .page-section {
+      background: #232427;
+    }
   </style>
 </head>
+
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
@@ -124,7 +211,7 @@
     </div>
   </section>
 
-  
+
   <section class="page-section" id="contact" style="background-color: rgb(48,48,48);">
     <!-- Contact -->
     <div class="container" id="contact">
@@ -213,13 +300,23 @@
 
   <!-- Footer -->
   <footer class="footer" style="background-color: #3a3a3a; padding: 1em 0;">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-8 text-center text-md-center mb-2 mb-md-0">
-          <span style="letter-spacing: 0.2em; font-size: 0.8em; color: white;">COPYRIGHT &copy; 2025 一形設計 ALL RIGHTS RESERVED</span>
+        <div class="d-none d-md-block col-12 col-md-3 mb-2 mb-md-0">
+          <span style="color: white;">&nbsp;</span>
         </div>
-        <div class="col-12 col-md-4 text-center text-md-end">
-          <span style="font-size: 0.8em; color: white;">Design By <a href="mailto:jhcheng.alan@gmail.com" style="color: white; text-decoration: underline;">Alan Cheng</a></span>
+
+        <div class="col-12 col-md-6 text-center mb-2 mb-md-0">
+          <span style="letter-spacing: 0.2em; color: white;">
+            COPYRIGHT &copy; 2025 一形設計 ALL RIGHTS RESERVED
+          </span>
+        </div>
+
+        <div class="col-12 col-md-3 text-center text-md-right mb-2 mb-md-0">
+          <span style="color: white;">
+            Design By <a href="mailto:jhcheng.alan@gmail.com" style="color: white; text-decoration: underline;">Alan
+              Cheng</a>
+          </span>
         </div>
       </div>
     </div>
@@ -245,7 +342,7 @@
   <script>disableRightClickAndCopy()</script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // 當頁面滾動超過 300px 時顯示按鈕
       window.onscroll = function () {
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -281,4 +378,5 @@
     });
   </script>
 </body>
-</html> 
+
+</html>
