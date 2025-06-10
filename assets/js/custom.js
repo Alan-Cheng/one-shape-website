@@ -541,10 +541,23 @@ function resetIcon(element) {
 function show_workflow() {
   const workflowgrid = document.getElementById('wf-grid');
   workflowgrid.innerHTML = '';
+  
+  // 根據螢幕寬度設定樣式
+  if (window.innerWidth > 768) {
+    workflowgrid.style.marginLeft = 'auto';
+    workflowgrid.style.marginRight = '0';
+    workflowgrid.style.maxWidth = '80%';
+  } else {
+    workflowgrid.style.margin = '0 auto';
+    workflowgrid.style.maxWidth = '100%';
+  }
 
   // 服務項目列
   const itemsRow = document.createElement('div');
   itemsRow.className = 'service-items';
+  itemsRow.style.justifyContent = 'center';
+  itemsRow.style.alignItems = 'center';
+  itemsRow.style.gap = '15px';
 
   workflowDataArray.forEach((jsonData, idx) => {
     // 服務項目
