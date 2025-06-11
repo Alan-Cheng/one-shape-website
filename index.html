@@ -145,19 +145,97 @@
         <div class="col-lg-12 text-center">
           <div class="scalable-div"
             style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 50vh;">
-            <h2 lang="zh-TW"
-              style="font-size: 1.3em; margin-bottom: 1em; color: white; font-weight: normal; letter-spacing: 0.2em; text-align: center;">
+            <h2 lang="zh-TW" class="about-chinese-text">
               無形的空間融入有形的元素，創造出形隨其意的設計風格。
             </h2>
-            <h3 lang="en"
-              style="font-size: 1em; font-weight: 400; font-style: normal; color: rgb(255, 255, 255); font-kerning: none; text-decoration: none; text-transform: none; text-align: center;">
+            <h3 lang="en" class="about-english-text">
               where space meets form, and form follows intent.
             </h3>
           </div>
         </div>
       </div>
     </div>
-  </section>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chineseTextElement = document.querySelector('.about-chinese-text');
+    const englishTextElement = document.querySelector('.about-english-text');
+
+    // 原始文本，用於在寬度變大時恢復
+    const originalChineseText = chineseTextElement.innerHTML;
+    const originalEnglishText = englishTextElement.innerHTML;
+
+    // 定義逗號斷點寬度
+    const BREAKPOINT_WIDTH = 768;
+
+    // 字體縮放的最小和最大值 (rem 單位)
+    const MIN_FONT_SIZE_CHINESE = 1; // 最小中文字體 rem
+    const MAX_FONT_SIZE_CHINESE = 1.3; // 最大中文字體 rem
+    const MIN_FONT_SIZE_ENGLISH = 0.8; // 最小英文字體 rem
+    const MAX_FONT_SIZE_ENGLISH = 1; // 最大英文字體 rem
+
+    // 字體縮放的視窗寬度參考點
+    // 假設在 1200px 寬度時，字體達到最大值
+    const REF_WIDTH_FOR_MAX_FONT = 1200;
+    // 假設在 600px 寬度時，字體接近最小值
+    const REF_WIDTH_FOR_MIN_FONT = 600;
+
+
+    function updateTextAndFontSize() {
+        const currentWidth = window.innerWidth;
+
+        // --- 控制换行 ---
+        if (currentWidth < BREAKPOINT_WIDTH) {
+            // 如果宽度小于1000px，在逗号处插入 <br>
+            // 确保只插入一次，避免重复添加
+            if (!chineseTextElement.querySelector('.br-inserted')) {
+                chineseTextElement.innerHTML = originalChineseText.replace(/，/g, '，<br class="br-inserted">');
+            }
+            if (!englishTextElement.querySelector('.br-inserted')) {
+                englishTextElement.innerHTML = originalEnglishText.replace(/,/g, ',<br class="br-inserted">');
+            }
+        } else {
+            // 如果宽度大于等于1000px，移除 <br>
+            if (chineseTextElement.querySelector('.br-inserted')) {
+                chineseTextElement.innerHTML = originalChineseText;
+            }
+            if (englishTextElement.querySelector('.br-inserted')) {
+                englishTextElement.innerHTML = originalEnglishText;
+            }
+        }
+
+        // --- 控制字體大小 (類似 clamp 的邏輯) ---
+        // 計算基於視窗寬度的字體比例 (vw)
+        // 確保根元素 (html) 的字體大小是基準，通常為 16px
+        const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+        // 中文動態字體大小
+        // 簡單線性插值：(max - min) * (current - min_ref) / (max_ref - min_ref) + min
+        let chineseFontSizePx = (currentWidth - REF_WIDTH_FOR_MIN_FONT) / (REF_WIDTH_FOR_MAX_FONT - REF_WIDTH_FOR_MIN_FONT) * (MAX_FONT_SIZE_CHINESE * rootFontSize - MIN_FONT_SIZE_CHINESE * rootFontSize) + MIN_FONT_SIZE_CHINESE * rootFontSize;
+        chineseFontSizePx = Math.max(MIN_FONT_SIZE_CHINESE * rootFontSize, Math.min(MAX_FONT_SIZE_CHINESE * rootFontSize, chineseFontSizePx));
+        chineseTextElement.style.fontSize = `${chineseFontSizePx / rootFontSize}rem`; // 轉換回 rem
+
+        // 英文動態字體大小
+        let englishFontSizePx = (currentWidth - REF_WIDTH_FOR_MIN_FONT) / (REF_WIDTH_FOR_MAX_FONT - REF_WIDTH_FOR_MIN_FONT) * (MAX_FONT_SIZE_ENGLISH * rootFontSize - MIN_FONT_SIZE_ENGLISH * rootFontSize) + MIN_FONT_SIZE_ENGLISH * rootFontSize;
+        englishFontSizePx = Math.max(MIN_FONT_SIZE_ENGLISH * rootFontSize, Math.min(MAX_FONT_SIZE_ENGLISH * rootFontSize, englishFontSizePx));
+        englishTextElement.style.fontSize = `${englishFontSizePx / rootFontSize}rem`; // 轉換回 rem
+
+        // 如果字體計算邏輯太複雜，也可以簡化為幾個斷點的固定值，或者使用 vw 單位
+        // 示例：
+        // chineseTextElement.style.fontSize = `${Math.max(MIN_FONT_SIZE_CHINESE, currentWidth / 100 * (MAX_FONT_SIZE_CHINESE / (REF_WIDTH_FOR_MAX_FONT / 100)))}rem`;
+        // englishTextElement.style.fontSize = `${Math.max(MIN_FONT_SIZE_ENGLISH, currentWidth / 100 * (MAX_FONT_SIZE_ENGLISH / (REF_WIDTH_FOR_MAX_FONT / 100)))}rem`;
+
+    }
+
+    // 初始化時執行一次
+    updateTextAndFontSize();
+
+    // 監聽視窗大小變化
+    window.addEventListener('resize', updateTextAndFontSize);
+});
+</script>
+
   <!-- End About -->
 
   <!-- Back to Top Button -->
