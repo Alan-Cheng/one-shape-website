@@ -73,7 +73,8 @@ h3{
   }
 }
 
-.page-section:not(:last-child)::after {
+/* page section 間的分隔線 */
+/* .page-section:not(:last-child)::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -81,7 +82,7 @@ h3{
   width: 100%;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.3);
-}
+} */
 
 .page-section h2.section-heading {
   font-size: 1.7em;
