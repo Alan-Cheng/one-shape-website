@@ -1,3 +1,19 @@
+/* --- 禁止反白 --- */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* 允許輸入框反白 */
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 /* --- 您的原始 CSS 保持不變的部分 --- */
 html {
   overflow-y: auto;
