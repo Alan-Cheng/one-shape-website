@@ -101,7 +101,7 @@ function build_portfolio(jsonDataArray, page){
 
     // 檢查螢幕寬度並調整大小
     if (window.innerWidth <= 767) {
-      col.style.maxWidth = '80%';
+      col.style.maxWidth = '85%';
       col.style.margin = '0 auto 20px auto';
       col.style.padding = '0 10px';
     }
@@ -452,7 +452,7 @@ function changeToChinese(element) {
         text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'Home') {
-        text.innerHTML = '回到首頁';
+        text.innerHTML = '首頁';
         text.style.fontSize = '1.1em';
         text.setAttribute('lang', 'zh-TW');
       }
@@ -502,7 +502,7 @@ function changeToEnglish(element) {
   }
   if (element) {
       var text = element.getElementsByTagName('a')[0];
-      if (text.innerHTML === '回到首頁') {
+      if (text.innerHTML === '首頁') {
         text.innerHTML = 'Home';
         text.style.fontSize = '1em';
         text.setAttribute('lang', 'en');

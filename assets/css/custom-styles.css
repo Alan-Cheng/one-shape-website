@@ -38,20 +38,6 @@
     color: rgba(255, 255, 255, 0.8);
 }
 
-.portfolio-select-button {
-    background-color: transparent;
-    transition: background-color 0.3s;
-    color: rgb(110, 110, 110);
-    text-align: center;
-    font-size: 1em;
-    white-space: nowrap;
-    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.portfolio-select-button option:hover{
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
 .about-pre{
     white-space: pre-wrap; /* 保留空白和换行符 */
     font-family: Arial, sans-serif;
@@ -310,4 +296,28 @@
   .navbar-toggler {
     display: none !important;
   }
+}
+
+/* 隱藏 Select2 預設箭頭 */
+.select2-container--bootstrap-5 .select2-selection__arrow {
+  display: none;
+}
+
+/* 自己加箭頭 icon */
+.select2-container--bootstrap-5 .select2-selection--single {
+  position: relative;
+  padding-right: 2.5em;
+}
+
+/* 插入 Font Awesome 的 icon */
+.select2-container--bootstrap-5 .select2-selection--single::after {
+  content: "\f078"; /* Font Awesome chevron-down */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: white;
 }
