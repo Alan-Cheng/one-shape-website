@@ -92,6 +92,10 @@ style.textContent = `
   gap: 120px; /* Increased gap for very large screens */
 }
 
+.workflow-step-desc ul li {
+  padding-left: 25% !important;
+}
+
 @media (max-width: 1400px) {
   .workflow-row {
     gap: 90px; /* Generous gap for large screens */
@@ -161,6 +165,7 @@ style.textContent = `
   }
   .workflow-step-desc ul li {
     font-size: 0.9em !important;
+    padding-left: 50px !important;
   }
   #workflow-steps {
     padding: 0 24px !important;
@@ -391,7 +396,6 @@ function showWorkflow(idx) {
       li.setAttribute('lang', 'zh-TW');
       li.style.marginBottom = '8px';
       li.style.listStyleType = 'none';
-      li.style.paddingLeft = '30%';
       li.style.textIndent = '-1.5em';
       ul.appendChild(li);
     });
