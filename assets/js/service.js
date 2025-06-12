@@ -18,7 +18,7 @@ const steps = Object.entries(workflow.服務說明).map(([key, items]) => ({
 
 const workflowStepsDiv = document.getElementById('workflow-steps');
 workflowStepsDiv.innerHTML = '';
-// workflowStepsDiv.style.padding = '0 24px';
+// workflowStepsDiv.style.padding = '0 24px'; // Commented out as per original code
 
 steps.forEach((step, idx) => {
   const row = document.createElement('div');
@@ -27,7 +27,7 @@ steps.forEach((step, idx) => {
   row.style.alignItems = 'flex-start';
   row.style.padding = '20px 0';
   row.style.borderBottom = idx < steps.length - 1 ? '1px solid #aaa' : 'none';
-  row.style.gap = '48px';
+  // row.style.gap = '48px'; // Removed: Let CSS handle the gap
   row.style.width = '100%';
 
   const left = document.createElement('div');
@@ -87,6 +87,23 @@ style.textContent = `
   letter-spacing: 0.1em;
 }
 
+/* Base gap for very large screens */
+.workflow-row {
+  gap: 120px; /* Increased gap for very large screens */
+}
+
+@media (max-width: 1400px) {
+  .workflow-row {
+    gap: 90px; /* Generous gap for large screens */
+  }
+}
+
+@media (max-width: 1200px) {
+  .workflow-row {
+    gap: 70px; /* Substantial gap for medium-large screens */
+  }
+}
+
 @media (max-width: 991.98px) {
   .workflow-title {
     justify-content: center !important;
@@ -103,6 +120,12 @@ style.textContent = `
   .row.align-items-center {
     margin-top: 1vh;
   }
+  .workflow-row {
+    gap: 40px; /* Reduced gap for smaller medium screens */
+  }
+  .workflow-step-title {
+    flex: 0 0 280px !important; /* Adjust flex basis if needed */
+  }
 }
 
 @media (max-width: 768px) {
@@ -115,26 +138,26 @@ style.textContent = `
     font-size: 0.9em !important;
     padding: 4px 6px !important;
   }
-  .workflow-row { 
-    flex-direction: column !important; 
-    gap: 16px !important; 
-    padding: 16px 0 !important; 
+  .workflow-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 16px 0 !important;
   }
-  .workflow-step-title { 
-    padding-left: 0 !important; 
-    text-align: left !important; 
-    font-size: 1em !important; 
-    margin-bottom: 8px; 
+  .workflow-step-title {
+    padding-left: 0 !important;
+    text-align: left !important;
+    font-size: 1em !important;
+    margin-bottom: 8px;
     flex: 1 1 100% !important;
   }
-  .workflow-step-desc { 
-    padding-right: 0 !important; 
-    font-size: 0.9em !important; 
+  .workflow-step-desc {
+    padding-right: 0 !important;
+    font-size: 0.9em !important;
     justify-content: flex-start !important;
     flex: 1 1 100% !important;
   }
-  .workflow-step-desc ul { 
-    align-items: flex-start !important; 
+  .workflow-step-desc ul {
+    align-items: flex-start !important;
   }
   .workflow-step-desc ul li {
     font-size: 0.9em !important;
@@ -321,7 +344,7 @@ function showWorkflow(idx) {
     row.style.display = 'flex';
     row.style.alignItems = 'flex-start';
     row.style.padding = '20px 0';
-    row.style.gap = '30%';
+    // row.style.gap = '30%'; // Removed: Let CSS handle the gap
     row.style.width = '100%';
     row.style.borderBottom = '1px solid #aaa';
 
@@ -336,8 +359,8 @@ function showWorkflow(idx) {
     left.style.paddingLeft = '40px';
     left.style.lineHeight = '1.7';
     left.textContent = `${(i + 1).toString().padStart(2, '0')}.${key}`;
-    left.style.marginRight = '10%';
-    
+    // left.style.marginRight = '10%'; // Removed: Gap handles this
+
     const right = document.createElement('div');
     right.className = 'workflow-step-desc';
     right.setAttribute('lang', 'zh-TW');
@@ -355,51 +378,23 @@ function showWorkflow(idx) {
     inner.style.width = '100%';
 
     const ul = document.createElement('ul');
-ul.style.display = 'flex';
-ul.style.flexDirection = 'column';
-ul.style.alignItems = 'flex-start';
-ul.style.margin = '0';
-ul.style.padding = '0'; // 移除 ul 的預設 padding
-ul.style.lineHeight = '1.8';
+    ul.style.display = 'flex';
+    ul.style.flexDirection = 'column';
+    ul.style.alignItems = 'flex-start';
+    ul.style.margin = '0';
+    ul.style.padding = '0';
+    ul.style.lineHeight = '1.8';
 
-// 移除 ul 上的 list-style-position 和 paddingLeft
-// ul.style.listStylePosition = 'inside';
-// ul.style.paddingLeft = '20px';
-
-(desc[key] || []).forEach(item => {
-  const li = document.createElement('li');
-  li.textContent = item;
-  li.setAttribute('lang', 'zh-TW');
-  li.style.marginBottom = '8px';
-
-  // **關鍵修改：移除預設標記並設定自訂樣式**
-  li.style.listStyleType = 'none'; // 移除 li 預設的標記
-  li.style.paddingLeft = '1.5em'; // 為自訂標記和內容留出空間
-  li.style.textIndent = '-1.5em'; // 將第一行內容（包含標記）向左縮排，讓標記「懸掛」在外面
-
-  // **可選：自訂列表標記**
-  // 如果您想使用自訂的 bullet point，而不是瀏覽器預設的，
-  // 可以透過 CSS 偽元素來實現。在 JS 中，這需要將樣式定義在 CSS 類中。
-  // 這裡提供一個透過 style 屬性設定的簡單範例，但更推薦使用 CSS 類。
-  // 
-  // 為了簡潔，我們假設您會透過 CSS 來處理 ::before。
-  // 如果您想在 JS 中動態加入 ::before 樣式，會稍微複雜一點，
-  // 因為 style 屬性不能直接設定偽元素。
-  // 更建議在您的 CSS 檔案中加入以下規則：
-  /*
-  li::before {
-    content: "• "; // 或其他您喜歡的標記，如 "✓ "
-    color: #333; // 標記的顏色
-    display: inline-block; // 讓偽元素能正確應用縮排
-    width: 1.5em; // 確保有足夠空間顯示標記
-  }
-  */
-
-  ul.appendChild(li);
-});
-
-// 最後將 ul 加入到 DOM 中，例如：
-// document.body.appendChild(ul);
+    (desc[key] || []).forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      li.setAttribute('lang', 'zh-TW');
+      li.style.marginBottom = '8px';
+      li.style.listStyleType = 'none';
+      li.style.paddingLeft = '30%';
+      li.style.textIndent = '-1.5em';
+      ul.appendChild(li);
+    });
 
     inner.appendChild(ul);
     right.appendChild(inner);
@@ -409,8 +404,6 @@ ul.style.lineHeight = '1.8';
     workflowStepsDiv.appendChild(row);
   });
 }
-
-
 
 // 初始化顯示當前服務的內容
 showWorkflow(currentIndex);
