@@ -1,5 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@300&display=swap'); */
-
+/* --- 您的原始 CSS 保持不變的部分 --- */
 html {
   overflow-y: auto;
   overflow-x: hidden;
@@ -73,17 +72,6 @@ h3{
   }
 }
 
-/* page section 間的分隔線 */
-/* .page-section:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.3);
-} */
-
 .page-section h2.section-heading {
   font-size: 1.7em;
   margin-top: 0;
@@ -145,34 +133,52 @@ img::-moz-selection {
   box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
 }
 
+/* --- 修改後的 Navbar 相關 CSS --- */
+
 #mainNav {
-  background-color: rgba(0, 0, 0, 0.2);
-  padding-top: 15px;
-  padding-bottom: 15px;
+  /* 預設的 Navbar 樣式，適用於桌面版和未展開的手機版 */
+  background-color: rgba(32, 32, 32, 1);
+  padding: 0; /* 移除 padding，改用固定高度 */
   width: 100%;
   z-index: 1030;
   transition: all 0.3s ease;
-  position: absolute;
+  position: fixed; /* 改為 fixed 以固定在螢幕上方 */
   top: 0;
   left: 0;
+  display: flex; /* 使用 Flexbox 讓 logo 和 menu 靠兩邊 */
+  align-items: center; /* 垂直居中對齊 */
+  justify-content: space-between; /* logo 和菜單分開到兩邊 */
+  height: 80px; /* 增加預設高度 */
 }
+
 #mainNav .navbar-toggler {
   font-size: 12px;
   right: 0;
-  padding: 10px; /* 縮小按鈕內距 */
+  padding: 10px;
   text-transform: uppercase;
   color: white;
   border: 0;
-  background-color: #fed136;
+  background-color: transparent !important; /* 確保透明，避免行內樣式衝突 */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
 #mainNav .navbar-brand {
   margin-left: 10px;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.75em;
+  transition: all 0.3s;
 }
+
+#mainNav .navbar-brand img {
+  height: 40px; /* logo 高度 */
+  width: auto; /* 保持寬高比 */
+  transition: all 0.3s;
+}
+
 #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
   color: #fec503;
 }
+
 #mainNav .navbar-nav .nav-item .nav-link {
   font-size: 100%;
   padding: 0.7em 0;
@@ -193,15 +199,14 @@ img::-moz-selection {
   padding: 5px;
 }
 
+/* 桌面版 Media Query */
 @media (min-width: 651px) {
   #mainNav {
-    padding-top: 3px;
-    padding-bottom: 3px;
+    height: 70px; /* 增加桌面版高度 */
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
     border: none;
-    background-color: rgba(0, 0, 0, 0.2);
   }
   #mainNav .navbar-brand {
     font-size: 1.75em;
@@ -211,8 +216,12 @@ img::-moz-selection {
     margin-left: 5%;
   }
   #mainNav .navbar-collapse {
-    display: flex !important;
+    /* 確保桌面版 navbar-collapse 顯示為 Flex 且行為正常 */
+    display: flex !important; /* 重要，因為小螢幕會設為 none */
     flex-basis: auto;
+    flex-grow: 1; /* 讓它佔據剩餘空間 */
+    align-items: center; /* 確保內容垂直居中 */
+    justify-content: flex-end; /* 讓菜單項目靠右 */
   }
   #mainNav .navbar-nav {
     display: flex !important;
@@ -229,33 +238,218 @@ img::-moz-selection {
     padding: 1.1em 1.3em !important;
     white-space: nowrap;
   }
-  #mainNav .navbar-nav .nav-item .nav-link.active, 
+  #mainNav .navbar-nav .nav-item .nav-link.active,
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: rgb(255, 255, 255);
   }
+  /* 在桌面版隱藏漢堡按鈕 */
+  #menuToggleBtn {
+    display: none !important;
+  }
+  #mainNav .navbar-brand img {
+    height: 50px; /* 桌面版 logo 高度 */
+  }
+  #mainNav .navbar-nav .nav-item .nav-link {
+    font-size: 14px; /* 桌面版選單字體大小 */
+    padding: 1.1em 1.3em !important;
+  }
 }
 
+/* 手機版樣式 (650px 及以下) - 摺疊狀態 */
 @media (max-width: 650px) {
   #mainNav {
-    background-color: rgba(0, 0, 0, 0.2);
+    height: 65px; /* 增加手機版高度 */
     transition: all 0.3s ease;
   }
+  /* 摺疊狀態下，navbar-collapse 應該是隱藏的 */
   #mainNav .navbar-collapse {
     display: none;
   }
-  #mainNav .navbar-collapse.show {
-    display: block;
+  /* 顯示手機漢堡按鈕 */
+  #menuToggleBtn {
+    display: block !important; /* 確保手機版顯示按鈕 */
+    position: relative; /* 保持在流內，而不是 fixed */
+    right: auto;
+    top: auto;
+    margin-left: auto; /* 讓按鈕靠右 */
+  }
+  /* 調整 Navbar brand 在手機摺疊時的位置和樣式 */
+  #mainNav .navbar-brand {
+    position: static; /* 恢復靜態定位 */
+    color: white !important; /* 確保 logo 顏色 */
+    margin-left: 10px; /* 保持你的原始邊距 */
+  }
+  #mainNav .navbar-brand img {
+    height: 40px; /* 手機版 logo 高度 */
   }
   #mainNav .navbar-nav .nav-item .nav-link {
-    color: rgb(255, 255, 255);
-  }
-  #mainNav .navbar-nav .nav-item .nav-link.active, 
-  #mainNav .navbar-nav .nav-item .nav-link:hover,
-  #mainNav .navbar-nav .nav-item .nav-link:focus {
-    color: rgb(255, 255, 255) !important;
+    font-size: 13px; /* 手機版選單字體大小 */
+    padding: 0.5em 1em !important;
   }
 }
 
+/* 手機版全螢幕導航列樣式 - 展開狀態 */
+@media (max-width: 991.98px) { /* 使用 Bootstrap 的預設 breakpoint，通常是 992px 以下 */
+  #mainNav .navbar-collapse.show {
+    position: fixed; /* 固定在視窗上 */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 佔滿視窗寬度 */
+    height: 100vh; /* 佔滿視窗高度 */
+    background-color: rgba(32, 32, 32, 1); /* 深灰色，帶有透明度 */
+    z-index: 1050; /* 確保它在最上層，比其他內容都高 */
+    display: flex; /* 使用 Flexbox 布局 */
+    flex-direction: column; /* 垂直排列項目 */
+    justify-content: center; /* 垂直居中對齊項目 */
+    align-items: flex-start; /* 水平左對齊項目 (如截圖所示) */
+    padding: 0; /* 移除預設內邊距 */
+    overflow-y: auto; /* 如果內容太多可以滾動 */
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav {
+    width: 100%; /* 讓導航列表佔滿寬度 */
+    padding: 0; /* 移除預設內邊距 */
+    margin: 0; /* 移除預設外邊距 */
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item {
+    width: 100%; /* 讓每個項目佔滿一行 */
+    padding: 20px 30px; /* 增加上下內邊距，左右內邊距以適應文本 */
+    text-align: left; /* 確保文字靠左 */
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item:last-child {
+    border-bottom: none; /* 最後一個項目不要底線 */
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item .nav-link {
+    font-size: 20px; /* 調整字體大小 */
+    color: white; /* 文字為白色 */
+    text-transform: none; /* 移除大寫轉換，除非你希望保持 */
+    padding: 0; /* 移除連結本身的內邊距 */
+    display: flex; /* 讓連結內部也使用 Flexbox */
+    justify-content: space-between; /* 讓文字和箭頭分隔開 */
+    align-items: center; /* 垂直居中對齊文字和箭頭 */
+    width: 100%; /* 確保連結佔滿父容器寬度 */
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item .nav-link:hover,
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item .nav-link:focus {
+    color: rgba(255, 255, 255, 0.7); /* 懸停時顏色稍變淡 */
+  }
+
+  /* 添加右側的箭頭圖標 */
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item .nav-link::after {
+    font-family: "Font Awesome 5 Free"; /* 假設你使用了 Font Awesome */
+    font-weight: 900; /* 對於實心圖標 */
+    content: "\f105"; /* Font Awesome 的右箭頭 (chevron-right) 圖標 */
+    margin-left: 10px; /* 與文字的間距 */
+    color: white; /* 箭頭顏色為白色 */
+  }
+
+  /* 調整關閉按鈕 (漢堡按鈕) 的樣式和位置 */
+  #menuToggleBtn { /* 你的漢堡選單按鈕 */
+    position: fixed; /* 固定在視窗上 */
+    z-index: 1060; /* 比菜單層級更高 */
+    background-color: transparent !important; /* 確保背景透明 */
+    color: white !important; /* 關閉按鈕圖標顏色為白色 */
+    border: none !important; /* 移除邊框 */
+    font-size: 20px !important; /* 調整大小 */
+    padding: 0; /* 移除內邊距 */
+  }
+
+  /* 當菜單展開時，改變漢堡按鈕為 X 符號 */
+  #menuToggleBtn .fas.fa-bars {
+    display: block; /* 預設顯示漢堡圖標 */
+  }
+
+  #menuToggleBtn[aria-expanded="true"] .fas.fa-bars {
+    display: none; /* 展開時隱藏漢堡圖標 */
+  }
+
+  #menuToggleBtn[aria-expanded="true"]::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00d"; /* Font Awesome 的 X 符號 (times) 圖標 */
+    color: white; /* X 符號顏色為白色 */
+  }
+
+  /* 隱藏桌面版的 nav items，防止在手機版顯示 */
+  /* 在展開狀態下，navbar-nav 才顯示 */
+  #mainNav .navbar-nav {
+      display: none; /* 預設隱藏，只在 .show 時顯示 */
+  }
+  #mainNav .navbar-collapse.show .navbar-nav {
+      display: flex; /* 當菜單展開時顯示 */
+  }
+
+  /* 調整 Navbar brand 在全螢幕菜單展開時的位置和樣式 */
+  #mainNav .navbar-brand {
+    position: fixed; /* 固定位置 */
+    z-index: 1060; /* 確保在最上層 */
+    color: white !important; /* logo 顏色為白色 */
+  }
+
+  /* 隱藏預設的 navbar-toggler 樣式，因為我們已經重新定義了 */
+  #mainNav .navbar-toggler {
+    background-color: transparent !important;
+    border: none !important;
+  }
+}
+
+/* 確保桌面版導航列在較大螢幕上保持原樣 (992px 及以上) */
+@media (min-width: 992px) {
+  /* 確保在桌面版不應用全螢幕樣式 */
+  #mainNav .navbar-collapse.show {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background-color: rgba(32, 32, 32, 0.9) !important; /* 統一桌面版背景色 */
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important; /* 桌面版靠右 */
+    align-items: center !important;
+    z-index: auto !important;
+    overflow-y: visible !important;
+    padding: initial !important;
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    margin-right: 4%; /* 保持你原來的右邊距 */
+    align-items: center !important;
+    padding: initial !important;
+    margin: initial !important;
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item {
+    padding: initial !important;
+    border-bottom: none !important;
+    text-align: initial !important;
+  }
+
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item .nav-link {
+    color: rgb(255, 253, 253) !important; /* 恢復桌面版連結顏色 */
+    font-size: 100% !important;
+    text-transform: uppercase !important; /* 恢復桌面版大寫 */
+    padding: 1.1em 1.3em !important;
+    justify-content: initial !important; /* 移除 space-between */
+  }
+  #mainNav .navbar-collapse.show .navbar-nav .nav-item .nav-link::after {
+    content: none !important; /* 移除桌面版箭頭 */
+  }
+
+  #menuToggleBtn {
+    display: none !important; /* 在桌面版隱藏漢堡按鈕 */
+  }
+  #mainNav .navbar-brand {
+    position: static !important; /* 恢復靜態定位 */
+    color: white !important; /* 恢復桌面版 logo 顏色 */
+  }
+}
+
+/* --- 您的其餘 CSS 保持不變的部分 --- */
 header.masthead {
   text-align: center;
   color: white;
@@ -285,13 +479,6 @@ header.masthead .intro-text .intro-heading {
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-bottom: 1rem;
-}
-
-header.masthead .intro-text .intro-lead-in {
-  font-size: 2rem;
-  font-weight: 300;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 650px) {
@@ -484,7 +671,7 @@ header.masthead .intro-text .intro-heading {
   width: 1px;
   height: 3vw;
   margin-left: 35px;
-  
+
   /* IE 9 */
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

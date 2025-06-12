@@ -280,24 +280,6 @@
   }
 }
 
-/* 導覽列樣式 */
-#mainNav {
-  background-color: rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-@media (max-width: 650px) {
-  .navbar-toggler {
-    display: block !important;
-  }
-}
-
-@media (min-width: 651px) {
-  .navbar-toggler {
-    display: none !important;
-  }
-}
-
 /* 隱藏 Select2 預設箭頭 */
 .select2-container--bootstrap-5 .select2-selection__arrow {
   display: none;

@@ -426,12 +426,12 @@ function show_viewAll_button(n){
 function changeToChinese(element) {
     if (element) {
       var text = element.getElementsByTagName('a')[0];
-      if (text.innerHTML === 'Services') {
+      if (text.innerHTML === 'SERVICES') {
         text.innerHTML = '服務項目';
         text.style.fontSize = '1.1em';
         text.setAttribute('lang', 'zh-TW');
       }
-      if (text.innerHTML === 'Projects') {
+      if (text.innerHTML === 'PROJECTS') {
         text.innerHTML = '作品集';
         text.style.fontSize = '1.1em';
         text.setAttribute('lang', 'zh-TW');
@@ -446,12 +446,12 @@ function changeToChinese(element) {
         text.style.fontSize = '1.1em';
         text.setAttribute('lang', 'zh-TW');
       }
-      if (text.innerHTML === 'Contact') {
+      if (text.innerHTML === 'CONTACT') {
         text.innerHTML = '聯絡我們';
         text.style.fontSize = '1.1em';
         text.setAttribute('lang', 'zh-TW');
       }
-      if (text.innerHTML === 'Home') {
+      if (text.innerHTML === 'HOME') {
         text.innerHTML = '首頁';
         text.style.fontSize = '1.1em';
         text.setAttribute('lang', 'zh-TW');
@@ -463,7 +463,7 @@ function changeToEnglish(element) {
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '服務項目') {
-        text.innerHTML = 'Services';
+        text.innerHTML = 'SERVICES';
         text.style.fontSize = '1em';
         text.setAttribute('lang', 'en');
       }
@@ -471,7 +471,7 @@ function changeToEnglish(element) {
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '作品集') {
-        text.innerHTML = 'Projects';
+        text.innerHTML = 'PROJECTS';
         text.style.fontSize = '1em';
         text.setAttribute('lang', 'en');
       }
@@ -495,7 +495,7 @@ function changeToEnglish(element) {
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '聯絡我們') {
-        text.innerHTML = 'Contact';
+        text.innerHTML = 'CONTACT';
         text.style.fontSize = '1em';
         text.setAttribute('lang', 'en');
       }
@@ -503,7 +503,7 @@ function changeToEnglish(element) {
   if (element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === '首頁') {
-        text.innerHTML = 'Home';
+        text.innerHTML = 'HOME';
         text.style.fontSize = '1em';
         text.setAttribute('lang', 'en');
       }
@@ -640,31 +640,4 @@ function handleCrossPageScroll() {
 // 在頁面載入時執行
 document.addEventListener('DOMContentLoaded', function() {
   handleCrossPageScroll();
-});
-
-// 控制導航選單背景顏色
-document.addEventListener('DOMContentLoaded', function() {
-  const mainNav = document.getElementById('mainNav');
-  const menuBtn = document.getElementById('menuToggleBtn');
-  let navOpen = false;
-
-  if (menuBtn) {
-    menuBtn.addEventListener('click', function() {
-      navOpen = !navOpen;
-      if (navOpen) {
-        mainNav.style.setProperty('background-color', 'rgba(38, 38, 38, 0.95)', 'important');
-      } else {
-        mainNav.style.setProperty('background-color', 'rgba(0, 0, 0, 0.2)', 'important');
-      }
-    });
-  }
-
-  // 如果有用 collapse，收起時自動還原
-  const navbarCollapse = document.querySelector('.navbar-collapse');
-  if (navbarCollapse) {
-    navbarCollapse.addEventListener('hide.bs.collapse', function() {
-      navOpen = false;
-      mainNav.style.setProperty('background-color', 'rgba(0, 0, 0, 0.2)', 'important');
-    });
-  }
 });
