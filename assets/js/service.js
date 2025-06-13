@@ -86,6 +86,10 @@ style.textContent = `
 .section-heading {
   letter-spacing: 0.1em;
 }
+.workflow-tab.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 
 /* Base gap for very large screens */
 .workflow-row {
@@ -137,6 +141,11 @@ style.textContent = `
     justify-content: center !important;
     flex-wrap: nowrap !important;
     gap: 4px !important;
+    display: none !important; /* Hide tabs on mobile */
+  }
+  .workflow-select-wrapper {
+    display: flex !important;
+    justify-content: flex-end !important;
   }
   .workflow-tab {
     font-size: 0.9em !important;
@@ -305,17 +314,6 @@ workflowTitleDiv.style.justifyContent = 'flex-end';
 workflowTitleDiv.style.gap = '32px';
 workflowTitleDiv.style.marginBottom = '40px';
 
-// 新增：在 workflow-title 下方加一條分隔線
-if (!document.getElementById('workflow-title-divider')) {
-  const divider = document.createElement('div');
-  divider.id = 'workflow-title-divider';
-  divider.style.width = '100%';
-  divider.style.height = '1px';
-  divider.style.background = '#aaa';
-  divider.style.margin = '0 0 24px 0';
-  workflowTitleDiv.parentNode.insertBefore(divider, workflowTitleDiv.nextSibling);
-}
-
 workflowDataArrayService.forEach((item, idx) => {
   const tab = document.createElement('div');
   tab.textContent = item['服務名稱'];
@@ -332,12 +330,63 @@ workflowDataArrayService.forEach((item, idx) => {
   workflowTitleDiv.appendChild(tab);
 });
 
+// 新增：動態產生 workflow-select
+const workflowSelectWrapper = document.querySelector('.workflow-select-wrapper');
+if (workflowSelectWrapper) {
+  const select = document.createElement('select');
+  select.id = 'service-select';
+  select.className = 'service-select-button';
+  select.onchange = function () {
+    showWorkflow(parseInt(this.value)); // 確保是數字
+  };
+  select.lang = 'zh-TW';
+
+  workflowDataArrayService.forEach((item, idx) => {
+    const option = document.createElement('option');
+    option.value = idx;
+    option.textContent = item['服務名稱'];
+    option.lang = 'zh-TW';
+    if (idx === currentIndex) {
+      option.selected = true;
+    }
+    select.appendChild(option);
+  });
+  workflowSelectWrapper.appendChild(select);
+  
+  // 初始化 select2
+  $(document).ready(function () {
+    $('#service-select').select2({
+      theme: 'bootstrap-5',
+      minimumResultsForSearch: Infinity,
+      width: '180px'
+    });
+  });
+}
+
+// 新增：在選單/tab 下方加一條分隔線
+if (!document.getElementById('workflow-title-divider')) {
+  const divider = document.createElement('div');
+  divider.id = 'workflow-title-divider';
+  divider.style.marginTop = '5vh';
+  divider.style.width = '100%';
+  divider.style.height = '1px';
+  divider.style.background = '#aaa';
+  workflowStepsDiv.parentNode.insertBefore(divider, workflowStepsDiv);
+}
+
 // 渲染對應服務內容
 function showWorkflow(idx) {
   // tab 樣式切換
   document.querySelectorAll('.workflow-tab').forEach((el, i) => {
-    el.style.borderBottom = i === idx ? '2px solid #fff' : '2px solid transparent';
+    el.style.borderBottom = i === parseInt(idx) ? '2px solid #fff' : '2px solid transparent';
   });
+
+  // 更新 select dropdown 的值
+  const select = document.getElementById('service-select');
+  if (select && select.value !== idx) {
+    select.value = idx;
+  }
+
   // 清空流程內容
   workflowStepsDiv.innerHTML = '';
   const data = workflowDataArrayService[idx];
@@ -349,7 +398,6 @@ function showWorkflow(idx) {
     row.style.display = 'flex';
     row.style.alignItems = 'flex-start';
     row.style.padding = '20px 0';
-    // row.style.gap = '30%'; // Removed: Let CSS handle the gap
     row.style.width = '100%';
     row.style.borderBottom = '1px solid #aaa';
 
@@ -364,7 +412,6 @@ function showWorkflow(idx) {
     left.style.paddingLeft = '40px';
     left.style.lineHeight = '1.7';
     left.textContent = `${(i + 1).toString().padStart(2, '0')}.${key}`;
-    // left.style.marginRight = '10%'; // Removed: Gap handles this
 
     const right = document.createElement('div');
     right.className = 'workflow-step-desc';

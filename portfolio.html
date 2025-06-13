@@ -148,6 +148,7 @@
     }
 
     .select2-container--bootstrap-5 .select2-results__option {
+      background-color: #3a3a3a !important;
       color: white !important;
       padding: 12px 20px;
       letter-spacing: 0.3em;
@@ -158,16 +159,11 @@
       overflow: hidden !important;
       text-overflow: ellipsis !important;
       white-space: nowrap !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
-    .select2-container--bootstrap-5 .select2-results__option:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 20px;
-      right: 20px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.1);
+    .select2-container--bootstrap-5 .select2-results__option:last-child {
+      border-bottom: none !important;
     }
 
     .select2-container--bootstrap-5 .select2-results__option--highlighted {
@@ -230,6 +226,13 @@
       pointer-events: none;
       /* 不讓 icon 擋到選單點擊 */
     }
+
+    #portfolio-divider {
+      margin-top: 5vh;
+      width: 100%;
+      height: 1px;
+      background: #aaa;
+    }
   </style>
 </head>
 
@@ -284,14 +287,15 @@
             <div class="col-12 col-md-4 d-flex justify-content-end">
                 <div class="custom-select-wrapper" style="width: 160px; position: relative; margin-top: 2vh;">
                     <select class="custom-select portfolio-select-button" onchange="portfolio_filter(this.value)" lang="zh-TW">
-                      <option value="all" lang="zh-TW" style="color: black; background-color: white;">全部</option>
-                      <option value="商業空間" lang="zh-TW" style="color: black; background-color: white;">商業空間</option>
-                      <option value="住宅空間" lang="zh-TW" style="color: black; background-color: white;">住宅空間</option>
-                      <option value="概念/3D" lang="zh-TW" style="color: black; background-color: white;">概念/3D</option>
+                      <option value="all" lang="zh-TW">全部</option>
+                      <option value="商業空間" lang="zh-TW">商業空間</option>
+                      <option value="住宅空間" lang="zh-TW">住宅空間</option>
+                      <option value="概念/3D" lang="zh-TW">概念/3D</option>
                     </select>
                 </div>
             </div>
           </div>
+          <div id="portfolio-divider"></div>
         <div class="row portfolio-container">
         </div>
       </div>

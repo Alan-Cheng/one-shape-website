@@ -19,6 +19,10 @@
   <link href="assets/css/custom-styles.css" rel="stylesheet">
   <link href="assets/css/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css"
+    rel="stylesheet" />
   <style>
     body {
       background: rgb(48, 48, 48);
@@ -142,6 +146,178 @@
     .page-section {
       background: #232427;
     }
+
+    .select2-container--bootstrap-5 {
+      position: relative;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection {
+      background-color: transparent !important;
+      border: 1px solid white !important;
+      color: white !important;
+      letter-spacing: 0.3em;
+      font-size: 0.9em;
+      padding: 12px 20px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: auto !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection:hover {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single {
+      background-color: transparent !important;
+      border: 1px solid white !important;
+      border-radius: 4px !important;
+      height: 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .select2-container--bootstrap-5.select2-container--open .select2-selection--single {
+      background-color: rgba(58, 58, 58, 0.5) !important;
+      border-color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+      color: rgba(247, 247, 247, 0.682) !important;
+      padding-right: 30px;
+      text-align: center !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow {
+      position: absolute !important;
+      right: 10px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      color: white !important;
+      transition: transform 0.3s ease !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow b {
+      border-color: white transparent transparent transparent !important;
+      border-width: 6px 4px 0 4px !important;
+    }
+
+    .select2-container--bootstrap-5.select2-container--open .select2-selection--single .select2-selection__arrow b {
+      border-color: transparent transparent white transparent !important;
+      border-width: 0 4px 6px 4px !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-dropdown {
+      background-color: #3a3a3a !important;
+      border: 1px solid white !important;
+      border-radius: 4px;
+      margin-top: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: dropdownFade 0.2s ease;
+    }
+
+    @keyframes dropdownFade {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option {
+      color: white !important;
+      padding: 12px 20px;
+      letter-spacing: 0.3em;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+      position: relative;
+      text-align: center;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option--highlighted {
+      background-color: #3a3a3a !important;
+      color: white !important;
+      transform: translateX(5px);
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option--selected {
+      background-color: #3a3a3a !important;
+      color: white !important;
+      position: relative;
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option--selected::before {
+      content: '✓';
+      position: absolute;
+      left: 10px;
+      color: white;
+    }
+
+    .select2-container--bootstrap-5 .select2-results {
+      max-height: 300px;
+      overflow-y: auto;
+      overflow-x: hidden !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-results::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .select2-container--bootstrap-5 .select2-results::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .select2-container--bootstrap-5 .select2-results::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+    }
+
+    .select2-container--bootstrap-5 .select2-dropdown {
+      overflow-x: hidden !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-results__options {
+      overflow-x: hidden !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
   </style>
 </head>
 
@@ -199,6 +375,7 @@
           </div>
         </div>
         <div class="workflow-title"></div>
+        <div class="workflow-select-wrapper" style="display: none;"></div>
         <div class="workflow-steps" id="workflow-steps"></div>
       </div>
     </main>
@@ -325,6 +502,8 @@
   <script src="workflow_description.js"></script>
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/service.js"></script>
+  <!-- Select2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>disableRightClickAndCopy()</script>
 
   <script>
