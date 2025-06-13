@@ -180,8 +180,7 @@ style.textContent = `
     padding: 0 24px !important;
   }
   .fee-box {
-    padding: 30px 24px !important;
-    margin: 0 16px !important;
+    padding: 0 16px !important;
   }
   .fee-box li {
     flex-direction: column !important;
@@ -235,8 +234,7 @@ style.textContent = `
     padding: 0 16px !important;
   }
   .fee-box {
-    padding: 24px 16px !important;
-    margin: 0 16px !important;
+    padding: 0 16px !important;
   }
   .fee-box li {
     padding: 12px 0 !important;
@@ -295,6 +293,7 @@ workflowDataArrayService.forEach((row, idx) => {
   right.setAttribute('lang', 'zh-TW');
   right.style.flex = '1 1 0';
   right.style.textAlign = 'left';
+  right.style.paddingLeft = '20px';
   right.style.letterSpacing = '0.05em';
   right.style.fontSize = '1em';
   right.style.lineHeight = '1.8';
@@ -367,7 +366,6 @@ if (workflowSelectWrapper) {
 if (!document.getElementById('workflow-title-divider')) {
   const divider = document.createElement('div');
   divider.id = 'workflow-title-divider';
-  divider.style.marginTop = '5vh';
   divider.style.width = '100%';
   divider.style.height = '1px';
   divider.style.background = '#aaa';

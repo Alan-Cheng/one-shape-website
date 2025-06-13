@@ -92,31 +92,24 @@
 .scalable-div h5,
 .scalable-div h4,
 .scalable-div ul{
-  font-size: 1.1em; /* 使用相對單位，根據實際需求調整 */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .scalable-div ul li{
-  font-size: 0.9em; /* 使用相對單位，根據實際需求調整 */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .scalable-div li{
-  font-size: 0.9em; /* 使用相對單位，根據實際需求調整 */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .scalable-div p{
-  font-size: 1em;
   color: rgb(45, 45, 45);
   white-space: pre-wrap;
   text-transform: none;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.scalable-div ul ul li{
-  font-size: 0.9em; /* 使用相對單位，根據實際需求調整 */
-}
 
 .description_list{
   list-style-type: none; 

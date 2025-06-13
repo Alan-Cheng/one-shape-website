@@ -84,7 +84,6 @@ function build_portfolio(jsonDataArray, page){
     const col = document.createElement('div');
     col.className = 'col-md-4 portfolio-item';
     col.style.marginBottom = '30px';
-    col.style.padding = '0 15px';
     col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
     col.style.borderTopLeftRadius = '4px';
     col.style.borderTopRightRadius = '4px';
@@ -101,9 +100,9 @@ function build_portfolio(jsonDataArray, page){
 
     // 檢查螢幕寬度並調整大小
     if (window.innerWidth <= 767) {
-      col.style.maxWidth = '85%';
-      col.style.margin = '0 auto 20px auto';
-      col.style.padding = '0 10px';
+      col.style.maxWidth = '100%';
+      // col.style.margin = '0 auto 20px auto';
+      // col.style.padding = '0 10px';
     }
 
     const link = document.createElement('a');
@@ -428,32 +427,32 @@ function changeToChinese(element) {
       var text = element.getElementsByTagName('a')[0];
       if (text.innerHTML === 'SERVICES') {
         text.innerHTML = '服務項目';
-        text.style.fontSize = '1.1em';
+        text.style.fontSize = '1.2em';
         text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'PROJECTS') {
         text.innerHTML = '作品集';
-        text.style.fontSize = '1.1em';
+        text.style.fontSize = '1.2em';
         text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'About') {
         text.innerHTML = '關於我們';
-        text.style.fontSize = '1.1em';
+        text.style.fontSize = '1.2em';
         text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'Team') {
         text.innerHTML = '團隊成員';
-        text.style.fontSize = '1.1em';
+        text.style.fontSize = '1.2em';
         text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'CONTACT') {
         text.innerHTML = '聯絡我們';
-        text.style.fontSize = '1.1em';
+        text.style.fontSize = '1.2em';
         text.setAttribute('lang', 'zh-TW');
       }
       if (text.innerHTML === 'HOME') {
         text.innerHTML = '首頁';
-        text.style.fontSize = '1.1em';
+        text.style.fontSize = '1.2em';
         text.setAttribute('lang', 'zh-TW');
       }
     }
@@ -547,6 +546,8 @@ function show_workflow() {
     workflowgrid.style.marginLeft = 'auto';
     workflowgrid.style.marginRight = '0';
     workflowgrid.style.maxWidth = '80%';
+    workflowgrid.style.paddingTop = '5%';
+    workflowgrid.style.paddingBottom = '5%';
   } else {
     workflowgrid.style.margin = '0 auto';
     workflowgrid.style.maxWidth = '100%';

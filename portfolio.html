@@ -277,29 +277,32 @@
 
   <!-- Portfolio Grid -->
   <section class="page-section" id="portfolio">
-    <div class="container-fluid" style="padding-left: 8%; padding-right: 8%;">
-      <div class="row" style="margin-top: 13vh;">
-            <div class="col-12 col-md-8">
-                <h2 class="section-heading text-uppercase" lang="en" style="letter-spacing: 0.1em;">
-                    PROJECTS
-                </h2>
-            </div>
-            <div class="col-12 col-md-4 d-flex justify-content-end">
-                <div class="custom-select-wrapper" style="width: 160px; position: relative; margin-top: 2vh;">
-                    <select class="custom-select portfolio-select-button" onchange="portfolio_filter(this.value)" lang="zh-TW">
-                      <option value="all" lang="zh-TW">全部</option>
-                      <option value="商業空間" lang="zh-TW">商業空間</option>
-                      <option value="住宅空間" lang="zh-TW">住宅空間</option>
-                      <option value="概念/3D" lang="zh-TW">概念/3D</option>
-                    </select>
-                </div>
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-left">
+          <div class="align-items-center">
+              <h2 class="section-heading text-uppercase" lang="en" style="letter-spacing: 0.1em;">
+                PROJECTS
+              </h2>
           </div>
-          <div id="portfolio-divider"></div>
-        <div class="row portfolio-container">
         </div>
       </div>
-  </section>
+      <div class="workflow-title">
+        <div class="workflow-select-wrapper" style="width: 160px; position: relative; float: right;">
+          <select class="custom-select portfolio-select-button" onchange="portfolio_filter(this.value)" lang="zh-TW">
+              <option value="all" lang="zh-TW">全部</option>
+              <option value="商業空間" lang="zh-TW">商業空間</option>
+              <option value="住宅空間" lang="zh-TW">住宅空間</option>
+              <option value="概念/3D" lang="zh-TW">概念/3D</option>
+          </select>
+        </div>
+      </div>
+      <div style="clear: both;"></div> <!-- ✅ 清除浮動 -->
+      <div id="workflow-title-divider"></div>
+
+      <div class="row portfolio-container"></div>
+    </div>
+</section>
 
   <!-- Portfolio Modals -->
   <div class="portfolio-detail">
@@ -314,6 +317,7 @@
         <div class="col-lg-12">
           <div class="section-title-row" id="workflow">
             <h2 class="section-heading text-uppercase" lang="en">CONTACT US</h2>
+            <div class="section-title-line"></div>
           </div>
         </div>
       </div>
@@ -409,6 +413,7 @@
   <script src="assets/js/agency.min.js"></script>
   <script src="./portfolio_description.js"></script>
   <script src="assets/js/custom.js"></script>
+  <script src="assets/js/service.js"></script>
   <!-- Select2 JS -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>

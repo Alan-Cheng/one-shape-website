@@ -62,35 +62,13 @@ h3{
 }
 
 .page-section {
-  padding: 100px 0;
+  padding-top: 7vh;
+  padding-bottom: 17vh;
   position: relative;
-}
-
-@media (max-width: 767px) {
-  .page-section {
-    padding: 50px 0;
-  }
-  #about.page-section {
-    padding-top: 30px;
-  }
-}
-
-@media (max-width: 576px) {
-  .page-section {
-    padding: 30px 0;
-  }
-  #about.page-section {
-    padding-top: 20px;
-    min-height: 80vh;
-  }
-  #about .scalable-div {
-    min-height: 30vh;
-  }
 }
 
 .page-section h2.section-heading {
   font-size: 1.7em;
-  margin-top: 0;
   margin-bottom: 15px;
   color: white;
 }
@@ -165,10 +143,11 @@ img::-moz-selection {
   align-items: center; /* 垂直居中對齊 */
   justify-content: space-between; /* logo 和菜單分開到兩邊 */
   height: 80px; /* 增加預設高度 */
+  padding-left: 10%;
+  padding-right: 5%;
 }
 
 #mainNav .navbar-toggler {
-  font-size: 12px;
   right: 0;
   padding: 10px;
   text-transform: uppercase;
@@ -179,9 +158,7 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-brand {
-  margin-left: 10px;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1.75em;
   transition: all 0.3s;
 }
 
@@ -191,20 +168,17 @@ img::-moz-selection {
   transition: all 0.3s;
 }
 
-#mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-  color: #fec503;
-}
-
 #mainNav .navbar-nav .nav-item .nav-link {
-  font-size: 100%;
   padding: 0.7em 0;
   letter-spacing: 2px;
   color: rgb(255, 253, 253);
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
   color: rgb(255, 255, 255);
 }
+
 .nav-item .translation {
   display: none;
   position: absolute;
@@ -230,7 +204,6 @@ img::-moz-selection {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     /* navbar-brand */
-    margin-left: 12%;
   }
   #mainNav .navbar-collapse {
     /* 確保桌面版 navbar-collapse 顯示為 Flex 且行為正常 */
@@ -243,7 +216,6 @@ img::-moz-selection {
   #mainNav .navbar-nav {
     display: flex !important;
     flex-direction: row !important;
-    margin-right: 4%;
     align-items: center;
     margin-left: auto !important;
   }
@@ -266,10 +238,6 @@ img::-moz-selection {
   #mainNav .navbar-brand img {
     height: 50px; /* 桌面版 logo 高度 */
   }
-  #mainNav .navbar-nav .nav-item .nav-link {
-    font-size: 14px; /* 桌面版選單字體大小 */
-    padding: 1.1em 1.3em !important;
-  }
 }
 
 /* 手機版樣式 (650px 及以下) - 摺疊狀態 */
@@ -277,6 +245,7 @@ img::-moz-selection {
   #mainNav {
     height: 65px; /* 增加手機版高度 */
     transition: all 0.3s ease;
+    padding-left: 5%;
   }
   /* 摺疊狀態下，navbar-collapse 應該是隱藏的 */
   #mainNav .navbar-collapse {
@@ -299,11 +268,15 @@ img::-moz-selection {
   }
   #mainNav .navbar-brand img {
     height: 40px; /* 手機版 logo 高度 */
-    margin-left: 12px;
   }
   #mainNav .navbar-nav .nav-item .nav-link {
     font-size: 13px; /* 手機版選單字體大小 */
     padding: 0.5em 1em !important;
+  }
+  .page-section {
+    padding-top: 18vh !important;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 }
 
@@ -561,14 +534,9 @@ header.masthead .intro-text .intro-heading {
   color: white;
 }
 
-#portfolio .portfolio-item {
-  right: 0;
-  margin: 0 0 30px;
-}
 #portfolio .portfolio-item .portfolio-link {
   position: relative;
   display: block;
-  max-width: 400px;
   margin: 0 auto;
   cursor: pointer;
 }
@@ -630,11 +598,6 @@ header.masthead .intro-text .intro-heading {
   padding: 30px 0;
 }
 
-@media (min-width: 767px) {
-  #portfolio .portfolio-item {
-    margin: 0 0 30px;
-  }
-}
 .portfolio-modal .modal-dialog {
   margin: 1rem;
   max-width: 100vw;
@@ -1084,12 +1047,52 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   /* font-size: clamp(0.9em, 2vw, 1em); */
 }
 
+/* portfolio-header-divider 樣式 */
+.portfolio-header-divider {
+  width: 100%; /* 讓線條寬度佔滿父容器 */
+  height: 1px; /* 線條厚度 */
+  background-color: white; /* 線條顏色 */
+  margin-top: 20px; /* 線條上方與標題/選單的間距 */
+  margin-bottom: 50px; /* 線條下方與作品集網格的間距 */
+  opacity: 0.5; /* 輕微透明，使其不那麼刺眼 */
+}
+
+/* 針對小螢幕，調整間距和選單寬度 */
 @media (max-width: 650px) {
-  #portfolio h2 {
-    margin-top: 8vh !important;
+  /* 調整標題和選單外層容器的間距 */
+  .d-flex.align-items-center.justify-content-between {
+      /* 在小螢幕時讓標題和選單垂直堆疊 */
+      flex-direction: column;
+      /* 給下拉選單和標題之間一些間距 */
+      margin-bottom: 20px !important; /* 確保有足夠的下邊距 */
   }
-  #portfolio .custom-select-wrapper {
-    margin-right: 3vh;
-    width: 120px !important;
+
+  /* 調整標題的下邊距，使其與下拉選單有間隔 */
+  .section-heading.text-uppercase {
+      margin-bottom: 15px !important;
+  }
+
+  /* 調整下拉選單在小螢幕下的寬度 */
+  .custom-select-wrapper {
+      width: 120px !important; /* 根據截圖中下拉選單的大小判斷 */
+  }
+
+  /* 調整分隔線的間距 */
+  .portfolio-header-divider {
+      margin-top: 20px; /* 小螢幕分隔線與上方元素的間距 */
+      margin-bottom: 30px; /* 小螢幕分隔線與下方作品集的間距 */
+  }
+}
+
+#workflow-title-divider {
+  margin-top: 3vh;
+  width: 100%;
+  height: 1px;
+  background: #aaa;
+}
+
+@media (min-width: 650px) {
+  #portfolio, #workflow > .container {
+    margin-top: 12vh; /* 或其他你想要的距離，例如 2rem、40px */
   }
 }
