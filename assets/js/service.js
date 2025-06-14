@@ -91,6 +91,35 @@ style.textContent = `
   text-underline-offset: 4px;
 }
 
+/* Animation styles */
+.workflow-row {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.workflow-row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.workflow-tab {
+  transition: all 0.3s ease;
+}
+
+.workflow-tab:hover {
+  opacity: 0.8;
+}
+
+#workflow-steps {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#workflow-steps.visible {
+  opacity: 1;
+}
+
 /* Base gap for very large screens */
 .workflow-row {
   gap: 120px; /* Increased gap for very large screens */
@@ -389,71 +418,98 @@ function showWorkflow(idx) {
 
   // 清空流程內容
   workflowStepsDiv.innerHTML = '';
+  workflowStepsDiv.classList.remove('visible');
+  
   const data = workflowDataArrayService[idx];
   const desc = data['服務說明'];
-  Object.keys(desc).forEach((key, i) => {
-    if (key.startsWith('費用')) return; // 不顯示費用
-    const row = document.createElement('div');
-    row.className = 'workflow-row';
-    row.style.display = 'flex';
-    row.style.alignItems = 'flex-start';
-    row.style.padding = '20px 0';
-    row.style.width = '100%';
-    row.style.borderBottom = '1px solid #aaa';
+  
+  // 使用 Promise 來處理動畫序列
+  const createRows = async () => {
+    const rows = [];
+    Object.keys(desc).forEach((key, i) => {
+      if (key.startsWith('費用')) return;
+      const row = document.createElement('div');
+      row.className = 'workflow-row';
+      row.style.display = 'flex';
+      row.style.alignItems = 'flex-start';
+      row.style.padding = '20px 0';
+      row.style.width = '100%';
+      row.style.borderBottom = '1px solid #aaa';
 
-    const left = document.createElement('div');
-    left.className = 'workflow-step-title';
-    left.setAttribute('lang', 'zh-TW');
-    left.style.flex = '0 0 230px';
-    left.style.fontSize = '1.2em';
-    left.style.fontWeight = '500';
-    left.style.letterSpacing = '0.12em';
-    left.style.textAlign = 'left';
-    left.style.paddingLeft = '40px';
-    left.style.lineHeight = '1.7';
-    left.textContent = `${(i + 1).toString().padStart(2, '0')}.${key}`;
+      const left = document.createElement('div');
+      left.className = 'workflow-step-title';
+      left.setAttribute('lang', 'zh-TW');
+      left.style.flex = '0 0 230px';
+      left.style.fontSize = '1.2em';
+      left.style.fontWeight = '500';
+      left.style.letterSpacing = '0.12em';
+      left.style.textAlign = 'left';
+      left.style.paddingLeft = '40px';
+      left.style.lineHeight = '1.7';
+      left.textContent = `${(i + 1).toString().padStart(2, '0')}.${key}`;
 
-    const right = document.createElement('div');
-    right.className = 'workflow-step-desc';
-    right.setAttribute('lang', 'zh-TW');
-    right.style.flex = '1 1 0';
-    right.style.fontSize = '0.9em';
-    right.style.color = '#fff';
-    right.style.textAlign = 'left';
-    right.style.paddingRight = '40px';
-    right.style.display = 'flex';
-    right.style.justifyContent = 'flex-end';
+      const right = document.createElement('div');
+      right.className = 'workflow-step-desc';
+      right.setAttribute('lang', 'zh-TW');
+      right.style.flex = '1 1 0';
+      right.style.fontSize = '0.9em';
+      right.style.color = '#fff';
+      right.style.textAlign = 'left';
+      right.style.paddingRight = '40px';
+      right.style.display = 'flex';
+      right.style.justifyContent = 'flex-end';
 
-    const inner = document.createElement('div');
-    inner.style.maxWidth = '500px';
-    inner.style.textAlign = 'left';
-    inner.style.width = '100%';
+      const inner = document.createElement('div');
+      inner.style.maxWidth = '500px';
+      inner.style.textAlign = 'left';
+      inner.style.width = '100%';
 
-    const ul = document.createElement('ul');
-    ul.style.display = 'flex';
-    ul.style.flexDirection = 'column';
-    ul.style.alignItems = 'flex-start';
-    ul.style.margin = '0';
-    ul.style.padding = '0';
-    ul.style.lineHeight = '1.8';
+      const ul = document.createElement('ul');
+      ul.style.display = 'flex';
+      ul.style.flexDirection = 'column';
+      ul.style.alignItems = 'flex-start';
+      ul.style.margin = '0';
+      ul.style.padding = '0';
+      ul.style.lineHeight = '1.8';
 
-    (desc[key] || []).forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      li.setAttribute('lang', 'zh-TW');
-      li.style.marginBottom = '8px';
-      li.style.listStyleType = 'none';
-      li.style.textIndent = '-1.5em';
-      ul.appendChild(li);
+      (desc[key] || []).forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        li.setAttribute('lang', 'zh-TW');
+        li.style.marginBottom = '8px';
+        li.style.listStyleType = 'none';
+        li.style.textIndent = '-1.5em';
+        ul.appendChild(li);
+      });
+
+      inner.appendChild(ul);
+      right.appendChild(inner);
+
+      row.appendChild(left);
+      row.appendChild(right);
+      rows.push(row);
     });
 
-    inner.appendChild(ul);
-    right.appendChild(inner);
+    // 先添加所有行但保持隱藏
+    rows.forEach(row => {
+      workflowStepsDiv.appendChild(row);
+    });
 
-    row.appendChild(left);
-    row.appendChild(right);
-    workflowStepsDiv.appendChild(row);
-  });
+    // 顯示容器
+    workflowStepsDiv.classList.add('visible');
+
+    // 依次顯示每一行
+    for (let i = 0; i < rows.length; i++) {
+      await new Promise(resolve => {
+        setTimeout(() => {
+          rows[i].classList.add('visible');
+          resolve();
+        }, 100); // 每行延遲 100ms
+      });
+    }
+  };
+
+  createRows();
 }
 
 // 初始化顯示當前服務的內容
