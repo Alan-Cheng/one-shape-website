@@ -11,8 +11,6 @@ if (window.portfolioData) {
   build_portfolio(firstThreeProjects, "home");
 }
 
-// // 從 localStorage 中取出 savedVariable 的並剖析為 JavaScript 物件
-// let jsonDataArray = JSON.parse(localStorage.getItem('portfolio_description'));
 const workflowDataArray = JSON.parse(localStorage.getItem('workflow_description'));
 
 function splitTextWithPunctuation(text) {
@@ -71,7 +69,7 @@ function build_portfolio(jsonDataArray, page){
     // 反转排序后的数组
     var temp = sortedArray.slice();
 
-    // 移除现有的项目并重新构建内容
+    // 移除現有的項目並重新構築內容
     var container = document.querySelector('.portfolio-container');
     var items = container.querySelectorAll('.col-md-4.portfolio-item');
     items.forEach(function(item) {
@@ -136,108 +134,116 @@ function build_portfolio(jsonDataArray, page){
         const pageItems = result.slice(startIndex, endIndex);
         const pageIndexes = result_indexs.slice(startIndex, endIndex);
 
-        // 清除現有作品
         const container = document.querySelector('.portfolio-container');
-        container.innerHTML = '';
+        // 淡出效果
+        container.style.opacity = '0';
+        container.style.transition = 'opacity 0.3s ease-out';
 
-        // 顯示當前頁面的作品
-        pageItems.forEach((jsonData, index) => {
-          const col = document.createElement('div');
-          col.className = 'col-md-4 portfolio-item';
-          col.style.marginBottom = '30px';
-          col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-          col.style.borderTopLeftRadius = '4px';
-          col.style.borderTopRightRadius = '4px';
-          col.style.overflow = 'hidden';
-          col.style.cursor = 'pointer';
-          col.setAttribute('data-toggle', 'modal');
-          col.setAttribute('data-target', `#p${pageIndexes[index] + 1}`);
-          col.onmouseover = function() {
-            this.style.transform = 'translateY(-5px)';
-          };
-          col.onmouseout = function() {
-            this.style.transform = 'translateY(0)';
-          };
+        setTimeout(() => {
+          // 清除現有作品
+          container.innerHTML = '';
 
-          const link = document.createElement('a');
-          link.className = 'portfolio-link';
-          link.style.textDecoration = 'none';
-          link.style.display = 'block';
-          link.style.overflow = 'hidden';
-          link.style.borderTopLeftRadius = '4px';
-          link.style.borderTopRightRadius = '4px';
+          // 顯示當前頁面的作品
+          pageItems.forEach((jsonData, index) => {
+            const col = document.createElement('div');
+            col.className = 'col-md-4 portfolio-item';
+            col.style.marginBottom = '30px';
+            col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            col.style.borderTopLeftRadius = '4px';
+            col.style.borderTopRightRadius = '4px';
+            col.style.overflow = 'hidden';
+            col.style.cursor = 'pointer';
+            col.setAttribute('data-toggle', 'modal');
+            col.setAttribute('data-target', `#p${pageIndexes[index] + 1}`);
+            col.onmouseover = function() {
+              this.style.transform = 'translateY(-5px)';
+            };
+            col.onmouseout = function() {
+              this.style.transform = 'translateY(0)';
+            };
 
-          const hover = document.createElement('div');
-          hover.className = 'portfolio-hover';
-          hover.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-          hover.style.opacity = '0';
-          hover.style.transition = 'opacity 0.3s ease';
-          col.onmouseover = function() {
-            hover.style.opacity = '1';
-            this.style.transform = 'translateY(-5px)';
-          };
-          col.onmouseout = function() {
+            const link = document.createElement('a');
+            link.className = 'portfolio-link';
+            link.style.textDecoration = 'none';
+            link.style.display = 'block';
+            link.style.overflow = 'hidden';
+            link.style.borderTopLeftRadius = '4px';
+            link.style.borderTopRightRadius = '4px';
+
+            const hover = document.createElement('div');
+            hover.className = 'portfolio-hover';
+            hover.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
             hover.style.opacity = '0';
-            this.style.transform = 'translateY(0)';
-          };
+            hover.style.transition = 'opacity 0.3s ease';
+            col.onmouseover = function() {
+              hover.style.opacity = '1';
+              this.style.transform = 'translateY(-5px)';
+            };
+            col.onmouseout = function() {
+              hover.style.opacity = '0';
+              this.style.transform = 'translateY(0)';
+            };
 
-          const hoverContent = document.createElement('div');
-          hoverContent.className = 'portfolio-hover-content';
-          hoverContent.style.color = 'white';
-          hoverContent.style.fontSize = '1.2em';
-          hoverContent.style.letterSpacing = '0.1em';
+            const hoverContent = document.createElement('div');
+            hoverContent.className = 'portfolio-hover-content';
+            hoverContent.style.color = 'white';
+            hoverContent.style.fontSize = '1.2em';
+            hoverContent.style.letterSpacing = '0.1em';
 
-          hover.appendChild(hoverContent);
+            hover.appendChild(hoverContent);
 
-          const image = document.createElement('img');
-          image.className = 'img-fluid';
-          image.setAttribute('src', jsonData.圖片連結 + `1.webp`);
-          image.setAttribute('alt', '');
-          image.style.aspectRatio = '5/3';
-          image.style.width = '100%';
-          image.style.height = 'auto';
-          image.style.objectFit = 'cover';
-          image.style.transition = 'transform 0.3s ease';
-          col.onmouseover = function() {
-            image.style.transform = 'scale(1.05)';
-            hover.style.opacity = '1';
-            this.style.transform = 'translateY(-5px)';
-          };
-          col.onmouseout = function() {
-            image.style.transform = 'scale(1)';
-            hover.style.opacity = '0';
-            this.style.transform = 'translateY(0)';
-          };
+            const image = document.createElement('img');
+            image.className = 'img-fluid';
+            image.setAttribute('src', jsonData.圖片連結 + `1.webp`);
+            image.setAttribute('alt', '');
+            image.style.aspectRatio = '5/3';
+            image.style.width = '100%';
+            image.style.height = 'auto';
+            image.style.objectFit = 'cover';
+            image.style.transition = 'transform 0.3s ease';
+            col.onmouseover = function() {
+              image.style.transform = 'scale(1.05)';
+              hover.style.opacity = '1';
+              this.style.transform = 'translateY(-5px)';
+            };
+            col.onmouseout = function() {
+              image.style.transform = 'scale(1)';
+              hover.style.opacity = '0';
+              this.style.transform = 'translateY(0)';
+            };
 
-          link.appendChild(hover);
-          link.appendChild(image);
+            link.appendChild(hover);
+            link.appendChild(image);
 
-          const caption = document.createElement('div');
-          caption.className = 'portfolio-caption';
-          caption.style.backgroundColor = 'rgb(63,62,63)';
-          caption.style.height = '40px';
-          caption.style.display = 'flex';
-          caption.style.alignItems = 'center';
-          caption.style.justifyContent = 'flex-start';
-          caption.style.paddingLeft = '20px';
-          caption.style.borderBottomLeftRadius = '4px';
-          caption.style.borderBottomRightRadius = '4px';
-          caption.style.transition = 'background-color 0.3s ease';
+            const caption = document.createElement('div');
+            caption.className = 'portfolio-caption';
+            caption.style.backgroundColor = 'rgb(63,62,63)';
+            caption.style.height = '40px';
+            caption.style.display = 'flex';
+            caption.style.alignItems = 'center';
+            caption.style.justifyContent = 'flex-start';
+            caption.style.paddingLeft = '20px';
+            caption.style.borderBottomLeftRadius = '4px';
+            caption.style.borderBottomRightRadius = '4px';
+            caption.style.transition = 'background-color 0.3s ease';
 
-          const title = document.createElement('a');
-          title.innerText = jsonData.專案名;
-          title.style.letterSpacing = '0.2em';
-          title.style.color = 'white';
-          title.style.textDecoration = 'none';
-          title.style.transition = 'color 0.3s ease';
+            const title = document.createElement('a');
+            title.innerText = jsonData.專案名;
+            title.style.letterSpacing = '0.2em';
+            title.style.color = 'white';
+            title.style.textDecoration = 'none';
+            title.style.transition = 'color 0.3s ease';
 
-          caption.appendChild(title);
+            caption.appendChild(title);
 
-          col.appendChild(link);
-          col.appendChild(caption);
+            col.appendChild(link);
+            col.appendChild(caption);
 
-          container.appendChild(col);
-        });
+            container.appendChild(col);
+          });
+          // 淡入效果
+          container.style.opacity = '1';
+        }, 400); // 延遲時間應與 CSS transition-duration 匹配
 
         // 滾動到頂部
         window.scrollTo({
@@ -606,11 +612,6 @@ function show_N_wrok(N){
       var result = [];
       var indexes = new Set();
       var catergory = new Set();
-      //隨機取得n個不重複的索引
-      // while (indexes.size < n) {
-      //   const randomIndex = Math.floor(Math.random() * jsonDataArray.length);
-      //   indexes.add(randomIndex);
-      // }
       var rev_array = jsonDataArray.slice().reverse();
       for(var i = 0; i < rev_array.length; i++){
         if(indexes.size == n){
@@ -627,7 +628,6 @@ function show_N_wrok(N){
           catergory.add(rev_array[i].種類);
         }
       }
-      //將三種不同種類的作品分別放入result
       indexes.forEach(index => {
         result.push(rev_array[index]);
       });
@@ -649,14 +649,11 @@ function onScrollToSection(callback, N) {
     const section = document.getElementById('portfolio');
 
     if (isElementInViewport(section)) {
-      // 如果滾動到指定區塊，則執行提供的回調函數
       callback(N);
-      // 一旦執行過回調函數，停止監聽滾動事件，以防止重複觸發
       window.removeEventListener('scroll', handleScroll);
     }
   }
 
-  // 監聽滾動事件
   window.addEventListener('scroll', handleScroll);
 }
 
@@ -761,19 +758,27 @@ function changeToEnglish(element) {
 }
 
 function portfolio_filter(catergory){
-  // 先讓所有作品消失
   var container = document.querySelector('.portfolio-container');
-  var items = container.querySelectorAll('.col-md-4.portfolio-item');
-  items.forEach(function(item) {
-      item.remove();
-  });
-  
-  // 再讓符合條件的作品顯示
-  var temp = jsonDataArray.slice().reverse();
-  if(catergory != 'all'){
-    temp = temp.filter(item => item.種類 === catergory);
-  }
-  build_portfolio(temp, 'portfolio');
+  // 淡出效果
+  container.style.opacity = '0';
+  container.style.transition = 'opacity 0.3s ease-out';
+
+  setTimeout(() => {
+    // 先讓所有作品消失
+    var items = container.querySelectorAll('.col-md-4.portfolio-item');
+    items.forEach(function(item) {
+        item.remove();
+    });
+    
+    // 再讓符合條件的作品顯示
+    var temp = jsonDataArray.slice().reverse();
+    if(catergory != 'all'){
+      temp = temp.filter(item => item.種類 === catergory);
+    }
+    build_portfolio(temp, 'portfolio');
+    // 淡入效果
+    container.style.opacity = '1';
+  }, 400); // 延遲時間應與 CSS transition-duration 匹配
 }
 
 function enlargeIcon(element) {
