@@ -277,6 +277,11 @@ img::-moz-selection {
     padding-top: 18vh !important;
     padding-left: 5%;
     padding-right: 5%;
+    padding-bottom: 0vh !important;
+  }
+
+  .page-section > #contact {
+    padding-bottom: 15vh !important;
   }
 }
 
