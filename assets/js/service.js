@@ -123,7 +123,7 @@ style.textContent = `
     padding: 4px 8px !important;
   }
   #workflow-steps {
-    padding: 0 32px !important;
+    padding: 0 0 !important;
   }
   .row.align-items-center {
     margin-top: 1vh;
@@ -177,7 +177,7 @@ style.textContent = `
     padding-left: 50px !important;
   }
   #workflow-steps {
-    padding: 0 24px !important;
+    padding: 0 0px !important;
   }
   .fee-box {
     padding: 0 16px !important;
@@ -231,7 +231,7 @@ style.textContent = `
     margin-bottom: 6px !important;
   }
   #workflow-steps {
-    padding: 0 16px !important;
+    padding: 0 0px !important;
   }
   .fee-box {
     padding: 0 16px !important;
@@ -278,8 +278,8 @@ workflowDataArrayService.forEach((row, idx) => {
   const left = document.createElement('span');
   left.textContent = '・' + row.服務名稱;
   left.setAttribute('lang', 'zh-TW');
-  left.style.flex = '0 0 220px';
-  left.style.textAlign = 'left';
+  left.style.flex = '0 0 200px';
+  left.style.textAlign = 'center';
   left.style.letterSpacing = '0.05em';
 
   const divider = document.createElement('span');
@@ -293,7 +293,7 @@ workflowDataArrayService.forEach((row, idx) => {
   right.setAttribute('lang', 'zh-TW');
   right.style.flex = '1 1 0';
   right.style.textAlign = 'left';
-  right.style.paddingLeft = '20px';
+  right.style.paddingLeft = '5%';
   right.style.letterSpacing = '0.05em';
   right.style.fontSize = '1em';
   right.style.lineHeight = '1.8';
@@ -403,7 +403,7 @@ function showWorkflow(idx) {
     left.className = 'workflow-step-title';
     left.setAttribute('lang', 'zh-TW');
     left.style.flex = '0 0 230px';
-    left.style.fontSize = '1em';
+    left.style.fontSize = '1.2em';
     left.style.fontWeight = '500';
     left.style.letterSpacing = '0.12em';
     left.style.textAlign = 'left';
@@ -415,7 +415,7 @@ function showWorkflow(idx) {
     right.className = 'workflow-step-desc';
     right.setAttribute('lang', 'zh-TW');
     right.style.flex = '1 1 0';
-    right.style.fontSize = '1em';
+    right.style.fontSize = '0.9em';
     right.style.color = '#fff';
     right.style.textAlign = 'left';
     right.style.paddingRight = '40px';
