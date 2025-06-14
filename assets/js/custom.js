@@ -80,23 +80,43 @@ function build_portfolio(jsonDataArray, page){
     result = temp;
     result_indexs = temp.map((item, index) => jsonDataArray.indexOf(item));
   }
+
+  // 添加動畫樣式
+  const style = document.createElement('style');
+  style.textContent = `
+    .portfolio-item {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .portfolio-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .modal.fade .modal-dialog {
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .modal.show .modal-dialog {
+      transform: scale(1);
+    }
+  `;
+  document.head.appendChild(style);
+
   result.forEach((jsonData, index) => {
     const col = document.createElement('div');
     col.className = 'col-md-4 portfolio-item';
     col.style.marginBottom = '30px';
-    col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+    col.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
     col.style.borderTopLeftRadius = '4px';
     col.style.borderTopRightRadius = '4px';
     col.style.overflow = 'hidden';
     col.style.cursor = 'pointer';
     col.setAttribute('data-toggle', 'modal');
     col.setAttribute('data-target', `#p${result_indexs[index] + 1}`);
-    col.onmouseover = function() {
-      this.style.transform = 'translateY(-5px)';
-    };
-    col.onmouseout = function() {
-      this.style.transform = 'translateY(0)';
-    };
+    // 加入動畫效果
+    col.style.opacity = '0';
+    col.style.transform = 'translateY(20px)';
 
     // 檢查螢幕寬度並調整大小
     if (window.innerWidth <= 767) {
@@ -200,6 +220,14 @@ function build_portfolio(jsonDataArray, page){
 
     const portfolioContainer = document.querySelector('.portfolio-container');
     portfolioContainer.appendChild(col);
+
+    // 觸發動畫
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        col.style.opacity = '1';
+        col.style.transform = 'translateY(0)';
+      }, 50 + index * 80);
+    });
   });
 
   result.forEach((jsonData, index) => {
@@ -337,6 +365,30 @@ function build_portfolio(jsonDataArray, page){
       modalContent.appendChild(container);
       modalDialog.appendChild(modalContent);
       modal.appendChild(modalDialog);
+
+      // 添加 modal 動畫效果
+      modal.addEventListener('show.bs.modal', function () {
+        const modalDialog = this.querySelector('.modal-dialog');
+        modalDialog.style.transform = 'scale(0.95)';
+        modalDialog.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        requestAnimationFrame(() => {
+          modalDialog.style.transform = 'scale(1)';
+        });
+      });
+
+      modal.addEventListener('hide.bs.modal', function () {
+        const modalDialog = this.querySelector('.modal-dialog');
+        modalDialog.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        requestAnimationFrame(() => {
+          modalDialog.style.transform = 'scale(0.95)';
+        });
+      });
+
+      // 確保動畫完成後再關閉
+      modal.addEventListener('hidden.bs.modal', function () {
+        const modalDialog = this.querySelector('.modal-dialog');
+        modalDialog.style.transform = 'scale(0.95)';
+      });
 
       // 將新建的元素添加到頁面中的適當位置
       const portfolioContainer = document.querySelector('.portfolio-detail'); // 假設有一個包含這些區塊的容器元素
@@ -510,19 +562,25 @@ function changeToEnglish(element) {
 }
 
 function portfolio_filter(catergory){
-  // 先讓所有作品消失
   var container = document.querySelector('.portfolio-container');
-  var items = container.querySelectorAll('.col-md-4.portfolio-item');
-  items.forEach(function(item) {
-      item.remove();
-  });
-  
-  // 再讓符合條件的作品顯示
-  var temp = jsonDataArray.slice().reverse();
-  if(catergory != 'all'){
-    temp = temp.filter(item => item.種類 === catergory);
-  }
-  build_portfolio(temp, 'portfolio');
+  container.style.opacity = '0';
+  container.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+
+  setTimeout(() => {
+    var items = container.querySelectorAll('.col-md-4.portfolio-item');
+    items.forEach(function(item) {
+        item.remove();
+    });
+    
+    var temp = jsonDataArray.slice().reverse();
+    if(catergory != 'all'){
+      temp = temp.filter(item => item.種類 === catergory);
+    }
+    build_portfolio(temp, 'portfolio');
+    requestAnimationFrame(() => {
+      container.style.opacity = '1';
+    });
+  }, 300);
 }
 
 function enlargeIcon(element) {
