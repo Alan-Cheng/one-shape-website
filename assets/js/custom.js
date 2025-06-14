@@ -155,6 +155,10 @@ function build_portfolio(jsonDataArray, page){
             col.style.cursor = 'pointer';
             col.setAttribute('data-toggle', 'modal');
             col.setAttribute('data-target', `#p${pageIndexes[index] + 1}`);
+            // 加入動畫效果
+            col.style.opacity = '0'; // 初始隱藏
+            col.style.transform = 'translateY(100px)'; // 初始位置在下方
+
             col.onmouseover = function() {
               this.style.transform = 'translateY(-5px)';
             };
@@ -240,6 +244,13 @@ function build_portfolio(jsonDataArray, page){
             col.appendChild(caption);
 
             container.appendChild(col);
+
+            // 觸發動畫
+            setTimeout(() => {
+              col.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+              col.style.opacity = '1';
+              col.style.transform = 'translateY(0)';
+            }, 50 + index * 100); // 錯開時間，產生逐一顯示效果
           });
           // 淡入效果
           container.style.opacity = '1';
