@@ -95,28 +95,30 @@ function build_portfolio(jsonDataArray, page){
   paginationContainer.className = 'portfolio-pagination';
   paginationContainer.style.display = 'flex';
   paginationContainer.style.justifyContent = 'center';
+  paginationContainer.style.alignItems = 'center';
   paginationContainer.style.marginTop = '20px';
   paginationContainer.style.gap = '10px';
 
-  // 只在手機版顯示分頁
-  if (isMobile) {
-    // 創建分頁按鈕
+  // 添加左側分隔線
+  const leftDivider = document.createElement('div');
+  leftDivider.style.width = '100px';
+  leftDivider.style.height = '1px';
+  leftDivider.style.backgroundColor = 'white';
+  paginationContainer.appendChild(leftDivider);
+
+  // 只在作品集頁面顯示分頁按鈕
+  if (page === 'portfolio') {
     for (let i = 1; i <= totalPages; i++) {
       const pageButton = document.createElement('button');
       pageButton.innerText = i;
-      pageButton.style.padding = '8px 16px';
+      pageButton.style.width = '40px';
+      pageButton.style.height = '40px';
       pageButton.style.border = '1px solid white';
-      pageButton.style.background = 'transparent';
-      pageButton.style.color = 'white';
-      pageButton.style.cursor = 'pointer';
+      pageButton.style.background = i === 1 ? 'white' : 'transparent';
+      pageButton.style.color = i === 1 ? '#3a3a3a' : 'white';
       pageButton.style.borderRadius = '4px';
+      pageButton.style.cursor = 'pointer';
       pageButton.style.transition = 'all 0.3s ease';
-
-      // 設置當前頁面按鈕樣式
-      if (i === 1) {
-        pageButton.style.background = 'white';
-        pageButton.style.color = '#3a3a3a';
-      }
 
       pageButton.onclick = function() {
         // 更新按鈕樣式
@@ -266,212 +268,131 @@ function build_portfolio(jsonDataArray, page){
       paginationContainer.appendChild(pageButton);
     }
 
+    // 添加右側分隔線
+    const rightDivider = document.createElement('div');
+    rightDivider.style.width = '100px';
+    rightDivider.style.height = '1px';
+    rightDivider.style.backgroundColor = 'white';
+    paginationContainer.appendChild(rightDivider);
+
     // 將分頁容器添加到頁面
     const container = document.querySelector('.portfolio-container');
     container.parentNode.insertBefore(paginationContainer, container.nextSibling);
-
-    // 顯示第一頁的作品
-    const firstPageItems = result.slice(0, itemsPerPage);
-    const firstPageIndexes = result_indexs.slice(0, itemsPerPage);
-    firstPageItems.forEach((jsonData, index) => {
-      const col = document.createElement('div');
-      col.className = 'col-md-4 portfolio-item';
-      col.style.marginBottom = '30px';
-      col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-      col.style.borderTopLeftRadius = '4px';
-      col.style.borderTopRightRadius = '4px';
-      col.style.overflow = 'hidden';
-      col.style.cursor = 'pointer';
-      col.setAttribute('data-toggle', 'modal');
-      col.setAttribute('data-target', `#p${firstPageIndexes[index] + 1}`);
-      col.onmouseover = function() {
-        this.style.transform = 'translateY(-5px)';
-      };
-      col.onmouseout = function() {
-        this.style.transform = 'translateY(0)';
-      };
-
-      const link = document.createElement('a');
-      link.className = 'portfolio-link';
-      link.style.textDecoration = 'none';
-      link.style.display = 'block';
-      link.style.overflow = 'hidden';
-      link.style.borderTopLeftRadius = '4px';
-      link.style.borderTopRightRadius = '4px';
-
-      const hover = document.createElement('div');
-      hover.className = 'portfolio-hover';
-      hover.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-      hover.style.opacity = '0';
-      hover.style.transition = 'opacity 0.3s ease';
-      col.onmouseover = function() {
-        hover.style.opacity = '1';
-        this.style.transform = 'translateY(-5px)';
-      };
-      col.onmouseout = function() {
-        hover.style.opacity = '0';
-        this.style.transform = 'translateY(0)';
-      };
-
-      const hoverContent = document.createElement('div');
-      hoverContent.className = 'portfolio-hover-content';
-      hoverContent.style.color = 'white';
-      hoverContent.style.fontSize = '1.2em';
-      hoverContent.style.letterSpacing = '0.1em';
-
-      hover.appendChild(hoverContent);
-
-      const image = document.createElement('img');
-      image.className = 'img-fluid';
-      image.setAttribute('src', jsonData.圖片連結 + `1.webp`);
-      image.setAttribute('alt', '');
-      image.style.aspectRatio = '5/3';
-      image.style.width = '100%';
-      image.style.height = 'auto';
-      image.style.objectFit = 'cover';
-      image.style.transition = 'transform 0.3s ease';
-      col.onmouseover = function() {
-        image.style.transform = 'scale(1.05)';
-        hover.style.opacity = '1';
-        this.style.transform = 'translateY(-5px)';
-      };
-      col.onmouseout = function() {
-        image.style.transform = 'scale(1)';
-        hover.style.opacity = '0';
-        this.style.transform = 'translateY(0)';
-      };
-
-      link.appendChild(hover);
-      link.appendChild(image);
-
-      const caption = document.createElement('div');
-      caption.className = 'portfolio-caption';
-      caption.style.backgroundColor = 'rgb(63,62,63)';
-      caption.style.height = '40px';
-      caption.style.display = 'flex';
-      caption.style.alignItems = 'center';
-      caption.style.justifyContent = 'flex-start';
-      caption.style.paddingLeft = '20px';
-      caption.style.borderBottomLeftRadius = '4px';
-      caption.style.borderBottomRightRadius = '4px';
-      caption.style.transition = 'background-color 0.3s ease';
-
-      const title = document.createElement('a');
-      title.innerText = jsonData.專案名;
-      title.style.letterSpacing = '0.2em';
-      title.style.color = 'white';
-      title.style.textDecoration = 'none';
-      title.style.transition = 'color 0.3s ease';
-
-      caption.appendChild(title);
-
-      col.appendChild(link);
-      col.appendChild(caption);
-
-      const portfolioContainer = document.querySelector('.portfolio-container');
-      portfolioContainer.appendChild(col);
-    });
-  } else {
-    // 非手機版顯示所有作品
-    result.forEach((jsonData, index) => {
-      const col = document.createElement('div');
-      col.className = 'col-md-4 portfolio-item';
-      col.style.marginBottom = '30px';
-      col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-      col.style.borderTopLeftRadius = '4px';
-      col.style.borderTopRightRadius = '4px';
-      col.style.overflow = 'hidden';
-      col.style.cursor = 'pointer';
-      col.setAttribute('data-toggle', 'modal');
-      col.setAttribute('data-target', `#p${result_indexs[index] + 1}`);
-      col.onmouseover = function() {
-        this.style.transform = 'translateY(-5px)';
-      };
-      col.onmouseout = function() {
-        this.style.transform = 'translateY(0)';
-      };
-
-      const link = document.createElement('a');
-      link.className = 'portfolio-link';
-      link.style.textDecoration = 'none';
-      link.style.display = 'block';
-      link.style.overflow = 'hidden';
-      link.style.borderTopLeftRadius = '4px';
-      link.style.borderTopRightRadius = '4px';
-
-      const hover = document.createElement('div');
-      hover.className = 'portfolio-hover';
-      hover.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-      hover.style.opacity = '0';
-      hover.style.transition = 'opacity 0.3s ease';
-      col.onmouseover = function() {
-        hover.style.opacity = '1';
-        this.style.transform = 'translateY(-5px)';
-      };
-      col.onmouseout = function() {
-        hover.style.opacity = '0';
-        this.style.transform = 'translateY(0)';
-      };
-
-      const hoverContent = document.createElement('div');
-      hoverContent.className = 'portfolio-hover-content';
-      hoverContent.style.color = 'white';
-      hoverContent.style.fontSize = '1.2em';
-      hoverContent.style.letterSpacing = '0.1em';
-
-      hover.appendChild(hoverContent);
-
-      const image = document.createElement('img');
-      image.className = 'img-fluid';
-      image.setAttribute('src', jsonData.圖片連結 + `1.webp`);
-      image.setAttribute('alt', '');
-      image.style.aspectRatio = '5/3';
-      image.style.width = '100%';
-      image.style.height = 'auto';
-      image.style.objectFit = 'cover';
-      image.style.transition = 'transform 0.3s ease';
-      col.onmouseover = function() {
-        image.style.transform = 'scale(1.05)';
-        hover.style.opacity = '1';
-        this.style.transform = 'translateY(-5px)';
-      };
-      col.onmouseout = function() {
-        image.style.transform = 'scale(1)';
-        hover.style.opacity = '0';
-        this.style.transform = 'translateY(0)';
-      };
-
-      link.appendChild(hover);
-      link.appendChild(image);
-
-      const caption = document.createElement('div');
-      caption.className = 'portfolio-caption';
-      caption.style.backgroundColor = 'rgb(63,62,63)';
-      caption.style.height = '40px';
-      caption.style.display = 'flex';
-      caption.style.alignItems = 'center';
-      caption.style.justifyContent = 'flex-start';
-      caption.style.paddingLeft = '20px';
-      caption.style.borderBottomLeftRadius = '4px';
-      caption.style.borderBottomRightRadius = '4px';
-      caption.style.transition = 'background-color 0.3s ease';
-
-      const title = document.createElement('a');
-      title.innerText = jsonData.專案名;
-      title.style.letterSpacing = '0.2em';
-      title.style.color = 'white';
-      title.style.textDecoration = 'none';
-      title.style.transition = 'color 0.3s ease';
-
-      caption.appendChild(title);
-
-      col.appendChild(link);
-      col.appendChild(caption);
-
-      const portfolioContainer = document.querySelector('.portfolio-container');
-      portfolioContainer.appendChild(col);
-    });
   }
+
+  // 顯示作品
+  const displayItems = page === 'portfolio' ? result.slice(0, itemsPerPage) : result;
+  const displayIndexes = page === 'portfolio' ? result_indexs.slice(0, itemsPerPage) : result_indexs;
+  
+  displayItems.forEach((jsonData, index) => {
+    const col = document.createElement('div');
+    col.className = 'col-md-4 portfolio-item';
+    col.style.marginBottom = '30px';
+    col.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+    col.style.borderTopLeftRadius = '4px';
+    col.style.borderTopRightRadius = '4px';
+    col.style.overflow = 'hidden';
+    col.style.cursor = 'pointer';
+    col.setAttribute('data-toggle', 'modal');
+    col.setAttribute('data-target', `#p${displayIndexes[index] + 1}`);
+    // 加入動畫效果
+    col.style.opacity = '0'; // 初始隱藏
+    col.style.transform = 'translateY(100px)'; // 初始位置在下方
+
+    col.onmouseover = function() {
+      this.style.transform = 'translateY(-5px)';
+    };
+    col.onmouseout = function() {
+      this.style.transform = 'translateY(0)';
+    };
+
+    const link = document.createElement('a');
+    link.className = 'portfolio-link';
+    link.style.textDecoration = 'none';
+    link.style.display = 'block';
+    link.style.overflow = 'hidden';
+    link.style.borderTopLeftRadius = '4px';
+    link.style.borderTopRightRadius = '4px';
+
+    const hover = document.createElement('div');
+    hover.className = 'portfolio-hover';
+    hover.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    hover.style.opacity = '0';
+    hover.style.transition = 'opacity 0.3s ease';
+    col.onmouseover = function() {
+      hover.style.opacity = '1';
+      this.style.transform = 'translateY(-5px)';
+    };
+    col.onmouseout = function() {
+      hover.style.opacity = '0';
+      this.style.transform = 'translateY(0)';
+    };
+
+    const hoverContent = document.createElement('div');
+    hoverContent.className = 'portfolio-hover-content';
+    hoverContent.style.color = 'white';
+    hoverContent.style.fontSize = '1.2em';
+    hoverContent.style.letterSpacing = '0.1em';
+
+    hover.appendChild(hoverContent);
+
+    const image = document.createElement('img');
+    image.className = 'img-fluid';
+    image.setAttribute('src', jsonData.圖片連結 + `1.webp`);
+    image.setAttribute('alt', '');
+    image.style.aspectRatio = '5/3';
+    image.style.width = '100%';
+    image.style.height = 'auto';
+    image.style.objectFit = 'cover';
+    image.style.transition = 'transform 0.3s ease';
+    col.onmouseover = function() {
+      image.style.transform = 'scale(1.05)';
+      hover.style.opacity = '1';
+      this.style.transform = 'translateY(-5px)';
+    };
+    col.onmouseout = function() {
+      image.style.transform = 'scale(1)';
+      hover.style.opacity = '0';
+      this.style.transform = 'translateY(0)';
+    };
+
+    link.appendChild(hover);
+    link.appendChild(image);
+
+    const caption = document.createElement('div');
+    caption.className = 'portfolio-caption';
+    caption.style.backgroundColor = 'rgb(63,62,63)';
+    caption.style.height = '40px';
+    caption.style.display = 'flex';
+    caption.style.alignItems = 'center';
+    caption.style.justifyContent = 'flex-start';
+    caption.style.paddingLeft = '20px';
+    caption.style.borderBottomLeftRadius = '4px';
+    caption.style.borderBottomRightRadius = '4px';
+    caption.style.transition = 'background-color 0.3s ease';
+
+    const title = document.createElement('a');
+    title.innerText = jsonData.專案名;
+    title.style.letterSpacing = '0.2em';
+    title.style.color = 'white';
+    title.style.textDecoration = 'none';
+    title.style.transition = 'color 0.3s ease';
+
+    caption.appendChild(title);
+
+    col.appendChild(link);
+    col.appendChild(caption);
+
+    const portfolioContainer = document.querySelector('.portfolio-container');
+    portfolioContainer.appendChild(col);
+
+    // 觸發動畫
+    setTimeout(() => {
+      col.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      col.style.opacity = '1';
+      col.style.transform = 'translateY(0)';
+    }, 50 + index * 100); // 錯開時間，產生逐一顯示效果
+  });
 
   // 創建作品詳情模態框
   result.forEach((jsonData, index) => {
