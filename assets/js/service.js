@@ -389,8 +389,10 @@ function showWorkflow(idx) {
   workflowStepsDiv.innerHTML = '';
   const data = workflowDataArrayService[idx];
   const desc = data['服務說明'];
+
+  // 先創建所有元素但設為隱藏
   Object.keys(desc).forEach((key, i) => {
-    if (key.startsWith('費用')) return; // 不顯示費用
+    if (key.startsWith('費用')) return;
     const row = document.createElement('div');
     row.className = 'workflow-row';
     row.style.display = 'flex';
@@ -398,6 +400,10 @@ function showWorkflow(idx) {
     row.style.padding = '20px 0';
     row.style.width = '100%';
     row.style.borderBottom = '1px solid #aaa';
+    row.style.opacity = '0';
+    row.style.transform = 'translateY(20px)';
+    row.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+    row.style.visibility = 'hidden'; // 先隱藏但保留空間
 
     const left = document.createElement('div');
     left.className = 'workflow-step-title';
@@ -452,7 +458,54 @@ function showWorkflow(idx) {
     row.appendChild(right);
     workflowStepsDiv.appendChild(row);
   });
+
+  // 使用 requestAnimationFrame 確保 DOM 更新後再開始動畫
+  requestAnimationFrame(() => {
+    const rows = workflowStepsDiv.querySelectorAll('.workflow-row');
+    rows.forEach((row, index) => {
+      row.style.visibility = 'visible'; // 顯示元素
+      setTimeout(() => {
+        row.style.opacity = '1';
+        row.style.transform = 'translateY(0)';
+      }, 50 + index * 100); // 縮短間隔時間
+    });
+  });
 }
 
 // 初始化顯示當前服務的內容
 showWorkflow(currentIndex);
+
+// 為服務項目加入動畫效果
+workflowDataArrayService.forEach((row, idx) => {
+  const li = document.querySelector(`#fee-box li:nth-child(${idx + 1})`);
+  if (li) {
+    li.style.opacity = '0';
+    li.style.transform = 'translateX(-20px)';
+    li.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+    li.style.visibility = 'hidden';
+
+    requestAnimationFrame(() => {
+      li.style.visibility = 'visible';
+      setTimeout(() => {
+        li.style.opacity = '1';
+        li.style.transform = 'translateX(0)';
+      }, 50 + idx * 100);
+    });
+  }
+});
+
+// 為服務標籤加入動畫效果
+document.querySelectorAll('.workflow-tab').forEach((tab, idx) => {
+  tab.style.opacity = '0';
+  tab.style.transform = 'translateY(-10px)';
+  tab.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+  tab.style.visibility = 'hidden';
+
+  requestAnimationFrame(() => {
+    tab.style.visibility = 'visible';
+    setTimeout(() => {
+      tab.style.opacity = '1';
+      tab.style.transform = 'translateY(0)';
+    }, 50 + idx * 80);
+  });
+});
