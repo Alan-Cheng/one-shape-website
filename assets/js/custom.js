@@ -99,15 +99,15 @@ function build_portfolio(jsonDataArray, page){
   paginationContainer.style.marginTop = '20px';
   paginationContainer.style.gap = '10px';
 
-  // 添加左側分隔線
-  const leftDivider = document.createElement('div');
-  leftDivider.style.width = '100px';
-  leftDivider.style.height = '1px';
-  leftDivider.style.backgroundColor = 'white';
-  paginationContainer.appendChild(leftDivider);
+  // 只在作品集頁面且是手機版時顯示分頁按鈕
+  if (page === 'portfolio' && isMobile) {
+    // 添加左側分隔線
+    const leftDivider = document.createElement('div');
+    leftDivider.style.width = '100px';
+    leftDivider.style.height = '1px';
+    leftDivider.style.backgroundColor = 'white';
+    paginationContainer.appendChild(leftDivider);
 
-  // 只在作品集頁面顯示分頁按鈕
-  if (page === 'portfolio') {
     for (let i = 1; i <= totalPages; i++) {
       const pageButton = document.createElement('button');
       pageButton.innerText = i;
@@ -281,8 +281,8 @@ function build_portfolio(jsonDataArray, page){
   }
 
   // 顯示作品
-  const displayItems = page === 'portfolio' ? result.slice(0, itemsPerPage) : result;
-  const displayIndexes = page === 'portfolio' ? result_indexs.slice(0, itemsPerPage) : result_indexs;
+  const displayItems = page === 'portfolio' && isMobile ? result.slice(0, itemsPerPage) : result;
+  const displayIndexes = page === 'portfolio' && isMobile ? result_indexs.slice(0, itemsPerPage) : result_indexs;
   
   displayItems.forEach((jsonData, index) => {
     const col = document.createElement('div');
@@ -825,6 +825,19 @@ function handleCrossPageScroll() {
     }
   }
 }
+
+// 監聽視窗大小變化
+window.addEventListener('resize', function() {
+  // 取得當前頁面的 URL 路徑
+  const currentPage = window.location.pathname;
+  const lastPath = currentPage.split('/').pop();
+
+  if (lastPath === 'portfolio.html') {
+    // 重新構建作品集
+    const temp = jsonDataArray.slice().reverse();
+    build_portfolio(temp, 'portfolio');
+  }
+});
 
 // 在頁面載入時執行
 document.addEventListener('DOMContentLoaded', function() {
