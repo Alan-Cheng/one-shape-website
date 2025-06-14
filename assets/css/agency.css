@@ -1096,7 +1096,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 }
 
 @media (min-width: 650px) {
-  #portfolio, #workflow > .container {
+  #portfolio, #workflow #home> .container {
     margin-top: 12vh; /* 或其他你想要的距離，例如 2rem、40px */
   }
 }
