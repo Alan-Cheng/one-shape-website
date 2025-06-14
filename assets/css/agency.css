@@ -190,7 +190,7 @@ img::-moz-selection {
 }
 
 /* 桌面版 Media Query */
-@media (min-width: 651px) {
+@media (min-width: 768px) {
   #mainNav {
     height: 70px; /* 增加桌面版高度 */
     -webkit-transition: all 0.3s ease;
@@ -240,8 +240,8 @@ img::-moz-selection {
   }
 }
 
-/* 手機版樣式 (650px 及以下) - 摺疊狀態 */
-@media (max-width: 650px) {
+/* 手機版樣式 (767px 及以下) - 摺疊狀態 */
+@media (max-width: 767px) {
   #mainNav {
     height: 65px; /* 增加手機版高度 */
     transition: all 0.3s ease;
@@ -264,7 +264,6 @@ img::-moz-selection {
   #mainNav .navbar-brand {
     position: static; /* 恢復靜態定位 */
     color: white !important; /* 確保 logo 顏色 */
-    margin-left: 10px; /* 保持你的原始邊距 */
   }
   #mainNav .navbar-brand img {
     height: 40px; /* 手機版 logo 高度 */
@@ -478,7 +477,7 @@ header.masthead .intro-text .intro-heading {
   margin-bottom: 1rem;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 767px) {
   header.masthead {
     background-image: url("../img/header_phone.avif"), url("../img/header_phone.jpg");
     background-position: center top;
@@ -1062,7 +1061,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 }
 
 /* 針對小螢幕，調整間距和選單寬度 */
-@media (max-width: 650px) {
+@media (max-width: 767px) {
   /* 調整標題和選單外層容器的間距 */
   .d-flex.align-items-center.justify-content-between {
       /* 在小螢幕時讓標題和選單垂直堆疊 */
@@ -1095,8 +1094,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   background: #aaa;
 }
 
-@media (min-width: 650px) {
-  #portfolio, #workflow #home> .container {
+@media (min-width: 767px) {
+  #portfolio, #workflow, #home> .container {
     margin-top: 12vh; /* 或其他你想要的距離，例如 2rem、40px */
   }
 }
