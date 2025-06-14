@@ -188,10 +188,11 @@ style.textContent = `
     gap: 8px !important;
     padding: 16px 0 !important;
   }
-  .fee-box li span {
+  .fee-box li span:first-child {
     flex: 1 1 100% !important;
     font-size: 0.9em !important;
     line-height: 1.8 !important;
+    padding-left: 0 !important;
   }
   .fee-box li span:nth-child(2) {
     display: none !important;
@@ -279,7 +280,8 @@ workflowDataArrayService.forEach((row, idx) => {
   left.textContent = '・' + row.服務名稱;
   left.setAttribute('lang', 'zh-TW');
   left.style.flex = '0 0 200px';
-  left.style.textAlign = 'center';
+  left.style.textAlign = 'left';
+  left.style.paddingLeft = '50px';
   left.style.letterSpacing = '0.05em';
 
   const divider = document.createElement('span');
