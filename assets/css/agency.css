@@ -1099,3 +1099,15 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     margin-top: 12vh; /* 或其他你想要的距離，例如 2rem、40px */
   }
 }
+
+@media (max-width: 768px) {
+  .about-english-text {
+      display: none;
+      text-align: right;
+  }
+  .about-chinese-text.line-break-mode {
+      line-height: 3;
+      letter-spacing: 0.4em;
+      text-align: center;
+  }
+}
