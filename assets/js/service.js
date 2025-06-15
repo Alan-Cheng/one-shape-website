@@ -447,11 +447,11 @@ function showWorkflow(idx) {
       right.className = 'workflow-step-desc';
       right.setAttribute('lang', 'zh-TW');
       right.style.flex = '1 1 0';
-      right.style.fontSize = '0.9em';
+      right.style.fontSize = '1em';
       right.style.color = '#fff';
       right.style.textAlign = 'left';
       right.style.paddingTop = '40px';
-      right.style.paddingRight = '40px';
+      right.style.paddingRight = '0px';
       right.style.display = 'flex';
       right.style.justifyContent = 'flex-end';
 
@@ -470,7 +470,11 @@ function showWorkflow(idx) {
 
       (desc[key] || []).forEach(item => {
         const li = document.createElement('li');
-        li.textContent = item;
+        if (window.innerWidth > 768) {
+          li.innerHTML = item.replace(/\\n|\n/g, '<br>');
+        } else {
+          li.textContent = item.replace(/\\n|\n/g, '');
+        }
         li.setAttribute('lang', 'zh-TW');
         li.style.marginBottom = '8px';
         li.style.listStyleType = 'none';
