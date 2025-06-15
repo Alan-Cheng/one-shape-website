@@ -83,7 +83,7 @@ steps.forEach((step, idx) => {
 // RWD: 600px 以下左右變上下
 const style = document.createElement('style');
 style.textContent = `
-.section-heading {
+#workflow .section-heading {
   letter-spacing: 0.1em;
 }
 .workflow-tab.active {
@@ -233,9 +233,6 @@ style.textContent = `
   .row.align-items-center {
     margin-top: 12vh;
   }
-  .section-heading {
-    font-size: 1.8em !important;
-  }
 }
 
 @media (max-width: 600px) {
@@ -279,9 +276,6 @@ style.textContent = `
   }
   .row.align-items-center {
     margin-top: 15vh;
-  }
-  .section-heading {
-    font-size: 1.6em !important;
   }
 }
 `;

@@ -1,0 +1,88 @@
+.contact-section {
+  background-color: rgb(48,48,48);
+}
+
+.contact-section .section-title-row h2 {
+  margin: 0;
+  font-size: 1.7em;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  color: white;
+  flex-shrink: 0;
+}
+
+.contact-container {
+  background: #3a3a3a;
+  padding: 30px 20px;
+  border-radius: 2px;
+}
+
+.contact-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.contact-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 48px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 1.1em;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-info {
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0;
+}
+
+.contact-company {
+  font-size: 1.2em;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.contact-detail {
+  font-size: 1em;
+  margin-bottom: 6px;
+}
+
+.contact-social {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.social-icon-wrapper {
+  display: inline-block;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #232427;
+  border-radius: 50%;
+}
+
+.social-icon i {
+  color: #fff;
+  font-size: 2em;
+}
+
+.contact-link {
+  color: white;
+  text-decoration: underline;
+} 

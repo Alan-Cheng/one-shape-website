@@ -18,6 +18,7 @@
   <link href="assets/css/agency.css" rel="stylesheet">
   <link href="assets/css/custom-styles.css" rel="stylesheet">
   <link href="assets/css/fonts.css" rel="stylesheet">
+  <link href="assets/css/contact.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <!-- Select2 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -139,10 +140,6 @@
       color: #aaa;
       font-size: 0.95em;
       margin-top: 12px;
-    }
-
-    .page-section {
-      background: #232427;
     }
 
     .select2-container--bootstrap-5 {
@@ -390,62 +387,51 @@
   </section>
 
 
-  <section class="page-section" id="contact" style="background-color: rgb(48,48,48);">
-    <!-- Contact -->
+  <section class="page-section contact-section" id="contact">
     <div class="container" id="contact">
-      <!-- Services Section -->
       <div class="row">
         <div class="col-lg-12">
-          <div class="section-title-row" id="workflow">
+          <div class="section-title-row">
             <h2 class="section-heading text-uppercase" lang="en">CONTACT US</h2>
             <div class="section-title-line"></div>
           </div>
         </div>
       </div>
-      <div class="container" style="background: #3a3a3a; padding: 30px 20px; border-radius: 2px;">
+      <div class="container contact-container">
         <div class="row">
           <div class="col-lg-12 text-left">
           </div>
         </div>
         <div class="row" style="margin-top: 40px; align-items: center;">
-          <!-- 左側按鈕 -->
-          <div class="col-md-6" style="display: flex; justify-content: center; margin-bottom: 30px;">
-            <a href="https://forms.gle/MgD6Yi1w5CMidzT36" target="_blank"
-              style="display: flex; align-items: center; justify-content: center; padding: 10px 48px; border: 1px solid #fff; color: #fff; font-size: 1.1em; letter-spacing: 0.2em; text-decoration: none; transition: background 0.2s, color 0.2s;">
+          <div class="col-md-6 contact-button-wrapper">
+            <a href="https://forms.gle/MgD6Yi1w5CMidzT36" target="_blank" class="contact-button">
               立即預約
             </a>
           </div>
-          <!-- 右側資訊 -->
-          <div class="col-md-6"
-            style="color: #fff; text-align: center; display: flex; flex-direction: column; justify-content: center; padding-left: 0;">
-            <div style="font-size: 1.2em; letter-spacing: 0.15em; margin-bottom: 12px;">
+          <div class="col-md-6 contact-info">
+            <div class="contact-company">
               一形設計｜ONE SHAPE
             </div>
-            <div style="font-size: 1em; margin-bottom: 6px;">
+            <div class="contact-detail">
               A. 台北市信義區忠孝東路五段17號11F-2
             </div>
-            <div style="font-size: 1em; margin-bottom: 6px;">
-              E. <a href="mailto:oneshape@oneshape.com.tw"
-                style="color: white; text-decoration: underline;">oneshape@oneshape.com.tw</a>
+            <div class="contact-detail">
+              E. <a href="mailto:oneshape@oneshape.com.tw" class="contact-link">oneshape@oneshape.com.tw</a>
             </div>
-            <div style="margin-top: 24px;">
-              <a href="line://ti/p/@oneshape" target="_blank" style="margin-right: 18px; display: inline-block;">
-                <span
-                  style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #232427; border-radius: 50%;">
-                  <i class="fab fa-line" style="color: #fff; font-size: 2em;"></i>
+            <div class="contact-social">
+              <a href="line://ti/p/@oneshape" target="_blank" class="social-icon-wrapper">
+                <span class="social-icon">
+                  <i class="fab fa-line"></i>
                 </span>
               </a>
-              <a href="https://instagram.com/oneshape.design" target="_blank"
-                style="margin-right: 18px; display: inline-block;">
-                <span
-                  style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #232427; border-radius: 50%;">
-                  <i class="fab fa-instagram" style="color: #fff; font-size: 2em;"></i>
+              <a href="https://instagram.com/oneshape.design" target="_blank" class="social-icon-wrapper">
+                <span class="social-icon">
+                  <i class="fab fa-instagram"></i>
                 </span>
               </a>
-              <a href="https://facebook.com/oneshape.design" target="_blank" style="display: inline-block;">
-                <span
-                  style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #232427; border-radius: 50%;">
-                  <i class="fab fa-facebook-f" style="color: #fff; font-size: 2em;"></i>
+              <a href="https://facebook.com/oneshape.design" target="_blank" class="social-icon-wrapper">
+                <span class="social-icon">
+                  <i class="fab fa-facebook-f"></i>
                 </span>
               </a>
             </div>
