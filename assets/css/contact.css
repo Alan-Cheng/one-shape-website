@@ -21,6 +21,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  padding: 0 20px;
 }
 
 .contact-button {
@@ -42,7 +43,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 0;
+  padding: 0 20px;
 }
 
 .contact-company {
@@ -97,6 +98,7 @@
   .contact-button-wrapper {
     justify-content: flex-start;
     padding-left: 10%;
+    padding-right: 0;
   }
 
   .contact-social {
@@ -106,6 +108,7 @@
 
   .contact-info {
     padding-left: 7%;
+    padding-right: 0;
     text-align: left;
   }
 
