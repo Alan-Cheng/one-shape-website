@@ -194,6 +194,7 @@ style.textContent = `
   }
   .workflow-step-desc {
     padding-right: 0 !important;
+    padding-top: 0 !important;
     font-size: 0.9em !important;
     justify-content: flex-start !important;
     flex: 1 1 100% !important;
@@ -449,6 +450,7 @@ function showWorkflow(idx) {
       right.style.fontSize = '0.9em';
       right.style.color = '#fff';
       right.style.textAlign = 'left';
+      right.style.paddingTop = '40px';
       right.style.paddingRight = '40px';
       right.style.display = 'flex';
       right.style.justifyContent = 'flex-end';
