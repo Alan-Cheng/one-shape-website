@@ -23,9 +23,9 @@
 }
 
 /* 套用中文字體到所有中文文字 */
-body, 
-p, 
-li, 
+body,
+p,
+li,
 .section-subheading,
 .description_list,
 .contact-link,
@@ -43,13 +43,15 @@ li,
 #about .description_list,
 #about p,
 #about li,
-#about h4 {
+#about h4,
+/* 新增：確保作品集模態框的列表內容使用中文字體 */
+.portfolio-modal .modal-content .project-details-list li { /* 針對 li 本身 */
     font-family: 'Noto Sans TC', sans-serif !important;
 }
 
 /* 套用英文字體到所有英文文字 */
-h1, h2, h3, h4, h5, h6, 
-.intro-heading, 
+h1, h2, h3, h4, h5, h6,
+.intro-heading,
 .section-heading,
 .navbar-brand,
 .btn,
@@ -61,9 +63,12 @@ h1, h2, h3, h4, h5, h6,
 #workflow .section-heading,
 #contact .section-heading p,
 #viewAll,
-.fab {
+.fab,
+/* 新增：確保作品集模態框的標題使用英文字體 */
+.portfolio-modal .modal-content h2 { /* 針對 h2 標題 */
     font-family: 'Sackers Gothic', sans-serif;
 }
+
 
 /* 確保導航選單使用英文字體 */
 .navbar-nav .nav-link,
@@ -92,4 +97,4 @@ h1, h2, h3, h4, h5, h6,
 /* 特別處理「關於我們」區段的標題 */
 #about .section-heading p {
     font-family: 'Sackers Gothic', sans-serif;
-} 
+}

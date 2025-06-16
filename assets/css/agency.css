@@ -54,7 +54,7 @@ h5,
 h6 {
   font-weight: 700;
   color: white;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Montserrat", -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 h3{
@@ -603,7 +603,7 @@ header.masthead .intro-text .intro-heading {
 }
 
 .portfolio-modal .modal-dialog {
-  margin: 1rem;
+  margin: 0.5rem;
   max-width: 100vw;
 }
 .portfolio-modal .modal-content {
@@ -613,27 +613,71 @@ header.masthead .intro-text .intro-heading {
   padding: 1px;
   margin: 50px auto;
 }
+
+/* --- 作品集模態框內文字顯示修改 START --- */
 .portfolio-modal .modal-content h2 {
-  font-size: 3em;
-  margin-bottom: 15px;
+  /* 模態框中的專案名 (標題) */
+  font-size: 1.1em; /* 調整標題字體大小，使其更接近內容 */
+  padding-bottom: 5%; /* 空間調整 */
   color: white;
+  text-align: left; /* 靠左對齊 */
+  line-height: 1.4; /* 行高調整 */
 }
+
+/* 隱藏描述段落 */
 .portfolio-modal .modal-content p {
-  margin-bottom: 30px;
+  display: none;
+}
+
+/* Project Details List (風格、屋況等) 的容器 */
+.portfolio-modal .modal-content .project-details-list {
+  padding-left: 0; /* 移除預設的 ul 左邊距 */
+  list-style-type: none; /* **移除所有子彈點** */
+  margin-top: 0; /* Remove default top margin from ul */
+  margin-bottom: 0; /* Remove default bottom margin from ul */
+  text-align: left; /* 確保列表整體靠左對齊 */
+}
+
+/* Project Details List 中的每個項目 */
+.portfolio-modal .modal-content .project-details-list li {
+  margin-bottom: 5px; /* 稍微減少列表項目間距 */
+  font-size: 1.05em; /* 調整內容字體大小，使其更接近標題 */
+  position: relative;
+  padding-left: 0; /* **移除左側內邊距，使文本完全靠左** */
   color: white;
+  line-height: 1.4; /* 行高調整 */
 }
-.portfolio-modal .modal-content p.item-intro {
-  font-size: 16px;
-  font-style: italic;
-  margin: 20px 0 30px;
-  color: white;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+/* Project Details List 中項目的標籤 (例如 "風格") */
+.portfolio-modal .modal-content .project-details-list li strong {
+  font-weight: lighter; /* 可以考慮讓標籤文字不要那麼粗體，與內容更協調 */
+  margin-right: 7%; /* 在標籤和內容之間增加一點間距 */
 }
-.portfolio-modal .modal-content ul.list-inline {
-  margin-top: 0;
-  margin-bottom: 30px;
-  letter-spacing: .08em;
+
+/* 移除 ::before 偽元素，不再顯示子彈點 */
+.portfolio-modal .modal-content .project-details-list li::before {
+    content: none;
 }
+
+/* 文本內容的包裹器，用於整體控制對齊和間距 */
+.portfolio-modal .modal-content .text-content-wrapper {
+    text-align: left; /* 確保所有文本靠左對齊 */
+    margin-bottom: 20px; /* Space between text block and divider */
+}
+
+/* 分隔線樣式 (保持你原有的，但確保在正確位置) */
+.modal-body .divider {
+  border-top: 2px solid rgba(255, 255, 255, 0.5); /* 使用 rgba 以匹配你的需求 */
+  margin-top: 5%; /* Increased space above the divider */
+  margin-bottom: 5%; /* Increased space below the divider */
+  width: 100%; /* Ensure divider spans full width */
+  margin-left: auto; /* Center the divider if max-width is used */
+  margin-right: auto; /* Center the divider if max-width is used */
+}
+
+/* --- 作品集模態框內文字顯示修改 END --- */
+
+
 .portfolio-modal .modal-content img {
   margin-bottom: 30px;
 }
@@ -1131,6 +1175,24 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   #portfolio-title.section-heading {
     font-size: 1.5em !important;
   }
+
+  /* 模態框內的字體大小在小螢幕下調整 */
+  .portfolio-modal .modal-content h2 {
+    font-size: 1.2em; /* 小螢幕下標題字體再小一點 */
+    margin-bottom: 8px;
+  }
+  .portfolio-modal .modal-content .project-details-list li {
+    font-size: 0.95em; /* 小螢幕下內容字體再小一點 */
+    margin-bottom: 4px;
+  }
+  .modal-body .divider {
+    margin-top: 10% !important; /* Adjusted for mobile */
+    margin-bottom: 10% !important; /* Adjusted for mobile */
+  }
+  .modal-content {
+    padding-top: 2% !important;
+    margin-top: 2% !important;
+  }
 }
 
 #workflow-title-divider {
@@ -1144,9 +1206,41 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   #portfolio, #workflow, #home> .container {
     margin-top: 12vh; /* 或其他你想要的距離，例如 2rem、40px */
   }
+  .modal-body {
+    padding: 7% 7% 7% 7%;
+  }
+  .modal-dialog {
+    padding: 2%;
+    margin-top: 0% !important;
+  }
+  .text-content-wrapper  h2 {
+    font-size: 1.5em !important;
+    padding-bottom: 3% !important;
+  }
+  .portfolio-modal .modal-content .project-details-list li strong {
+    font-weight: lighter; /* 可以考慮讓標籤文字不要那麼粗體，與內容更協調 */
+    margin-right: 5%; /* 在標籤和內容之間增加一點間距 */
+  }
+  .modal-content {
+    margin-top: 2% !important;
+  }
 }
 
-@media (max-width: 768px) {
+/* 小螢幕下調整 */
+@media (max-width: 766px) {
+  .modal-body {
+    padding: 10% 8% 10% 8%;
+  }
+  .modal-dialog {
+    padding: 1%;
+  }
+  .text-content-wrapper  h2 {
+    font-size: 1.2em !important;
+    padding-bottom: 3% !important;
+  }
+}
+
+@media (max-width: 766px) {
   .about-english-text {
     display: none;
     text-align: right;

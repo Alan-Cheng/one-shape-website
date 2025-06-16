@@ -71,7 +71,7 @@ function build_portfolio(jsonDataArray, page){
     // 反转排序后的数组
     var temp = sortedArray.slice();
 
-    // 移除现有的项目并重新构建内容
+    // 移除現有的項目並重新構建內容
     var container = document.querySelector('.portfolio-container');
     var items = container.querySelectorAll('.col-md-4.portfolio-item');
     items.forEach(function(item) {
@@ -81,27 +81,9 @@ function build_portfolio(jsonDataArray, page){
     result_indexs = temp.map((item, index) => jsonDataArray.indexOf(item));
   }
 
-  // 添加動畫樣式
-  const style = document.createElement('style');
-  style.textContent = `
-    .portfolio-item {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .portfolio-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .modal.fade .modal-dialog {
-      transform: scale(0.95);
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .modal.show .modal-dialog {
-      transform: scale(1);
-    }
-  `;
-  document.head.appendChild(style);
+  // 請注意：此處已移除動態添加 <style> 標籤的程式碼，
+  // 假定您已將相關 CSS 規則移至外部 CSS 檔案（如 style.css）。
+  // 如果您尚未這麼做，請參閱我上一個回答中的「步驟三」。
 
   result.forEach((jsonData, index) => {
     const col = document.createElement('div');
@@ -282,75 +264,58 @@ function build_portfolio(jsonDataArray, page){
       const modalBody = document.createElement('div');
       modalBody.className = 'modal-body';
 
-      const description = document.createElement('p');
-      description.innerText = jsonData.描述;
+      // **TEXT CONTENT WRAPPER - START**
+      const textContentWrapper = document.createElement('div');
+      textContentWrapper.className = 'text-content-wrapper';
 
-      const desDiv = document.createElement('div');
-      desDiv.className = 'lchild'
-      desDiv.appendChild(description);
-      
+      const titleH2 = document.createElement('h2');
+      titleH2.innerText = jsonData.專案名;
+      textContentWrapper.appendChild(titleH2);
+
+      // --- REMOVED DESCRIPTION PARAGRAPH ---
+      // const description = document.createElement('p');
+      // description.innerText = jsonData.描述;
+      // textContentWrapper.appendChild(description);
+
       const ul = document.createElement('ul');
-      ul.className = 'list-inline';
-      ul.style.textAlign = 'left;';
+      ul.className = 'project-details-list'; // 使用新的 class name
 
-      const locateLi = document.createElement('li');
-      
-      const strongElement = document.createElement('strong');
-      strongElement.innerText = 'Location';
+      // 動態生成列表項目，包含新定義的項目：風格、屋況、格局、坪數、地點
+      const projectDetails = [
+          { label: '風格', value: jsonData.風格 },
+          { label: '屋況', value: jsonData.屋況 },
+          { label: '格局', value: jsonData.格局 },
+          { label: '坪數', value: `${jsonData.坪數}` }, // 確保坪數後綴
+          { label: '地點', value: jsonData.地點 }
+      ];
 
-      const textNode = document.createTextNode(' / ');
+      // const textNode = document.createTextNode(' / '); // 定義共用的分隔符
+ 
+      projectDetails.forEach(detail => {
+          if (detail.value) { // 確保值存在才創建 li
+              const li = document.createElement('li');
+              const strongElement = document.createElement('strong');
+              strongElement.innerText = detail.label;
 
-      locateLi.appendChild(strongElement);
-      locateLi.appendChild(textNode);
-      locateLi.appendChild(document.createTextNode(jsonData.區域));
+              li.appendChild(strongElement);
+              // li.appendChild(textNode.cloneNode(true)); // 克隆分隔符
+              li.appendChild(document.createTextNode(detail.value));
+              ul.appendChild(li);
+          }
+      });
 
-      const dateLi = document.createElement('li');
+      textContentWrapper.appendChild(ul);
+      // **TEXT CONTENT WRAPPER - END**
 
-      const strongElement2 = document.createElement('strong');
-      strongElement2.innerText = 'Year';
+      modalBody.appendChild(textContentWrapper); // Append the wrapper with all text content
 
-      dateLi.appendChild(strongElement2);
-      dateLi.appendChild(textNode.cloneNode(true));
-      dateLi.appendChild(document.createTextNode(jsonData.日期));
+      // Add the divider line
+      const divider = document.createElement('div');
+      divider.className = 'divider';
+      modalBody.appendChild(divider);
 
-      const sizeLi = document.createElement('li');
-
-      const strongElement3 = document.createElement('strong');
-      strongElement3.innerText = 'Area';
-
-      sizeLi.appendChild(strongElement3);
-      sizeLi.appendChild(textNode.cloneNode(true));
-      sizeLi.appendChild(document.createTextNode(`${jsonData.坪數}坪`));
-
-      const projectNameLi = document.createElement('li');
-      
-      const strongElement4 = document.createElement('strong');
-      strongElement4.innerText = 'Project';
-
-      projectNameLi.appendChild(strongElement4);
-      projectNameLi.appendChild(textNode.cloneNode(true));
-      projectNameLi.appendChild(document.createTextNode(jsonData.專案名));
-
-
-      ul.appendChild(locateLi);
-      ul.appendChild(dateLi);
-      ul.appendChild(sizeLi);
-      ul.appendChild(projectNameLi);
-
-      const ulDiv = document.createElement('div');
-      ulDiv.className = 'rchild'
-      ulDiv.appendChild(ul);
-
-      const div = document.createElement('div');
-      div.className = 'row parent'; //要恢復左右排列就刪掉
-      
-      //決定哪個在左邊
-      div.appendChild(ulDiv);
-      div.appendChild(desDiv);
-
-      modalBody.appendChild(image_item[0]);
-      modalBody.appendChild(div);
-      for(let j = 1; j <= 20; j++){
+      // Append all images after the divider
+      for(let j = 0; j <= 20; j++){ // Start from index 0 for images
         if(image_item[j] != null)
           modalBody.appendChild(image_item[j]);
       }
