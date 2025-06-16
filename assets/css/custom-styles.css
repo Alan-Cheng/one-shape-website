@@ -157,7 +157,7 @@
   margin-bottom: 20px;
 }
 .section-title-row h2 {
-  margin: 0;
+  margin-top: 17px;
   font-size: 2em;
   letter-spacing: 0.2em;
   font-weight: 400;
@@ -168,7 +168,9 @@
   flex-grow: 1;
   height: 1px;
   background: rgba(255,255,255,0.5);
-  margin-left: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center; /* 讓文字和線條垂直置中對齊 */
 }
 
 .service-section {
