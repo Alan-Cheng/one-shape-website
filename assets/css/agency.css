@@ -998,6 +998,20 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   color: white; /* 保持原有的顏色 */
 }
 
+.portfolio-select-wrapper {
+  display: flex !important;
+  font-size: 0.9rem !important;
+  justify-content: flex-end !important;
+  width: 150px !important;
+}
+
+.portfolio-title {
+  display: flex;
+  justify-content: flex-end; /* ✅ 靠右對齊 */
+  flex-wrap: nowrap !important;
+  gap: 4px !important;
+}
+
 /*
  * 在 600px "以上" 的螢幕尺寸時調整字體大小
  * 這會覆蓋上面預設的 font-size
@@ -1107,20 +1121,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   .portfolio-header-divider {
       margin-top: 20px; /* 小螢幕分隔線與上方元素的間距 */
       margin-bottom: 30px; /* 小螢幕分隔線與下方作品集的間距 */
-  }
-
-  .portfolio-select-wrapper {
-    display: flex !important;
-    font-size: 0.9rem !important;
-    justify-content: flex-end !important;
-    width: 150px !important;
-  }
-
-  .portfolio-title {
-    display: flex;
-    justify-content: flex-end; /* ✅ 靠右對齊 */
-    flex-wrap: nowrap !important;
-    gap: 4px !important;
   }
 
   #workflow-title.section-heading {
