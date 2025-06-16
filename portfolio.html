@@ -216,6 +216,7 @@
     .select2-container--bootstrap-5 .select2-results__option {
       max-width: 100% !important;
       box-sizing: border-box !important;
+      font-size: 0.8em !important;
     }
 
     .select-arrow-icon {
@@ -282,14 +283,14 @@
       <div class="row">
         <div class="col-lg-12 text-left">
           <div class="align-items-center">
-              <h2 class="section-heading text-uppercase portfolio-heading" lang="en" style="letter-spacing: 0.1em;">
+              <h2 id="portfolio-title" class="section-heading text-uppercase portfolio-heading" lang="en" style="letter-spacing: 0.1em;">
                 PROJECTS
               </h2>
           </div>
         </div>
       </div>
-      <div class="workflow-title">
-        <div class="workflow-select-wrapper" style="width: 160px; position: relative; float: right;">
+      <div class="portfolio-title">
+        <div class="portfolio-select-wrapper">
           <select class="custom-select portfolio-select-button" onchange="portfolio_filter(this.value)" lang="zh-TW">
               <option value="all" lang="zh-TW">全部</option>
               <option value="商業空間" lang="zh-TW">商業空間</option>

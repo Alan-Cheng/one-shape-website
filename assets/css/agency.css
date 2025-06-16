@@ -1073,6 +1073,29 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   /* 調整標題的下邊距，使其與下拉選單有間隔 */
   .section-heading.text-uppercase {
       margin-bottom: 15px !important;
+      font-size: 1.1rem !important;
+  }
+
+  /* 調整服務標題大小 */
+  .service-items {
+      font-size: 0.8rem !important;
+  }
+
+  /* 調整作品集標題大小 */
+  .portfolio-caption a {
+      font-size: 0.8rem !important;
+  }
+
+  .portfolio-item {
+    max-width: 100% !important;
+  }
+
+  .btn {
+    text-align: center !important;
+  }
+
+  .select2-selection__rendered {
+    padding-right: 5px !important;
   }
 
   /* 調整下拉選單在小螢幕下的寬度 */
@@ -1084,6 +1107,28 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   .portfolio-header-divider {
       margin-top: 20px; /* 小螢幕分隔線與上方元素的間距 */
       margin-bottom: 30px; /* 小螢幕分隔線與下方作品集的間距 */
+  }
+
+  .portfolio-select-wrapper {
+    display: flex !important;
+    font-size: 0.9rem !important;
+    justify-content: flex-end !important;
+    width: 150px !important;
+  }
+
+  .portfolio-title {
+    display: flex;
+    justify-content: flex-end; /* ✅ 靠右對齊 */
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+  }
+
+  #workflow-title.section-heading {
+    font-size: 1.5em !important;
+  }
+
+  #portfolio-title.section-heading {
+    font-size: 1.5em !important;
   }
 }
 
@@ -1102,12 +1147,12 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
 @media (max-width: 768px) {
   .about-english-text {
-      display: none;
-      text-align: right;
+    display: none;
+    text-align: right;
   }
   .about-chinese-text.line-break-mode {
-      line-height: 3;
-      letter-spacing: 0.4em;
-      text-align: center;
+    line-height: 3;
+    letter-spacing: 0.4em;
+    text-align: center;
   }
 }

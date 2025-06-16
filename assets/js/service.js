@@ -174,6 +174,8 @@ style.textContent = `
   }
   .workflow-select-wrapper {
     display: flex !important;
+    font-size: 0.9rem !important;
+    max-width: 100% !important;
     justify-content: flex-end !important;
   }
   .workflow-tab {
@@ -225,6 +227,7 @@ style.textContent = `
     padding-left: 0 !important;
   }
   .fee-box li span:nth-child(2) {
+    font-size: 0.8em !important;
     display: none !important;
   }
   .fee-note {
@@ -297,7 +300,6 @@ workflowDataArrayService.forEach((row, idx) => {
   li.style.justifyContent = 'space-between';
   li.style.padding = '18px 0';
   li.style.borderBottom = idx < workflowDataArrayService.length - 1 ? '1px solid #666' : 'none';
-  li.style.fontSize = '1.1em';
   li.style.color = '#fff';
 
   const left = document.createElement('span');
@@ -383,7 +385,7 @@ if (workflowSelectWrapper) {
     $('#service-select').select2({
       theme: 'bootstrap-5',
       minimumResultsForSearch: Infinity,
-      width: '180px'
+      width: '150px'
     });
   });
 }

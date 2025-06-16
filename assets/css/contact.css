@@ -121,7 +121,15 @@
 @media screen and (max-width: 767px) {
   .contact-button {
     padding: 8px 36px;
+    font-size: 0.9em;
+  }
+
+  .contact-company {
     font-size: 1em;
+  }
+
+  .contact-detail {
+    font-size: 0.9em;
   }
 
   .social-icon {

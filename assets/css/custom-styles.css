@@ -281,7 +281,7 @@
 /* 自己加箭頭 icon */
 .select2-container--bootstrap-5 .select2-selection--single {
   position: relative;
-  padding-right: 2.5em;
+  padding-right: 1em;
 }
 
 /* 插入 Font Awesome 的 icon */
