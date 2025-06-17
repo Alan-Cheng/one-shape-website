@@ -1108,7 +1108,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   text-transform: none;
   text-align: center;
   /* 調整英文字間距：這個通常是讓中英文長度接近的關鍵 */
-  letter-spacing: 0.25em; /* 範例：增加英文字間距，使其總寬度接近中文 */
+  letter-spacing: 0.12em; /* 範例：增加英文字間距，使其總寬度接近中文 */
   /* 如果是響應式字體大小，可以這樣設定 */
   /* font-size: clamp(0.9em, 2vw, 1em); */
 }
