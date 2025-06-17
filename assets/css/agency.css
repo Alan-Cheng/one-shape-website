@@ -479,7 +479,7 @@ header.masthead .intro-text .intro-heading {
 
 @media (max-width: 767px) {
   header.masthead {
-    background-image: url("../img/header_phone.avif"), url("../img/header_phone.jpg");
+    background-image: url("../img/header_phone.jpg"), url("../img/header_phone.avif");
     background-position: center top;
   }
   header.masthead .intro-text .intro-heading {
