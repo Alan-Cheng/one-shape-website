@@ -289,7 +289,9 @@ function build_portfolio(jsonDataArray, page){
           { label: '地點', value: jsonData.地點 }
       ];
 
-      // const textNode = document.createTextNode(' / '); // 定義共用的分隔符
+      const textNode = document.createElement('strong');
+      textNode.className = 'project-divider';
+      textNode.innerText = ' | ';
  
       projectDetails.forEach(detail => {
           if (detail.value) { // 確保值存在才創建 li
@@ -298,7 +300,7 @@ function build_portfolio(jsonDataArray, page){
               strongElement.innerText = detail.label;
 
               li.appendChild(strongElement);
-              // li.appendChild(textNode.cloneNode(true)); // 克隆分隔符
+              li.appendChild(textNode.cloneNode(true)); // 克隆分隔符
               li.appendChild(document.createTextNode(detail.value));
               ul.appendChild(li);
           }

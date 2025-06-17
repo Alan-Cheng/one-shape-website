@@ -650,7 +650,12 @@ header.masthead .intro-text .intro-heading {
 /* Project Details List 中項目的標籤 (例如 "風格") */
 .portfolio-modal .modal-content .project-details-list li strong {
   font-weight: lighter; /* 可以考慮讓標籤文字不要那麼粗體，與內容更協調 */
-  margin-right: 7%; /* 在標籤和內容之間增加一點間距 */
+  margin-right: 3.5%; /* 在標籤和內容之間增加一點間距 */
+}
+
+.portfolio-modal .modal-content .project-details-list li .project-divider {
+  font-weight: lighter; /* 可以考慮讓標籤文字不要那麼粗體，與內容更協調 */
+  margin-right: 3.5%; /* 在標籤和內容之間增加一點間距 */
 }
 
 /* 移除 ::before 偽元素，不再顯示子彈點 */
@@ -1220,14 +1225,24 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     padding-bottom: 3% !important;
     padding-top: 5% !important;
     letter-spacing: 0.2em !important;
+    text-align: center !important;
   }
+  .text-content-wrapper ul {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* 讓每個 li 區塊水平置中 */
+  }
+  
   .text-content-wrapper li {
     letter-spacing: 0.2em !important;
     font-size: 1.3em !important;
-  }
+    text-align: start !important; /* 文字靠左對齊 */
+    width: 100%; /* 或固定寬度，例如 300px */
+    max-width: 600px; /* 防止太寬 */
+    padding-left: 20% !important;
+  }  
   .portfolio-modal .modal-content .project-details-list li strong {
     font-weight: lighter; /* 可以考慮讓標籤文字不要那麼粗體，與內容更協調 */
-    margin-right: 5%; /* 在標籤和內容之間增加一點間距 */
   }
   .modal-content {
     margin-top: 4% !important;
