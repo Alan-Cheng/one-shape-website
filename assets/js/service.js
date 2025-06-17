@@ -303,7 +303,7 @@ workflowDataArrayService.forEach((row, idx) => {
   li.style.color = '#fff';
 
   const left = document.createElement('span');
-  left.textContent = '・' + row.服務名稱;
+  left.textContent = '・' + row.收費項目;
   left.setAttribute('lang', 'zh-TW');
   left.style.flex = '0 0 200px';
   left.style.textAlign = 'left';
