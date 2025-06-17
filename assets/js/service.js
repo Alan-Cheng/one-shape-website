@@ -333,40 +333,13 @@ workflowDataArrayService.forEach((row, idx) => {
 });
 feeBox.appendChild(ul);
 
-// 動態產生 workflow-title 服務名稱 tab
-const workflowTitleDiv = document.querySelector('.workflow-title');
-workflowTitleDiv.innerHTML = '';
-workflowTitleDiv.style.display = 'flex';
-workflowTitleDiv.style.justifyContent = 'flex-end';
-workflowTitleDiv.style.gap = '32px';
-workflowTitleDiv.style.marginBottom = '40px';
-
-workflowDataArrayService.forEach((item, idx) => {
-  const tab = document.createElement('div');
-  tab.textContent = item['服務名稱'];
-  tab.setAttribute('lang', 'zh-TW');
-  tab.style.cursor = 'pointer';
-  tab.style.fontWeight = 'bold';
-  tab.style.fontSize = '1.1em';
-  tab.style.letterSpacing = '0.15em';
-  tab.style.padding = '4px 16px';
-  tab.style.borderBottom = idx === currentIndex ? '2px solid #fff' : '2px solid transparent';
-  tab.style.transition = 'border 0.2s';
-  tab.onclick = () => showWorkflow(idx);
-  tab.className = 'workflow-tab';
-  workflowTitleDiv.appendChild(tab);
-});
-
-// 新增：動態產生 workflow-select
-const workflowSelectWrapper = document.querySelector('.workflow-select-wrapper');
+// 動態產生 workflow-select
+const workflowSelectWrapper = document.querySelector('.portfolio-select-wrapper');
 if (workflowSelectWrapper) {
-  const select = document.createElement('select');
-  select.id = 'service-select';
-  select.className = 'service-select-button';
+  const select = document.getElementById('service-select');
   select.onchange = function () {
-    showWorkflow(parseInt(this.value)); // 確保是數字
+    showWorkflow(parseInt(this.value));
   };
-  select.lang = 'zh-TW';
 
   workflowDataArrayService.forEach((item, idx) => {
     const option = document.createElement('option');
@@ -378,19 +351,18 @@ if (workflowSelectWrapper) {
     }
     select.appendChild(option);
   });
-  workflowSelectWrapper.appendChild(select);
   
   // 初始化 select2
   $(document).ready(function () {
     $('#service-select').select2({
       theme: 'bootstrap-5',
       minimumResultsForSearch: Infinity,
-      width: '150px'
+      width: '100%'
     });
   });
 }
 
-// 新增：在選單/tab 下方加一條分隔線
+// 新增：在選單下方加一條分隔線
 if (!document.getElementById('workflow-title-divider')) {
   const divider = document.createElement('div');
   divider.id = 'workflow-title-divider';
@@ -402,11 +374,6 @@ if (!document.getElementById('workflow-title-divider')) {
 
 // 渲染對應服務內容
 function showWorkflow(idx) {
-  // tab 樣式切換
-  document.querySelectorAll('.workflow-tab').forEach((el, i) => {
-    el.style.borderBottom = i === parseInt(idx) ? '2px solid #fff' : '2px solid transparent';
-  });
-
   // 更新 select dropdown 的值
   const select = document.getElementById('service-select');
   if (select && select.value !== idx) {
