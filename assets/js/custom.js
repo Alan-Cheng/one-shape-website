@@ -372,34 +372,10 @@ function show_N_wrok(N){
     else{
       var n = N;
       var result = [];
-      var indexes = new Set();
-      var catergory = new Set();
-      //隨機取得n個不重複的索引
-      // while (indexes.size < n) {
-      //   const randomIndex = Math.floor(Math.random() * jsonDataArray.length);
-      //   indexes.add(randomIndex);
-      // }
+      // 只取最新的三個住宅空間案子
       var rev_array = jsonDataArray.slice().reverse();
-      for(var i = 0; i < rev_array.length; i++){
-        if(indexes.size == n){
-          break;
-        }
-        if(catergory.has(rev_array[i].種類)){
-          continue;
-        }
-        if(rev_array[i].種類 == '專案工程'){
-          continue;
-        }
-        else{
-          indexes.add(i);
-          catergory.add(rev_array[i].種類);
-        }
-      }
-      //將三種不同種類的作品分別放入result
-      indexes.forEach(index => {
-        result.push(rev_array[index]);
-      });
-      build_portfolio(result.reverse(), 'home');
+      result = rev_array.filter(item => item.種類 === '住宅空間').slice(0, 3);
+      build_portfolio(result, 'home');
     } 
 }
 
