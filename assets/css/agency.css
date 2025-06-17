@@ -1207,40 +1207,58 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     margin-top: 12vh; /* 或其他你想要的距離，例如 2rem、40px */
   }
   .modal-body {
-    padding: 7% 7% 7% 7%;
+    padding: 7% 5% 7% 5%;
   }
   .modal-dialog {
-    padding: 2%;
-    margin-top: 0% !important;
+    padding-top: 2%;
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    max-width: 100% !important;
+    align-items: center !important;
   }
-  .text-content-wrapper  h2 {
-    font-size: 1.5em !important;
+  .text-content-wrapper h2 {
+    font-size: 1.7em !important;
+    font-weight: 300 !important;
     padding-bottom: 3% !important;
+    padding-top: 5% !important;
+    letter-spacing: 0.2em !important;
+  }
+  .text-content-wrapper li {
+    letter-spacing: 0.2em !important;
+    font-size: 1.3em !important;
   }
   .portfolio-modal .modal-content .project-details-list li strong {
     font-weight: lighter; /* 可以考慮讓標籤文字不要那麼粗體，與內容更協調 */
     margin-right: 5%; /* 在標籤和內容之間增加一點間距 */
   }
   .modal-content {
-    margin-top: 2% !important;
+    margin-top: 4% !important;
+    margin-right: 3% !important;
+  }
+  .portfolio-modal {
+    padding-right: 0% !important;
+  }
+  .modal-content > h2 {
+    font-size: 1.5em !important;
   }
 }
 
 /* 小螢幕下調整 */
 @media (max-width: 766px) {
+  .modal-open {
+    padding-right: 0% !important;
+  }
   .modal-body {
     padding: 10% 8% 10% 8%;
   }
   .modal-dialog {
-    padding: 1%;
+    padding-top: 7% !important;
+    max-width: 90% !important;
   }
   .text-content-wrapper  h2 {
     font-size: 1.2em !important;
     padding-bottom: 3% !important;
   }
-}
-
-@media (max-width: 766px) {
   .about-english-text {
     display: none;
     text-align: right;
@@ -1249,5 +1267,13 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     line-height: 3;
     letter-spacing: 0.4em;
     text-align: center;
+  }
+  .text-content-wrapper  h2 {
+    font-size: 1.3em !important;
+    letter-spacing: 0.2em !important;
+    font-weight: 350 !important;
+  }
+  .text-content-wrapper  li {
+    letter-spacing: 0.2em !important;
   }
 }

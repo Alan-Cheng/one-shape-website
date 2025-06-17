@@ -48,6 +48,9 @@ li,
 .portfolio-modal .modal-content .project-details-list li { /* 針對 li 本身 */
     font-family: 'Noto Sans TC', sans-serif !important;
 }
+.text-content-wrapper  h2 {
+    font-family: 'Noto Sans TC', sans-serif !important;
+}
 
 /* 套用英文字體到所有英文文字 */
 h1, h2, h3, h4, h5, h6,
