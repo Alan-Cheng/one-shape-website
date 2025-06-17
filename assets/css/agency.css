@@ -1171,14 +1171,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
       margin-bottom: 30px; /* 小螢幕分隔線與下方作品集的間距 */
   }
 
-  #workflow-title.section-heading {
-    font-size: 1.5em !important;
-  }
-
-  #portfolio-title.section-heading {
-    font-size: 1.5em !important;
-  }
-
   /* 模態框內的字體大小在小螢幕下調整 */
   .portfolio-modal .modal-content h2 {
     font-size: 1.2em; /* 小螢幕下標題字體再小一點 */
