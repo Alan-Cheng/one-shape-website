@@ -1247,15 +1247,11 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     padding-right: 0% !important;
   }
   .modal-body {
-    padding: 10% 8% 10% 8%;
+    padding: 10% 4% 10% 4%;
   }
   .modal-dialog {
     padding-top: 7% !important;
     max-width: 90% !important;
-  }
-  .text-content-wrapper  h2 {
-    font-size: 1.2em !important;
-    padding-bottom: 3% !important;
   }
   .about-english-text {
     display: none;
