@@ -68,7 +68,6 @@ h3{
 }
 
 .page-section h2.section-heading {
-  padding-top: 12px;
   font-size: 1.7em;
   margin-bottom: 15px;
   color: white;
@@ -1132,7 +1131,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   /* 調整標題的下邊距，使其與下拉選單有間隔 */
   .section-heading.text-uppercase {
       font-size: 1.1rem !important;
-      margin-top: 10px !important;
   }
 
   /* 調整服務標題大小 */
