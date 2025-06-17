@@ -72,6 +72,24 @@
   <link href="assets/css/contact.css" rel="stylesheet">
   <!-- Page container change top padding when nav shrinks -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .about-chinese-text {
+      line-height: 1.2;
+      letter-spacing: 0.1em;
+    }
+    .about-divider {
+      width: 75%;
+      height: 1px;
+      background-color: #666;
+      margin-top: 1rem;
+      display: none;
+    }
+    @media (max-width: 767px) {
+      .about-divider {
+        display: block;
+      }
+    }
+  </style>
 </head>
 
 <body id="page-top">
@@ -140,6 +158,7 @@
             <h3 lang="en" class="about-english-text">
               where space meets form, and form follows intent.
             </h3>
+            <div class="about-divider"></div>
           </div>
         </div>
       </div>
@@ -187,13 +206,14 @@
             chineseTextElement.innerHTML = processedText;
           }
 
-
+          chineseTextElement.style.marginBottom = '0.5rem';
           chineseTextElement.classList.add('line-break-mode');
           englishTextElement.style.display = 'none';
         } else {
           if (chineseTextElement.querySelector('.br-inserted')) {
             chineseTextElement.innerHTML = originalChineseText;
           }
+          chineseTextElement.style.marginBottom = '';
           chineseTextElement.classList.remove('line-break-mode');
           englishTextElement.style.display = '';
         }

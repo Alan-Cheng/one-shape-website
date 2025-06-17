@@ -1085,16 +1085,16 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
 /* 中文標題樣式 */
 .about-chinese-text { /* 或者使用 section#about h2[lang="zh-TW"] */
-  font-size: 1.3em;
+  /* font-size: 1.3em; */
   margin-bottom: 1em;
   color: white;
   font-weight: normal;
   text-align: center;
   /* 調整中文字間距：通常不需要太大，微調即可 */
-  letter-spacing: 0.3em; /* 範例：略微增加，讓視覺更開闊 */
+  letter-spacing: 0.1em; /* 範例：略微增加，讓視覺更開闊 */
   /* 如果你的中文是等寬字體，這個效果會比較均勻 */
   /* 如果是響應式字體大小，可以這樣設定 */
-  /* font-size: clamp(1.1em, 2.5vw, 1.3em); */
+  font-size: clamp(1.1em, 2.5vw, 1.3em);
 }
 
 /* 英文副標題樣式 */
@@ -1265,8 +1265,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     text-align: right;
   }
   .about-chinese-text.line-break-mode {
-    line-height: 3;
-    letter-spacing: 0.4em;
+    line-height: 1.8;
+    letter-spacing: 0.2em;
     text-align: center;
   }
   .text-content-wrapper  h2 {

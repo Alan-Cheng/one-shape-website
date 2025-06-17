@@ -298,3 +298,18 @@
   pointer-events: none;
   color: white;
 }
+
+/* 顯示小螢幕About的分隔線 */
+.about-divider {
+  width: 75%;
+  height: 1px;
+  background-color: #666;
+  margin-top: 1rem;
+  display: none;
+  max-width: 150px;
+}
+@media (max-width: 767px) {
+  .about-divider {
+    display: block;
+  }
+}
