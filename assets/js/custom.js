@@ -78,7 +78,8 @@ function build_portfolio(jsonDataArray, page){
       item.remove();
     });
     result = temp;
-    result_indexs = temp.map((item, index) => jsonDataArray.indexOf(item));
+    // 在 portfolio 頁面使用順序索引，而不是原始數組索引
+    result_indexs = temp.map((item, index) => index);
   }
 
   // 請注意：此處已移除動態添加 <style> 標籤的程式碼，
@@ -510,9 +511,16 @@ function portfolio_filter(catergory){
   container.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
 
   setTimeout(() => {
+    // 清除現有的作品項目
     var items = container.querySelectorAll('.col-md-4.portfolio-item');
     items.forEach(function(item) {
         item.remove();
+    });
+    
+    // 清除現有的 modal
+    var existingModals = document.querySelectorAll('.portfolio-modal');
+    existingModals.forEach(function(modal) {
+        modal.remove();
     });
     
     var temp = jsonDataArray.slice().reverse();
