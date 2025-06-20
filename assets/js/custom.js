@@ -554,7 +554,7 @@ function show_workflow() {
   if (window.innerWidth > 768) {
     workflowgrid.style.marginLeft = 'auto';
     workflowgrid.style.marginRight = '0';
-    workflowgrid.style.maxWidth = '80%';
+    workflowgrid.style.maxWidth = '90%';
     workflowgrid.style.paddingTop = '5%';
     workflowgrid.style.paddingBottom = '5%';
   } else {
