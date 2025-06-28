@@ -498,7 +498,7 @@
     function updateFavicon() {
       const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const iconPath = isDarkMode ? 'assets/img/logo.png' : 'assets/img/logo_black.png';
-      const icoPath = isDarkMode ? 'assets/img/logo.ico' : 'assets/img/logo_black.ico';
+      const icoPath = isDarkMode ? 'assets/img/webico.ico' : 'assets/img/webico.ico';
 
       document.getElementById('favicon').href = icoPath;
       document.getElementById('shortcut-icon').href = icoPath;
