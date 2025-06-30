@@ -40,7 +40,7 @@
       "name": "一形設計｜ONE SHAPE",
       "alternateName": ["一形", "一形設計", "ONE SHAPE", "oneshape", "one shape", "one shape design", "一形室內設計"],
       "url": "https://oneshapedesign.com/",
-      "logo": "https://oneshapedesign.com/assets/img/icon.ico",
+      "logo": "https://oneshapedesign.com/assets/img/favicon.ico",
       "description": "一形設計 ONE SHAPE - 台北市信義區專業室內設計公司，提供室內設計、空間規劃、裝修工程服務。",
       "areaServed": "台北市",
       "serviceArea": {
@@ -124,9 +124,9 @@
   </script>
 
   <link rel="canonical" href="https://oneshapedesign.com/">
-  <link rel="icon" href="assets/img/icon.ico" id="favicon">
-  <link rel="shortcut icon" type="image/x-icon" href="https://oneshapedesign.com/assets/img/logo_black.ico" id="shortcut-icon">
-  <link rel="apple-touch-icon" href="https://oneshapedesign.com/assets/img/logo_black.ico" id="apple-touch-icon">
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/img/favicon.ico">
   <link rel="sitemap" type="text/plain" title="Sitemap" href="https://oneshapedesign.com/sitemap.txt">
 
   <!-- Bootstrap core CSS -->
@@ -493,22 +493,6 @@
         }
       }
     });
-
-    // 偵測深色/淺色模式並切換favicon
-    function updateFavicon() {
-      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const iconPath = isDarkMode ? 'assets/img/logo.png' : 'assets/img/logo_black.png';
-      const icoPath = isDarkMode ? 'assets/img/webico.ico' : 'assets/img/webico.ico';
-
-      document.getElementById('favicon').href = icoPath;
-      document.getElementById('shortcut-icon').href = icoPath;
-      document.getElementById('apple-touch-icon').href = iconPath;
-      document.getElementById('icon-32').href = iconPath;
-      document.getElementById('icon-16').href = iconPath;
-    }
-
-    // 初始設定
-    updateFavicon();
   </script>
 
   <!-- <script>onScrollToSection(show_N_wrok, 3)</script> -->

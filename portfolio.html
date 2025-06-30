@@ -10,7 +10,7 @@
         "name" : "一形設計",
         "alternateName" : "oneshape Design",
         "url" : "https://oneshapedesign.com/",
-        "logo": "https://github.com/Alan-Cheng/one-shape-website/blob/main/assets/img/logo.png?raw=true"
+        "logo": "https://oneshapedesign.com/assets/img/favicon.ico"
       }
     </script>
   <meta charset="utf-8">
@@ -22,9 +22,9 @@
   <meta property="og:site_name" content="一形設計 - 設計作品">
   <meta property="og:title" content="一形設計 - 設計作品">
   <meta property="og:type" content="article">
-  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Alan-Cheng/one-shape-website/refs/heads/main/assets/img/logo.ico" id="favicon">
-  <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/Alan-Cheng/one-shape-website/refs/heads/main/assets/img/logo.ico" id="shortcut-icon">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Alan-Cheng/one-shape-website/refs/heads/main/assets/img/logo.ico" id="apple-touch-icon">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/img/favicon.ico">
 
   <!-- Bootstrap core CSS -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -415,23 +415,6 @@
     });
   </script>
   <script>disableRightClickAndCopy()</script>
-  <script>
-    // 偵測深色/淺色模式並切換favicon
-    function updateFavicon() {
-      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const iconPath = isDarkMode ? 'assets/img/logo.png' : 'assets/img/logo_black.png';
-      const icoPath = isDarkMode ? 'assets/img/logo.ico' : 'assets/img/logo_black.ico';
-
-      document.getElementById('favicon').href = icoPath;
-      document.getElementById('shortcut-icon').href = icoPath;
-      document.getElementById('apple-touch-icon').href = iconPath;
-      document.getElementById('icon-32').href = iconPath;
-      document.getElementById('icon-16').href = iconPath;
-    }
-
-    // 初始設定
-    updateFavicon();
-  </script>
 </body>
 
 </html>
